@@ -14,3 +14,10 @@
  *= require_self
  */
 @import "bootstrap";
+
+    /* 글자 ellipsis (글자수 초과 시 '...' 처리) */
+    .etc {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }

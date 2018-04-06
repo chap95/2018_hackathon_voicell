@@ -60,3 +60,5 @@ gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 gem 'bootstrap', '~> 4.0.0'
 
 gem 'devise-i18n'
+
+gem 'rails_db'
