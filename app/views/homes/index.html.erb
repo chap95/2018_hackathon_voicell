@@ -1,0 +1,30 @@
+<div class="container">
+    <div style="margin-top: 100px;" align="center">
+        <h1>/app/views/homes/index.html.erb</h1>
+        <h3>이 곳은 홈페이지 메인이 될 곳임.</h3>
+        <div style="margin-top: 30px;"></div>
+        <%= link_to "로그인", user_session_path, class: "btn btn-primary" %>
+        <% if not user_signed_in? %>
+            <%= link_to "회원가입", new_user_registration_path, class: "btn btn-dark" %>
+        <% else %>
+            <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+        <% end %>
+    </div>
+    <hr/>
+    <h5 style="font-weight: bold">로그인 정보</h5>
+    <% if user_signed_in? %>
+        <div style="white-space: pre-wrap;">
+            아이디 : <%= current_user.email %>
+        </div>
+    <% else %>
+        로그인 되어있지 않음.
+    <% end %>
+    
+    <div style="white-space: pre-wrap;">
+        <h5 style="font-weight: bold">인수인계 사항</h5>
+        1. Devise 설치
+        2. 부트스트랩 4.0 설치 (Gem 설치를 통한 적용)
+        3. 폰트어썸 설치 (For 아이콘 표현, <%= link_to "사이트 참고(클릭)", "https://fontawesome.com/icons" %>)
+        4. 기본 글꼴 : 나눔고딕 설정
+    </div>
+</div>

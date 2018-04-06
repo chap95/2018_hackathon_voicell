@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Elect</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <%# 폰트어썸 5버전 %>
+    <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+    <%# 사이트 : https://fontawesome.com/icons %>
+    
+    <%# 폰트 %>
+    <style>
+    /* 나눔고딕 */
+    @font-face {
+    	font-family: 'NanumGothic', '나눔고딕', sas-serif !important;
+    	src: url('/font/NanumGothic.eot');
+    	src: local('※'), 
+    	url('/font/NanumGothic.woff') format('woff'), 
+    	url('/font/NanumGothic.ttf') format('truetype')
+  	}
+  	
+  	/* 나눔 손글씨 */
+  	@font-face {
+      font-family:'Nanum Pen Script';
+      font-style:normal;
+      font-weight:400;
+      src: url(//cdn.jsdelivr.net/font-nanum/1.0/nanumpenscript/v2/NanumPenScript-Regular.eot);
+      src: url(//cdn.jsdelivr.net/font-nanum/1.0/nanumpenscript/v2/NanumPenScript-Regular.eot?#iefix) format('embedded-opentype'),
+      url(//cdn.jsdelivr.net/font-nanum/1.0/nanumpenscript/v2/NanumPenScript-Regular.woff) format('woff'),
+      url(//cdn.jsdelivr.net/font-nanum/1.0/nanumpenscript/v2/NanumPenScript-Regular.ttf) format('truetype')
+    }
+  	
+  	/* 웹 페이지 기본 글씨체 */
+  	body{
+      font-family: 'NanumGothic', '나눔고딕', sas-serif !important;
+      font-size: 15px;
+  	}
+    </style>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
