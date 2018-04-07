@@ -1,4 +1,4 @@
-# 강원대학교 캡스톤 : P-eVote
+# Ruby on Rails New Project Base
 
 <h3 style="font-weight: bold">1. 루비/레일즈 정보</h3>
     <b>Ruby</b> : 2.4.0<br/>
