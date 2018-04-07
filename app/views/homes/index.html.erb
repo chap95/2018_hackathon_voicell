@@ -23,6 +23,13 @@
         로그인 되어있지 않음.
     <% end %>
     <hr/>
+        <h5 style="font-weight: bold">메뉴</h5>
+        <span><%= link_to "카테고리 설정", bulletins_path %></span>
+        <% Bulletin.all.each do |x| %>
+            <span style="margin-left: 10px;"><%= link_to "#{x.title}", bulletin_posts_path(x.id) %></span>
+        <% end %>
+    <hr/>
+    
     
     <div style="white-space: pre-wrap;">
         <h5 style="font-weight: bold">루비/레일즈 정보</h5>
@@ -43,6 +50,9 @@
         8. Gem : RailsDB 설치
         9. /app/assets/stylesheets/application.scss 파일 일부 수정
         10. Gem : J-Query 설치
+        11. 게시판(카테고리 형식) 설정
+        12. cancancan+rolify 구현
+        13. paranoia 구현 (bulletin, post)
         <%= content_tag(:span, "이 이후 인수인계 사항은 <b style='color: orange'>README.md</b>에 기록해주세요.".html_safe, style: "color: red") %>
     </div>
     

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>카테고리 설정</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bulletins.each do |bulletin| %>
+      <%= render 'bulletins/render/index_list', bulletin: bulletin %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if can? :new, @bulletins %>
+  <%= link_to '새 카테고리 생성', new_bulletin_path %>
+<% end %>

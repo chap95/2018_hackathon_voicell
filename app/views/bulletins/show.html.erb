@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @bulletin.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @bulletin.content %>
+</p>
+
+<p>
+  <strong>Opt votable:</strong>
+  <%= @bulletin.opt_votable %>
+</p>
+
+<p>
+  <%= link_to "해당 게시판 이동하기", "#{request.protocol}#{request.host}/bulletins/#{@bulletin.id}/posts" %>
+</p>
+
+<%= link_to 'Edit', edit_bulletin_path(@bulletin) %> |
+<%= link_to 'Back', bulletins_path %>

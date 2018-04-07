@@ -1,0 +1,32 @@
+<%= form_with(model: bulletin, local: true) do |form| %>
+  <% if bulletin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bulletin.errors.count, "error") %> prohibited this bulletin from being saved:</h2>
+
+      <ul>
+      <% bulletin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :bulletin_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, id: :bulletin_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :opt_votable %>
+    <%= form.check_box :opt_votable, id: :bulletin_opt_votable %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

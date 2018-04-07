@@ -53,12 +53,25 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# rails_db (DB구조를 볼 수 있게.)
+gem 'rails_db'
+
+# jquery
 gem 'jquery-rails'
 
+# devise(회원가입)
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
+# 부트스트랩 v4.0
 gem 'bootstrap', '~> 4.0.0'
 
+# devise 한글 번역
 gem 'devise-i18n'
 
-gem 'rails_db'
+# cancancan + rolify (권한등급 설정)
+gem 'cancancan'
+gem 'rolify'
+
+# 게시글이 삭제되도 DB에 기록은 남김.
+#http://blog.naver.com/kbs4674/221052897085
+gem 'paranoia'

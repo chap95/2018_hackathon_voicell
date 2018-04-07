@@ -1,0 +1,8 @@
+<tr>
+    <td><%= bulletin.title %></td>
+    <td><%= bulletin.content %></td>
+    <td><%= link_to 'Show', bulletin %></td>
+    <td><%= link_to 'Edit', edit_bulletin_path(bulletin) %></td>
+    <td><%= link_to "해당 게시판 이동", "#{request.protocol}#{request.host}/bulletins/#{bulletin.id}/posts" %></td>
+    <td><%= link_to 'Destroy', bulletin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
