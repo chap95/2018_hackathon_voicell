@@ -15,6 +15,9 @@
     8. Gem : RailsDB 설치<br/>
     9. /app/assets/stylesheets/application.scss 파일 일부 수정<br/>
     10. Gem : J-Query 설치<br/>
+    11. 게시판(카테고리 형식) 설정<br/>
+    12. cancancan+rolify 구현<br/>
+    13. paranoia 구현 (bulletin, post)<br/>
 
 
 <h3 style="font-weight: bold">3. 알아두면 좋은 사이트</h3>
