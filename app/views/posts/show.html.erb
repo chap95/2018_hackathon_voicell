@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'posts/render/normal_show' %>
+<%= render 'posts/show/show_normal' %>
 
 <% if can? :update, @post %>
 <%= link_to '편집', (@bulletin.present? ? edit_bulletin_post_path(@bulletin)  : edit_post_path(@post)), class: 'btn btn-default' %>
