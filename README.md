@@ -6,7 +6,7 @@
     
 <h3 style="font-weight: bold">2. 인수인계 사항</h3>
     1. Devise 설치<br/>
-    2. 부트스트랩 4.0 설치 (Gem 설치를 통한 적용)<br/>
+    2. 부트스트랩 4.1 설치<br/>
     3. 폰트어썸 설치 (For 아이콘 표현, <a href="https://fontawesome.com/icons" target="_blank">사이트 참고(클릭)</a>)<br/>
     4. 기본 글꼴 : 나눔고딕 설정<br/>
     5. .gitignore 파일 셋팅 (일부 파일은 github에 자료가 push되는 것을 제한.)<br/>

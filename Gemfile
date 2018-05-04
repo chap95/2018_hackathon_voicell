@@ -62,9 +62,6 @@ gem 'jquery-rails'
 # devise(회원가입)
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
-# 부트스트랩 v4.0
-gem 'bootstrap', '~> 4.0.0'
-
 # devise 한글 번역
 gem 'devise-i18n'
 
