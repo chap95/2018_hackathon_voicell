@@ -2,6 +2,8 @@
     <div style="margin-top: 100px;" align="center">
         <h1>/app/views/homes/index.html.erb</h1>
         <h3>이 곳은 홈페이지 메인이 될 곳임.</h3>
+        <%= alert %>
+        <%= notice %>
         <div style="margin-top: 30px;"></div>
         <%= link_to "Rails DB 이동", rails_db_path, class: "btn btn-info" %>
         <% if not user_signed_in? %>
@@ -55,6 +57,8 @@
         13. paranoia 구현 (bulletin, post)
         14. therubyracer Gem 설치 (서버 설정 전용 Gem)
         15. Figaro Gem 설치 (코드보안)
+        16. Rails Admin 설치 (어드민 페이지)
+        17. Nav-bar 디자인 참고 : https://bootstrapmade.com/demo/BizPage/
         <%= content_tag(:span, "이 이후 인수인계 사항은 <b style='color: orange'>README.md</b>에 기록해주세요.".html_safe, style: "color: red") %>
     </div>
     

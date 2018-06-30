@@ -20,6 +20,8 @@
     13. paranoia 구현 (bulletin, post)<br/>
     14. therubyracer Gem 설치 (서버 설정 전용 Gem)<br/>
     15. Figaro Gem 설치 (코드보안)<br/>
+    16. Rails Admin 설치 (어드민 페이지)<br/>
+    17. Nav-bar 디자인 참고 : https://bootstrapmade.com/demo/BizPage/<br/>
 
 
 <h3 style="font-weight: bold">3. 알아두면 좋은 사이트</h3>

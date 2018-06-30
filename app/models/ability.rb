@@ -5,8 +5,9 @@ class Ability
     
     #user -> current_user 
     user ||= User.new # guest user (not logged in)
+    
     if user.has_role? :admin #어드민 권한
-    	can :manage, :all #create, edit 
+    	can :manage, :all #create, edit
     
     elsif user.has_role? :normal
       #일반 회원 : 허용 목록

@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #테스트 계정 생성(어드민 권한 O)
-test1 = User.create( email: 'kbs4674@naver.com', password: '123456' )
+test1 = User.create( email: 'kbs4674@naver.com', password: '123456', nickname: '어드민', admin: true )
 user = User.find(1)
 user.add_role :admin
 
 #테스트 계정 생성(어드민 권한 X)
-test2 = User.create( email: 'test4674@naver.com', password: '123456' )
+test2 = User.create( email: 'test4674@naver.com', password: '123456', nickname: '테스트계정1',  admin: false )
 user = User.find(2)
 user.add_role :normal
 user.add_role :block_yellow

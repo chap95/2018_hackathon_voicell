@@ -75,3 +75,6 @@ gem 'paranoia'
 
 # Figaro(코드 보안)
 gem 'figaro'
+
+# rails_admin : 관리자 페이지
+gem 'rails_admin'
