@@ -32,10 +32,10 @@ class BulletinsController < ApplicationController
 
     respond_to do |format|
       if @bulletin.save
-        format.html { redirect_to @bulletin, notice: 'Bulletin was successfully created.' }
+        format.html { redirect_to @bulletin, notice: '카테고리 생성 완료.' }
         format.json { render :show, status: :created, location: @bulletin }
       else
-        format.html { render :new }
+        format.html { render :new, notice: '글 제목 또는 내용을 입력해주세요.' }
         format.json { render json: @bulletin.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +46,7 @@ class BulletinsController < ApplicationController
   def update
     respond_to do |format|
       if @bulletin.update(bulletin_params)
-        format.html { redirect_to @bulletin, notice: 'Bulletin was successfully updated.' }
+        format.html { redirect_to @bulletin, notice: '카테고리 수정 완료.' }
         format.json { render :show, status: :ok, location: @bulletin }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class BulletinsController < ApplicationController
   def destroy
     @bulletin.destroy
     respond_to do |format|
-      format.html { redirect_to bulletins_url, notice: 'Bulletin was successfully destroyed.' }
+      format.html { redirect_to bulletins_url, alert: '카테고리 삭제 완료.' }
       format.json { head :no_content }
     end
   end
@@ -74,6 +74,7 @@ class BulletinsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bulletin_params
       params[:bulletin][:user_id] = current_user.id
-      params.require(:bulletin).permit(:title, :content, :user_id, :opt_votable)
+      params[:bulletin][:user_nickname] = current_user.nickname
+      params.require(:bulletin).permit(:title, :content, :user_id, :opt_votable, :user_nickname)
     end
 end

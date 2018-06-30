@@ -1,32 +1,23 @@
-<%= form_with(model: bulletin, local: true) do |form| %>
-  <% if bulletin.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(bulletin.errors.count, "error") %> prohibited this bulletin from being saved:</h2>
-
-      <ul>
-      <% bulletin.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_with(model: bulletin, local: true) do |f| %>
+  <div class="field" style="margin-top: 30px;">
+    <div class="row">
+    <div class="col-3 col-sm-2 col-md-1"><%= f.label :"제목" %></div>
+    <div class="col-9 col-sm-10 col-md-11"><%= f.text_field :title, class: "input_noborder", autocomplete: "off" %></div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :bulletin_title %>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, id: :bulletin_content %>
+  <div class="field" style="margin-top: 10px;">
+    <%= tinymce :language => "en" %>
+    <%= f.text_area :content, id: :post_content, class: "form-control tinymce", rows: "10" %>
   </div>
 
+  <div class="col-12 col-sm-8 col-md-5" style="background-color: #ffd4d4; margin-top: 30px; margin-bottom: 10px; padding: 10px;"><font color="red"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> 어드민 전용 : 게시판 특수기능 설정</font></div>
   <div class="field">
-    <%= form.label :"옵션NULL" %>
-    <%= form.check_box :opt_whatever, id: :bulletin_opt_votable %>
+    <%= f.label :opt_whatever, "옵션 NULL" %> <%= f.check_box :opt_whatever, id: :bulletin_opt_whatever %><br/>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div align="center" class="actions" style="margin-top: 30px;">
+    <%= f.submit :"글 쓰기", class: "btn btn-sm btn-primary" %>
+     <%= link_to "목록", bulletins_path, class: 'btn btn-sm btn-outline-dark' %>
   </div>
 <% end %>

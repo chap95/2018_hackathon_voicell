@@ -1,27 +1,18 @@
 <%= simple_form_for(@bulletin.present? ? [@post.bulletin, @post] : @post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="field" style="margin-top: 30px;">
+    <div class="row">
+    <div class="col-3 col-sm-2 col-md-1"><%= f.label :"제목" %></div>
+    <div class="col-9 col-sm-10 col-md-11"><%= f.text_field :title, class: "input_noborder", autocomplete: "off" %></div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, id: :post_title %>
   </div>
 
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content, id: :post_content %>
+  <div class="field" style="margin-top: 10px;">
+    <%= tinymce :language => "en" %>
+    <%= f.text_area :content, id: :post_content, class: "form-control tinymce", rows: "10" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div align="center" class="actions" style="margin-top: 30px;">
+    <%= f.submit :"글 쓰기", class: "btn btn-sm btn-primary" %>
+    <%= link_to '목록', (@bulletin.present? ? bulletin_posts_path(@bulletin) : posts_path), class: 'btn btn-sm btn-outline-dark' %>
   </div>
 <% end %>

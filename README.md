@@ -22,6 +22,7 @@
     15. Figaro Gem 설치 (코드보안)<br/>
     16. Rails Admin 설치 (어드민 페이지)<br/>
     17. Nav-bar 디자인 참고 : https://bootstrapmade.com/demo/BizPage/<br/>
+    18. TinyMce 설치 (게시글 에디터)<br/>
 
 
 <h3 style="font-weight: bold">3. 알아두면 좋은 사이트</h3>

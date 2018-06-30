@@ -8,7 +8,6 @@
 # General
 --------------------------------------------------------------*/
 a:hover, a:active, a:focus {
-  color: #18d36e;
   outline: none;
   text-decoration: none;
 }
@@ -47,7 +46,7 @@ a:hover, a:active, a:focus {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: rgba(0, 0, 0, 0.9);
+  background: black;
   padding: 20px 0;
   height: 70px;
   position: fixed;
@@ -59,7 +58,7 @@ a:hover, a:active, a:focus {
 }
 
 #header.header-scrolled {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.52);
   padding: 20px 0;
   height: 70px;
   transition: all 0.5s;

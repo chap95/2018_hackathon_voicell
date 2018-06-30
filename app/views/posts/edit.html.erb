@@ -1,5 +1,20 @@
-<h1>Editing Post</h1>
+<%# 경고메세지 출력 (아이디, 비밀번호 잘못 칠 시 등등...) %>
+<% if alert %>
+  <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #FF4B5C; color: white; border-radius: 0; margin-bottom: 0; border: 0">
+    <%= alert %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+<% elsif notice %>
+  <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #43AC6A; color: white; border-radius: 0; margin-bottom: 0; border: 0">
+    <%= notice %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+<% end %>
 
-<%= render 'form', post: @post %>
-
-<%= link_to '목록', (@bulletin.present? ? bulletin_posts_path(@bulletin) : posts_path), class: 'btn btn-default' %>
+<div class="container">
+    <div class="alert alert-primary" role="alert" style="margin-top: 30px;">
+      <i class="fas fa-cogs"></i> 게시글 수정 중.
+    </div>
+    
+    <%= render 'form', post: @post %>
+</div>

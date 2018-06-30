@@ -1,8 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<%= render 'posts/show/show_normal' %>
-
-<% if can? :update, @post %>
-<%= link_to '편집', (@bulletin.present? ? edit_bulletin_post_path(@bulletin)  : edit_post_path(@post)), class: 'btn btn-default' %>
+<%# 경고메세지 출력 (아이디, 비밀번호 잘못 칠 시 등등...) %>
+<% if alert %>
+  <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #FF4B5C; color: white; border-radius: 0; margin-bottom: 0; border: 0">
+    <%= alert %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+<% elsif notice %>
+  <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #43AC6A; color: white; border-radius: 0; margin-bottom: 0; border: 0">
+    <%= notice %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
 <% end %>
-<%= link_to '목록', (@bulletin.present? ? bulletin_posts_path(@bulletin) : posts_path), class: 'btn btn-default' %>
+
+<div class="container">
+    <%= render 'posts/show/show_normal' %>
+    <div class="row">
+        <div class="col-1 col-sm-1 col-md-1">
+            <%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path), class: 'btn btn-sm btn-primary' %>
+        </div>
+        <div align="right" class="col-11 col-sm-11 col-md-11">
+            <% if can? :update, @post %>
+                <%= link_to '수정', (@bulletin.present? ? edit_bulletin_post_path(@bulletin)  : edit_post_path(@post)), class: 'btn btn-sm btn-outline-dark' %>
+            <% end %>
+            
+            <% if can? :destroy, @post %>
+                <%= link_to '삭제', (@bulletin.present? ? [@post.bulletin, @post] : @post), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: '정말로 삭제하시겠습니까?' } %>
+            <% end %>
+            
+            <%= link_to '목록', (@bulletin.present? ? bulletin_posts_path(@bulletin) : posts_path), class: 'btn btn-sm btn-outline-dark' %>
+        </div>
+    </div>
+    <hr/>
+</div>

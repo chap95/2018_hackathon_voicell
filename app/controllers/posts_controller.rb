@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = @bulletin.present? ? @bulletin.posts.all : Post.all
+    @posts = Post.where(bulletin_id: @bulletin).order("created_at DESC").page(params[:page]).per(2)
   end
 
   def show
@@ -69,6 +69,7 @@ class PostsController < ApplicationController
 
   def post_params
     params[:post][:user_id] = current_user.id
-    params.require(:post).permit(:title, :content, :user_id)
+    params[:post][:user_nickname] = current_user.nickname
+    params.require(:post).permit(:title, :content, :user_id, :user_nickname)
   end
 end

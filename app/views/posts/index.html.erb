@@ -1,23 +1,37 @@
-<p id="notice"><%= notice %></p>
+<%# 경고메세지 출력 (아이디, 비밀번호 잘못 칠 시 등등...) %>
+<% if alert %>
+  <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #FF4B5C; color: white; border-radius: 0; margin-bottom: 0; border: 0">
+    <%= alert %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+<% elsif notice %>
+  <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #43AC6A; color: white; border-radius: 0; margin-bottom: 0; border: 0">
+    <%= notice %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+<% end %>
 
-<h1><%= @bulletin.title %></h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>제목</th>
-      <th>내용</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <%= render 'posts/index/index_normal', post: post %>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path), class: 'btn btn-default' %>
+<div class="container">
+  <h1><%= @bulletin.title %></h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>제목</th>
+        <th>내용</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @posts.each do |post| %>
+        <%= render 'posts/index/index_normal', post: post %>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  <%= paginate @posts %>
+  
+  <div align="right"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path), class: 'btn btn-primary' %></div>
+</div>

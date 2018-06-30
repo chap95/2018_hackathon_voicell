@@ -78,3 +78,9 @@ gem 'figaro'
 
 # rails_admin : 관리자 페이지
 gem 'rails_admin'
+
+# kaminari : 게시판 목록
+gem 'kaminari'
+
+# Tinymce : 게시글 에디터
+gem 'tinymce-rails'

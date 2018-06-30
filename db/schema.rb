@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20180407081939) do
   create_table "bulletins", force: :cascade do |t|
     t.string "title"
     t.text "content"
+    t.string "user_nickname"
     t.boolean "opt_whatever"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180407081939) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
+    t.string "user_nickname"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
