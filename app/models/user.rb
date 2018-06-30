@@ -12,6 +12,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   
   def assign_default_role
-    add_role(:student)
+    add_role(:normal)
   end
 end

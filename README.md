@@ -18,6 +18,8 @@
     11. 게시판(카테고리 형식) 설정<br/>
     12. cancancan+rolify 구현<br/>
     13. paranoia 구현 (bulletin, post)<br/>
+    14. therubyracer Gem 설치 (서버 설정 전용 Gem)<br/>
+    15. Figaro Gem 설치 (코드보안)<br/>
 
 
 <h3 style="font-weight: bold">3. 알아두면 좋은 사이트</h3>
