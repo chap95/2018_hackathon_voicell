@@ -5,6 +5,8 @@
     <% end %>
     <%= content_tag(:div, bulletin.created_at.in_time_zone("Asia/Seoul").strftime('%Y-%m-%d %H:%M'), class: "col-5 col-sm-5 col-md-2", align: "center", style: "padding: 10px;") %>
     <div class="d-none d-md-block col-md-6" style="padding: 10px;">
-        <span class="badge badge-pill badge-danger">어드민 전용</span>
+        <% if bulletin.opt_admin_only == true %>
+            <span class="badge badge-pill badge-danger">Admin만 글 작성 허용</span>
+        <% end %>
     </div>
 </div>

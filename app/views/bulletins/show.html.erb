@@ -28,7 +28,7 @@
   </div>
   <hr/>
   
-  <span class="badge badge-pill badge-primary"><%= link_to "해당 게시판 이동하기", "#{request.protocol}#{request.host}/bulletins/#{@bulletin.id}/posts", style: "color: white; padding-left: 10px; padding-right: 10px;" %></span>
+  <span class="badge badge-pill badge-info"><%= link_to " 해당 게시판 이동하기", "#{request.protocol}#{request.host}/bulletins/#{@bulletin.id}/posts", style: "color: white; padding-left: 10px; padding-right: 10px;", class: "fas fa-link" %></span>
   <div style="margin-top: 30px;">
     <%= @bulletin.content.html_safe %>
   </div>
@@ -52,4 +52,7 @@
     </div>
   </div>
   <hr/>
+  <% if @bulletin.opt_admin_only == true %>
+    <span class="badge badge-pill badge-danger">Admin만 글 작성 허용</span>
+  <% end %>
 </div>

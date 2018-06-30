@@ -33,5 +33,9 @@
   <br>
   <%= paginate @posts %>
   
-  <div align="right"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path), class: 'btn btn-primary' %></div>
+  <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
+    <div align="right"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path), class: 'btn btn-primary' %></div>
+  <% elsif (@bulletin.opt_admin_only == false) %>
+    <div align="right"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path), class: 'btn btn-primary' %></div>
+  <% end %>
 </div>

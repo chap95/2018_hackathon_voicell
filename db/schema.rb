@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180407081939) do
     t.string "title"
     t.text "content"
     t.string "user_nickname"
-    t.boolean "opt_whatever"
+    t.boolean "opt_admin_only"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

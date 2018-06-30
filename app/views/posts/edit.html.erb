@@ -12,9 +12,18 @@
 <% end %>
 
 <div class="container">
-    <div class="alert alert-primary" role="alert" style="margin-top: 30px;">
-      <i class="fas fa-cogs"></i> 게시글 수정 중.
+  <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
+    <%= render 'form' %>
+  <% elsif (@bulletin.opt_admin_only == false) %>
+    <%= render 'form' %>
+  <% else %>
+    <div align="center">
+      <div class="alert alert-danger col-md-6" role="alert">
+        <h4 align="center">접근 제한!</h3>
+        <hr/>
+        <b><%= current_user.nickname %></b> 님은 해당 페이지에 접근권한이 없습니다.<br/>
+        You don't have access authority!
+      </div>
     </div>
-    
-    <%= render 'form', post: @post %>
+  <% end %>
 </div>

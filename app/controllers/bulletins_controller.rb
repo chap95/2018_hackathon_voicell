@@ -8,7 +8,7 @@ class BulletinsController < ApplicationController
   # GET /bulletins
   # GET /bulletins.json
   def index
-    @bulletins = Bulletin.all
+    @bulletins = Bulletin.page(params[:page]).per(10)
   end
 
   # GET /bulletins/1
@@ -75,6 +75,6 @@ class BulletinsController < ApplicationController
     def bulletin_params
       params[:bulletin][:user_id] = current_user.id
       params[:bulletin][:user_nickname] = current_user.nickname
-      params.require(:bulletin).permit(:title, :content, :user_id, :opt_votable, :user_nickname)
+      params.require(:bulletin).permit(:title, :content, :user_id, :user_nickname, :opt_admin_only)
     end
 end
