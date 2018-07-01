@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :all_notices
   root 'homes#index'
   
   get 'homes/index'

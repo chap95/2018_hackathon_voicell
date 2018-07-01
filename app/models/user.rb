@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :posts
   has_many :bulletins
+  has_many :all_notices
   
   #유저의 기본 권한 설정
   after_create :assign_default_role

@@ -11,30 +11,39 @@ class Ability
     
     elsif user.has_role? :normal
       #일반 회원 : 허용 목록
+      can [:index, :show], AllNotice
       can [:index, :show, :new, :create], Post
       can [:edit, :update, :destroy], Post, user_id: user.id
       
       #일반 회원 : 비허용 목록
       cannot [:index, :show, :new, :create, :edit, :update, :destroy], Bulletin, user_id: user.id
+      cannot [:new, :create, :edit, :update, :destroy], AllNotice, user_id: user.id
     
     elsif user.has_role? :block_yellow
       #경고회원(Yellow) 회원 : 허용 목록
+      can [:index, :show], AllNotice
       can [:index, :show], Post
       
       #경고회원(Yellow) 회원 : 비허용 목록
       cannot [:new, :create], Post
       cannot [:edit, :update, :destroy], Post, user_id: user.id
       cannot [:index, :show, :new, :create, :edit, :update, :destroy], Bulletin, user_id: user.id
+      cannot [:new, :create, :edit, :update, :destroy], AllNotice, user_id: user.id
       
     elsif user.has_role? :block_red
+      can [:index, :show], AllNotice
+      
       #경고회원(RED) 회원 : 비허용 목록
       cannot [:new, :create, :index, :show], Post
       cannot [:edit, :update, :destroy], Post, user_id: user.id
       cannot [:index, :show, :new, :create, :edit, :update, :destroy], Bulletin, user_id: user.id
+      cannot [:new, :create, :edit, :update, :destroy], AllNotice, user_id: user.id
       
     else
+      can [:index, :show], AllNotice
       cannot [:index, :show, :new, :create], Bulletin
       cannot [:index, :show], Post
+      cannot [:new, :create, :edit, :update, :destroy], AllNotice, user_id: user.id
     end
   end
 end

@@ -87,3 +87,6 @@ gem 'kaminari'
 
 # Tinymce : 게시글 에디터
 gem 'tinymce-rails'
+
+# impressionist : 조회수
+gem 'impressionist'

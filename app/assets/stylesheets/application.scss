@@ -14,9 +14,16 @@
  *= require_self
  */
   /* index inform row*/
-  .index_board_row {
+  .category_board_row {
     background-color: black;
     border-bottom: 4px solid #b4a6ff;
+    color: white;
+    padding: 10px;
+  }
+  
+  .index_board_row {
+    background-color: black;
+    border-bottom: 4px solid white;
     color: white;
     padding: 10px;
   }
