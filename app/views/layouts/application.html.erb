@@ -7,6 +7,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
+    <%# 로딩중 %>
+    <link rel="stylesheet" href="/css/loading.css"/>
+    <script src="/js/loading.js"></script>
+    
     <%# 부트스트랩 v4.1 %>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <script src="/js/popper.min.js"></script>
@@ -53,6 +57,9 @@
   </head>
 
   <body>
+  <!-- 로딩중 아이콘 -->
+  <div id="loading"><img id="loading-image" src="<%= asset_path 'loading.gif' %>" alt="Loading..." /></div>
+  
   <!-- nav-bar -->
   <header id="header">
     <div class="container-fluid">
