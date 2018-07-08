@@ -37,7 +37,7 @@
         <% end %>
         
         <% if can? :destroy, post %>
-            <%= link_to '삭제', post, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: '해당 게시판을 삭제하면 게시글도 삭제됩니다. 정말 게시판을 지우시겠습니까?' } %>
+            <%= link_to '삭제', post, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: '정말 게시글을 지우시겠습니까?' } %>
         <% end %>
         <%= link_to '목록', all_notices_path, class: 'btn btn-sm btn-outline-dark' %>
     </div>
