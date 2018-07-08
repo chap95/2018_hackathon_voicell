@@ -1,10 +1,10 @@
 <div class="board d-none d-md-block" style="background: url('<%= asset_path 'board_banner2.jpg' %>') no-repeat fixed; background-size: 100% 70%; background-position:0px -180px;">
   <div class="container" align="left">
-    <span class="post_title"><%= link_to "공지사항", "/all_notices", class: "board_title" %></span>
+    <%= link_to "공지사항", all_notices_path, class: "board_title" %>
   </div>
 </div>
 <div class="board_mobile d-md-none" style="background: url('<%= asset_path 'board_banner2.jpg' %>') no-repeat center center/cover scroll;">
-  <span class="post_title"><%= link_to "공지사항", "/all_notices", class: "board_title" %></span>
+  <%= link_to "공지사항", all_notices_path, class: "board_title" %>
 </div>
 
 <%# 경고메세지 출력 (아이디, 비밀번호 잘못 칠 시 등등...) %>
