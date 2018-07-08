@@ -1,7 +1,7 @@
 class BulletinsController < ApplicationController
   # 로그인 된 사용자만 접근 가능
   before_action :authenticate_user!
-    
+  # Rolify + Cancancan
   load_and_authorize_resource
   before_action :set_bulletin, only: [:show, :edit, :update, :destroy]
 

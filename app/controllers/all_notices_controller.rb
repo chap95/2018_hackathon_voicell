@@ -1,5 +1,7 @@
 class AllNoticesController < ApplicationController
+  # Rolify + Cancancan
   load_and_authorize_resource
+  
   before_action :set_all_notice, only: [:show, :edit, :update, :destroy]
   before_action :log_impression, :only=> [:show]
  

@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20180701121103) do
   create_table "all_notices", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.boolean "allow_comment"
+    t.boolean "allow_comment", default: true
     t.boolean "global_notice"
     t.boolean "local_notice"
     t.string "user_nickname"

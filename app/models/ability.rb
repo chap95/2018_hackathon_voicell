@@ -12,6 +12,7 @@ class Ability
     elsif user.has_role? :normal
       #일반 회원 : 허용 목록
       can [:index, :show], AllNotice
+      can [:page], User, id: user.id
       can [:index, :show, :new, :create], Post
       can [:edit, :update, :destroy], Post, user_id: user.id
       
@@ -22,6 +23,7 @@ class Ability
     elsif user.has_role? :block_yellow
       #경고회원(Yellow) 회원 : 허용 목록
       can [:index, :show], AllNotice
+      can [:page], User, id: user.id
       can [:index, :show], Post
       
       #경고회원(Yellow) 회원 : 비허용 목록
@@ -31,6 +33,7 @@ class Ability
       cannot [:new, :create, :edit, :update, :destroy], AllNotice, user_id: user.id
       
     elsif user.has_role? :block_red
+      can [:page], User, id: user.id
       can [:index, :show], AllNotice
       
       #경고회원(RED) 회원 : 비허용 목록
