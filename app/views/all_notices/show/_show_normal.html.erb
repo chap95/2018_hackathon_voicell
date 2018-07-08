@@ -11,24 +11,3 @@
 <div style="margin-top: 30px;">
     <%= post.content.html_safe %>
 </div>
-
-<div class="row" style="margin-top: 30px;">
-    <div class="col-6 col-sm-6 col-md-2">
-        <% if can? :new, post %>
-            <%= link_to '글 쓰기', new_all_notice_path, class: 'btn btn-sm btn-primary' %>
-        <% end %>
-    </div>
-    
-    <div align="right" class="col-6 col-sm-6 col-md-10">
-        <% if can? :update, post %>
-            <%= link_to '수정', edit_all_notice_path(post), class: 'btn btn-sm btn-outline-dark' %>
-        <% end %>
-        
-        <% if can? :destroy, post %>
-            <%= link_to '삭제', post, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: '해당 게시판을 삭제하면 게시글도 삭제됩니다. 정말 게시판을 지우시겠습니까?' } %>
-        <% end %>
-        <%= link_to '목록', all_notices_path, class: 'btn btn-sm btn-outline-dark' %>
-    </div>
-</div>
- 
-<hr/>
