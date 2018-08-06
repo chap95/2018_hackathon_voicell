@@ -10,6 +10,24 @@
     <%= tinymce :language => "en" %>
     <%= f.text_area :content, id: :post_content, class: "form-control tinymce", rows: "10" %>
   </div>
+  
+  <%# mp3 파일 업로드 영역 %>
+  <% if @bulletin.mp3_upload_permit == true %>
+    <div class="field" style="margin-top: 20px; background-color: #e4f2ff; padding: 10px;">
+      <div class="row">
+        <div class="col-4 col-sm-2 col-md-2"><b>파일 업로드</b></div>
+        <div class="col-8 col-sm-10 col-md-10"><%= f.file_field :voice_uploade_file, accept: 'audio/mp3,audio/m4a' %></div>
+        <small class="col-12 col-sm-12 col-md-12">
+          <hr/>
+          <span style="color: gray; font-weight: bold"><i class="fas fa-headset"></i> 유의사항</span><br/>
+          1. 파일 허용 확장자는 mp3, m4a 입니다.<br/>
+          2. 최대 허용 용량은 2MB 입니다.<br/>
+          3. 미풍양속을 해치는 파일 내용은 규정에 의거하여 삭제/경고 입니다.<br/>
+        </small>
+      </div>
+    </div>
+  <% end %>
+  <%# mp3 파일 업로드 영역 종료 %>
 
   <div align="center" class="actions" style="margin-top: 30px; margin-bottom: 50px;">
     <%= f.submit :"글 쓰기", class: "btn btn-sm btn-primary" %>

@@ -1,0 +1,70 @@
+/*메인의 css 입니다*/
+.bg01 {
+    height: 900px;
+    background: url('main_bg001.png') no-repeat 50% 0;
+    /*box-shadow: inset 0 0 5px 2px ;*/
+    /*padding-left: 200px;*/
+}    
+/*bg01은 뒤에 파란색 막대기 부분*/
+.bg02 { 
+    height: 1000px; 
+    background: url('https://i.imgur.com/kyrqPis.png') no-repeat 50% 0; 
+    
+}    
+
+.bm01 { 
+    height: 1200px; 
+    /*background: url('https://i.imgur.com/tkUW7om.png') no-repeat 51% 0; */
+}
+/*bm01은 사람 돈 이랑 목소리 주고 받는 부분*/
+#font1{
+    padding-top: 250px;
+    text-align: center;
+}
+
+.button1{
+    text-align: center;
+}
+
+
+#font2{
+    padding-top: 350px;
+    text-align: center;
+}
+
+.button2{
+    text-align: center;
+}
+
+
+#btn01 {text-align: right;}
+
+#enter{
+    color: black;
+    /*background-color: blue;*/
+    margin-top: 350px;
+    font-size: 25px;
+    display: inline-block;
+    border-radius: 20px;
+    width: 200px;
+}
+/*아앙아아아*/
+
+
+/*#header { height: 125px; border-bottom: 1px solid #E5E4D4; background: #FEFEF1; }*/
+.container { position: relative; width: 1000px; margin: 0 auto; }
+article, aside, footer, header, main, nav, section { display: block; }
+
+.logo01 {position: absolute; top: 29px; left: 0;}
+
+
+#gnb { text-align: right; }
+#gnb ul li { display: inline-block; }
+#gnb .user { padding-top: 25px; }
+#gnb .menu { padding-top: 30px; }
+#gnb .user li { position: relative; margin-left: 30px; font-size: 9px; color: black; }
+#gnb .user li a:hover { color: red; text-decoration: none; }
+#gnb .menu li { position: relative; margin-left: 35px; }
+#gnb .menu li a { display: block; padding-bottom: 2px; text-decoration: none; }
+#gnb .menu li a::after { content: ''; position: absolute; top: 100%; left: 0; width: 100%; height: 3px; background: #333; transform: scaleX(0); transform-origin: left; transition: transform 0.33s cubic-bezier(.69, .05, .33, 1); }
+#gnb .menu li:hover a::after { transform: none; }

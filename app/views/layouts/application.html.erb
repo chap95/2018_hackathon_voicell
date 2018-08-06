@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Elect</title>
+    <title>Voicell : 당신의 목소리를 공유해 보세요</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <!-- 카카오톡 썸네일 노출 -->
+    <meta property="og:image" content="<%= asset_path 'voicell_kakao_thum.png' %>">
+    
+    <%# Audio 플레이어 스킨 %>
+    <%# 스킨 참고 : https://amazingaudioplayer.com/ %>
+    <%# 게시글 %>
+    <script src="/audio-skin/amazingaudioplayer.js"></script>
+    <link rel="stylesheet" type="text/css" href="/audio-skin/initaudioplayer-1.css">
+    <script src="/audio-skin/initaudioplayer-1.js"></script>
+    <%# 댓글 %>
+    <link rel="stylesheet" type="text/css" href="/audio-skin/initaudioplayer-2.css">
+    <script src="/audio-skin/initaudioplayer-2.js"></script>
     
     <%# 로딩중 %>
     <link rel="stylesheet" href="/css/loading.css"/>
@@ -17,11 +31,16 @@
     <script src="/js/bootstrap.min.js"></script>
     
     <%# 폰트어썸 5버전 %>
-    <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <%# 사이트 : https://fontawesome.com/icons %>
     
     <%# Nav-bar %>
-    <link rel="stylesheet" href="/nav-bar/style.css"/>
+    
+    <%# 메인화면 Fullpage %>
+    <link rel="stylesheet" type="text/css" href="/main/jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="/main/examples.css" />
+    <script type="text/javascript" src="/main/jquery.fullPage.js"></script>
+    <script type="text/javascript" src="/main/examples.js"></script>
     
     <%# 기타 %>
     <script src="/js/smooth-scroll.js"></script>
@@ -54,78 +73,44 @@
       font-size: 15px;
   	}
     </style>
+    
+    <script type="text/javascript">
+    /* 부트스트랩 : 툴 팁 */
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    
+    /* 댓글 접었다 피게 하기 */
+    function showHide(id) {
+       var obj = document.getElementById(id);
+       if (obj.style.display == 'none')
+           obj.style.display = 'block';
+       else
+           obj.style.display = 'none';
+    }
+    </script>
   </head>
 
   <body>
-  <!-- 로딩중 아이콘 -->
-  <div id="loading"><img id="loading-image" src="<%= asset_path 'loading.gif' %>" alt="Loading..." /></div>
-  
-  <!-- nav-bar -->
-  <header id="header">
-    <div class="container-fluid">
-      <div id="logo" class="pull-left">
-        <h1><a href="/" class="scrollto">홈페이지</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
-      </div>
+    <!-- 로딩중 아이콘 -->
+    <div id="loading"><img id="loading-image" src="<%= asset_path 'loading.gif' %>" alt="Loading..." /></div>
     
-      <nav id="nav-menu-container">
-        <ul class="nav-menu" style="margin-right: 100px;">
-          <% if user_signed_in? %>
-            <li class="d-md-none menu-has-children"><span style="color: white;"><a><%= content_tag(:span, " #{current_user.nickname.truncate(10, omission: '...')}", class: "fas fa-id-card") %></a></span>
-            <ul>
-              <li><%= link_to "마이 페이지", "/users/page/#{current_user.id}" %></li>
-              <li><%= link_to "개인정보 수정", edit_user_registration_path(current_user.id) %></li>
-              <li><%= link_to "로그아웃", destroy_user_session_path, method: "DELETE" %></li>
-              <% if current_user.admin? %>
-                <li><%= link_to "관리자 메뉴", rails_admin_path %></li>
-              <% end %>
-            </ul>
-          </li>
-          <% else %>
-            <li class="d-md-none"><%= link_to "로그인", new_user_session_path, style: "color: #18d26e" %></li>
-            <li class="d-md-none"><%= link_to "회원가입", new_user_registration_path, style: "color: #18d26e" %></li>
-            <hr style="border: 1px solid white;" class="d-md-none"/>
-          <% end %>
-          <li><a href="/all_notices">공지사항</a></li>
-          <li class="menu-has-children"><span style="color: white;"><a>게시판</a></span>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
-            </ul>
-          </li>
-          <li><a href="#services">질문답변</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <% if user_signed_in? %>
-            <li class="d-none d-md-block menu-has-children"><span style="color: white;"><a><i class="far fa-id-card"></i> <%= current_user.nickname.truncate(10, omission: '...') %></a></span>
-            <ul>
-              <li><%= link_to "마이 페이지", "/users/page/#{current_user.id}" %></li>
-              <li><%= link_to "개인정보 수정", edit_user_registration_path(current_user.id) %></li>
-              <li><%= link_to "로그아웃", destroy_user_session_path, method: "DELETE" %></li>
-              <% if current_user.admin? %>
-                <li><%= link_to "관리자 메뉴", rails_admin_path %></li>
-              <% end %>
-            </ul>
-          </li>
-          <% else %>
-            <li class="d-none d-md-block"><%= link_to "로그인", new_user_session_path, style: "color: #18d26e" %></li>
-            <li class="d-none d-md-block"><%= link_to "회원가입", new_user_registration_path, style: "color: #18d26e" %></li>
-          <% end %>
-        </ul>
-      </nav><!-- #nav-menu-container -->
-    </div>
-  </header>
-  <!-- nav-bar -->
-  
-  <!-- JavaScript Libraries -->
-  <script src="/nav-bar/superfish.min.js"></script>
-  <script src="/nav-bar/wow.min.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="/nav-bar/main.js"></script>
-  
     <%= yield %>
+    
+    <!-- WOW 효과 -->
+    <script type="text/javascript" src="/nav-bar/wow.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/wow.css" />
+    <script>
+      new WOW().init();
+    </script>
+    
+    <!--배경 움직이는 효과-->
+     <script>
+      $('#bg01').mousemove(function(e){
+    var amountMovedX = (e.pageX * -1 / 4);
+    // var amountMovedY = (e.pageY * -1 / 10);
+    $(this).css('background-position', amountMovedX + 'px');
+});
+    </script>
   </body>
 </html>

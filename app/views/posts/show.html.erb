@@ -12,7 +12,11 @@
 <% end %>
 
 <div class="container">
-    <%= render 'posts/show/show_normal' %>
+    <% if @bulletin.mp3_upload_permit == true %>
+        <%= render 'posts/show/show_voice' %>
+    <% else %>
+        <%= render 'posts/show/show_normal' %>
+    <% end %>
     <div class="row">
         <div class="col-1 col-sm-1 col-md-1">
             <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
@@ -34,4 +38,6 @@
         </div>
     </div>
     <hr/>
+    <%# 댓글 %>
+    <%= render partial: "comments/template", locals: {commentable: @post, new_comment: @comment} %>
 </div>

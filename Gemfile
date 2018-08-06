@@ -90,3 +90,11 @@ gem 'tinymce-rails'
 
 # impressionist : 조회수
 gem 'impressionist'
+
+# 이미지/파일 업로드
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'carrierwave'
+gem 'fog', '~> 1.41.0'
+
+# 댓글(with 대댓글 가능하게)
+gem 'acts_as_commentable_with_threading'

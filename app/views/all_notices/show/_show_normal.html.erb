@@ -9,5 +9,5 @@
 <div align="right" class="col-12 col-sm-12 col-md-12"><i class="far fa-clock"></i> <%= post.created_at.in_time_zone("Asia/Seoul").strftime('%Y-%m-%d %H:%M') %></div>
 
 <div style="margin-top: 30px;">
-    <%= post.content.html_safe %>
+    <%= content_tag(:div, post.content.html_safe, :class => "panel-body") %>
 </div>

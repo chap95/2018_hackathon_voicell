@@ -1,0 +1,22 @@
+<p>
+    <strong>Title:</strong>
+    <%= @post.title %>
+</p>
+
+<p>
+    <strong>보이스(mp3):</strong>
+    <!-- Insert to your webpage where you want to display the audio player -->
+    <div id="amazingaudioplayer-1" style="display:block;position:relative;width:100%;max-width:300px;height:auto;margin:0px auto 0px;">
+        <ul class="amazingaudioplayer-audios" style="display:none;">
+            <li data-artist="" data-title="<%= @post.title %>" data-album="" data-info="" data-image="" data-duration="0">
+                <div class="amazingaudioplayer-source" data-src="<%= @post.voice_uploade_file %>" data-type="audio/mpeg" />
+            </li>
+        </ul>
+    </div>
+    <!-- End of body section HTML codes -->
+</p>
+
+<p>
+    <strong>Content:</strong>
+    <%= content_tag(:div, @post.content.html_safe, :class => "panel-body") %>
+</p>

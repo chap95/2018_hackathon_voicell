@@ -8,10 +8,12 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.where(bulletin_id: @bulletin).order("created_at DESC").page(params[:page]).per(10)
+    @posts = Post.where(bulletin_id: @bulletin).order("created_at DESC").page(params[:page]).per(9)
   end
 
   def show
+    @post         = Post.find(params[:id])
+    @new_comment  = Comment.build_from(@post, current_user.id, "")
   end
 
   def new
@@ -69,8 +71,10 @@ class PostsController < ApplicationController
   end
 
   def post_params
+    # 게시글 작성 시 자동적으로 유저 id랑 닉네임이 입력되게 함.
     params[:post][:user_id] = current_user.id
     params[:post][:user_nickname] = current_user.nickname
-    params.require(:post).permit(:title, :content, :user_id, :user_nickname)
+    # DB에 새 Attribute를 추가하더라도, 아랫 줄에 허용을 안해주면 내용 update가 안됨.
+    params.require(:post).permit(:title, :content, :user_id, :user_nickname, :voice_uploade_file, :price, :left_time)
   end
 end

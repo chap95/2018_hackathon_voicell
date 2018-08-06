@@ -1,0 +1,82 @@
+<head>
+<link rel="stylesheet" href="./bot.css"/>
+</head>
+<div style="margin-top: 0px;"></div>
+
+
+	<div class="container">
+		<div class="logo01"><a href="/"><img src="https://i.imgur.com/8znPeNw.png" width="90px" height="90px"></a></div>
+		<div id="gnb" role="nav">
+			<ul class="user">
+					<li><a href="/users/sign_in" style="color:rgba(77,90,157,0.7)">로그인</a></li>
+				    <li><a href="/users/sign_up"style="color:rgba(77,90,157,0.7)">회원가입</a></li>
+					<li><a href="/" style="color:rgba(77,90,157,0.7)">고객센터</a></li>
+			</ul>
+			<ul class="menu">
+				<li><a href="/" style="color:rgba(77,90,157,10)">이용방법</a></li>
+				<li><a href="/" style="color:rgba(77,90,157,10)">CELL</a></li>
+				<li><a href="/" style="color:rgba(77,90,157,10)">VOICER</a></a></li>
+			</ul>
+		</div>
+	</div>
+	
+
+
+<hr style="border: solid 0.4px gray; "  >
+
+
+<div class="bg01">
+    <div class="bm01">
+        <h5 calss="font-weight-light" id="font1">목소리 주고 받기</h5>
+        
+    <div class="button1">
+       <button type="button" class="btn btn-secondary btn-lg">CELL 입장하기</button>
+    </div>
+</div>
+
+<div><hr style="border: solid 0.4px gray; margin-top:100px"></div>
+
+<div class="bg02">
+    <h3 calss="font-weight-light" id="font2">많은 Voicer 들에게 원하는 녹음물을 받으세요</h3>
+    <p style="text-align:center"> Listner들에게 당신의 목소리를 들려주고 보상을 받으세요</p>
+    
+        
+    <div class="button2">
+       <button type="button" class="btn btn-secondary btn-lg">이용 방법</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+    <h1 align="center"> 밑에 쪽 내용</h1>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--이 밑으론 머쉬론-->
+
+<!--이 밑으론 울트론-->

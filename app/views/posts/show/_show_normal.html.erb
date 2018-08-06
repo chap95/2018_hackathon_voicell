@@ -5,5 +5,5 @@
 
 <p>
     <strong>Content:</strong>
-    <%= @post.content.html_safe %>
+    <%= content_tag(:div, @post.content.html_safe, :class => "panel-body") %>
 </p>

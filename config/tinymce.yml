@@ -2,5 +2,6 @@ toolbar: undo redo | forecolor | bold italic | alignleft aligncenter alignright 
 plugins:
   - link
   - textcolor
+  - uploadimage
   - code
   - table

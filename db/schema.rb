@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180701121103) do
+ActiveRecord::Schema.define(version: 20180804091728) do
 
   create_table "all_notices", force: :cascade do |t|
     t.string "title"
@@ -30,12 +30,43 @@ ActiveRecord::Schema.define(version: 20180701121103) do
     t.string "title"
     t.text "content"
     t.string "user_nickname"
-    t.boolean "opt_admin_only"
+    t.boolean "opt_admin_only", default: false
+    t.boolean "mp3_upload_permit", default: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_bulletins_on_deleted_at"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "nickname"
+    t.integer "bulletin"
+    t.string "voice_uploade_file_reply"
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.string "title"
+    t.text "body"
+    t.string "subject"
+    t.integer "user_id", null: false
+    t.integer "parent_id"
+    t.integer "lft"
+    t.integer "rgt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+    t.index ["deleted_at"], name: "index_comments_on_deleted_at"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["voice_uploade_file_reply"], name: "index_comments_on_voice_uploade_file_reply"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "alt"
+    t.string "hint"
+    t.string "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -68,6 +99,9 @@ ActiveRecord::Schema.define(version: 20180701121103) do
     t.string "title"
     t.text "content"
     t.string "user_nickname"
+    t.string "voice_uploade_file"
+    t.integer "price"
+    t.datetime "left_time"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

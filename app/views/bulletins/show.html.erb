@@ -55,4 +55,8 @@
   <% if @bulletin.opt_admin_only == true %>
     <span class="badge badge-pill badge-danger">Admin만 글 작성 허용</span>
   <% end %>
+  
+  <% if @bulletin.mp3_upload_permit == true %>
+    <span class="badge badge-pill badge-info">MP3 파일 업로드 허용</span>
+  <% end %>
 </div>

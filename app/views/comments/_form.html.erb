@@ -1,0 +1,12 @@
+<%= form_for @new_comment, :html => { :multipart => true } do |f| %>  
+  <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
+  <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
+  <div class="field form-group">
+    <%= f.hidden_field :nickname, value: current_user.nickname, required: "true" %>
+    <%= f.text_area :body, class: 'form-control' %>
+    <div class="row" style="margin-left: 0px">
+      <div class="col-md-8" style="margin-top: 5px; background-color: #e4f2ff; padding: 10px;"><%= f.file_field :voice_uploade_file_reply, accept: 'audio/mp3,audio/m4a' %></div>
+      <div class="col-md-4"><%= submit_tag "댓글 작성", class: "btn-sm btn btn-info", style: "margin-top: 15px; float: right" %><br/></div>
+    </div>
+  </div>
+<% end %>
