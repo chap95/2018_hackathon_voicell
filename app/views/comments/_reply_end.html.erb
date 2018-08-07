@@ -1,13 +1,13 @@
 <% comments.each do |comment| %>  
-    <div class="comments-show comment_reply">
-        <div class="comment">
+    <div class="comments-show">
+        <div class="comment comment_reply">
              <div class="row">
-                <div class="col-8 col-sm-9 col-md-7 row" style="margin-left: 0px;">
-                  <%= content_tag(:div, " #{comment.user.nickname.truncate(10, omission: '...')}", class: "d-none d-md-block") %>
-                  <%= content_tag(:div, " #{comment.user.nickname.truncate(7, omission: '...')}", class: "d-md-none") %>
+                <div class="col-9 col-sm-9 col-md-7 row" style="margin-left: 0px;">
+                  <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...')}", class: "d-none d-md-block") %>
+                  <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(7, omission: '...') : comment.nickname.truncate(7, omission: '...')}", class: "d-md-none") %>
                   <%= content_tag(:div, " #{time_ago_in_words(comment.created_at)} 전", style: "margin-left: 20px;") %>
                 </div>
-                <div align="right" class="col-4 col-sm-3 col-md-5">
+                <div align="right" class="col-3 col-sm-3 col-md-5">
                   <% if can? :destroy, comment %>
                     <%= link_to "", comment_path(comment), class: "fas fa-times", method: :delete, remote: false, data: { confirm: "정말로 지우시겠습니까?" }, style: "color: red; font-weight: bold" %>
                   <% end %>

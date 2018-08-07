@@ -11,8 +11,10 @@
   </div>
 <% end %>
 
+<div style="margin-top: 100px;"></div>
+
 <div class="container">
-    <% if @bulletin.mp3_upload_permit == true %>
+    <% if @bulletin.board_mp3_upload_permit == true %>
         <%= render 'posts/show/show_voice' %>
     <% else %>
         <%= render 'posts/show/show_normal' %>

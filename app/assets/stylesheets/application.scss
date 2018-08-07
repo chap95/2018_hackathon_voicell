@@ -96,20 +96,13 @@
     border-radius: 15px;
   }
   
-  // 로그인 폼 css
-  .login{
+  // 로그인/회원가입 등 devise 폼 css
+  .devise_info{
   	color: white;
     padding-bottom: 300px;
     background: url('login_bg.jpg') no-repeat center center/cover scroll;
-    overflow-y: hidden !important;
-  }
-  
-  .password{
-    margin-top: 10px;
-  }
-  
-  #login_password{
-    margin-bottom: 40px;
+    overflow-y: auto;
+    margin-top: 200px;
   }
   
   #sign_up_password{
@@ -146,7 +139,7 @@
 // width: 300px;  
 // }  
 
-// 보이스 게시판 가운데 정렬
+  // 보이스 게시판 가운데 정렬
   .voice_posts{
     position: absolute;
     left: 20%;
@@ -157,4 +150,12 @@
   
   .write_posts_voice{
     margin-top: 10px;
+  }
+  
+  // 댓글 답변 CSS
+  .comment_reply {
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #bbbbbb;
   }

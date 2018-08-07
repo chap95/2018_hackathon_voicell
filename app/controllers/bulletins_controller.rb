@@ -75,6 +75,6 @@ class BulletinsController < ApplicationController
     def bulletin_params
       params[:bulletin][:user_id] = current_user.id
       params[:bulletin][:user_nickname] = current_user.nickname
-      params.require(:bulletin).permit(:title, :content, :user_id, :user_nickname, :opt_admin_only, :mp3_upload_permit)
+      params.require(:bulletin).permit(:title, :content, :user_id, :user_nickname, :opt_admin_only, :board_mp3_upload_permit, :reply_mp3_upload_permit)
     end
 end

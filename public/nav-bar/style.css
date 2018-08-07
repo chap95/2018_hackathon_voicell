@@ -46,7 +46,7 @@ a:hover, a:active, a:focus {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: black;
+  background: rgba(0, 0, 0, 0.47);
   padding: 20px 0;
   height: 70px;
   position: fixed;

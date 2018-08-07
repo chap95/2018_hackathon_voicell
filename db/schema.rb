@@ -31,7 +31,8 @@ ActiveRecord::Schema.define(version: 20180804091728) do
     t.text "content"
     t.string "user_nickname"
     t.boolean "opt_admin_only", default: false
-    t.boolean "mp3_upload_permit", default: false
+    t.boolean "board_mp3_upload_permit", default: false
+    t.boolean "reply_mp3_upload_permit", default: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

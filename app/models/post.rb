@@ -12,4 +12,7 @@ class Post < ApplicationRecord
     
     # 게시글 및 댓글 제목, 내용을 다 썼는지 체크
     validates :title, :content, presence: true
+    
+    # 파일 업로드 유효성검사
+    validates_size_of :voice_uploade_file, maximum: 5.megabytes, message: "파일 업로드 시, 용량은 5MB 미만이어야 합니다."
 end

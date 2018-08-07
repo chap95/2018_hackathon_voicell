@@ -1,0 +1,5 @@
+ko:
+    errors:
+        messages:
+            extension_white_list_error: '파일 업로드 시, 용량은 5MB 미만이어야 합니다.'
+            max_size_error: '파일 업로드 시, 용량은 5MB 미만이어야 합니다.'

@@ -4,21 +4,13 @@
 </p>
 
 <p>
-    <strong>보이스(mp3):</strong>
     <% if @post.voice_uploade_file.present? %>
+    <strong>보이스(mp3):</strong>
     <!-- 오디오 스킨 -->
     <%# http://www.schillmania.com/projects/soundmanager2/doc/getstarted/#intro %>
-    <div id="sm2-visualization" class="sm2-inline-list" style="position: absolute;">
-        <div class="ui360 ui360-vis">
-            <a href="<%= @post.voice_uploade_file %>" class="exclude button-exclude inline-exclude" style="position:absolute;color:#333">123</a>
-        </div>
-    </div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    
-    <div id="sm2-visualization" class="sm2-inline-list" style="position: absolute;">
-        <div class="ui360 ui360-vis">
-            <a href="http://cfile6.uf.tistory.com/media/9977D7335A23EC161BC888" class="exclude button-exclude inline-exclude" style="position:absolute;color:#333">456</a>
-        </div>
-    </div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <div> <!-- float is just for this demo layout, you don't need it. -->
+        <div class="ui360"><a href="<%= @post.voice_uploade_file %>"></a></div>
+    </div>
     <!-- 오디오 스킨 -->
     <% end %>
 </p>

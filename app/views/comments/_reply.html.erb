@@ -3,14 +3,16 @@
     <div class="comment">
       <div class="row">
         <div class="col-8 col-sm-5 col-md-3 row" style="margin-left: 0px;">
-          <%= content_tag(:div, " #{comment.user.nickname.truncate(10, omission: '...')}", class: "d-none d-md-block") %>
-          <%= content_tag(:div, " #{comment.user.nickname.truncate(7, omission: '...')}", class: "d-md-none") %>
+          <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...')}", class: "d-none d-md-block") %>
+          <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(7, omission: '...') : comment.nickname.truncate(7, omission: '...')}", class: "d-md-none") %>
           <%= content_tag(:div, " #{time_ago_in_words(comment.created_at)} 전", style: "margin-left: 20px;") %>
         </div>
         <div class="d-none d-sm-block col-sm-5 col-md-6">
           <%# PC~태블릿 사이즈까지만 보이는 영역 %>
           <% if comment.voice_uploade_file_reply.present? %>
-            오디오 영역
+            <ul class="graphic">
+              <li><a href="<%= comment.voice_uploade_file_reply %>"><%= comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...') %></a></li>
+            </ul>
           <% end %>
         </div>
         <div align="right" class="col-4 col-sm-2 col-md-3">
@@ -23,14 +25,17 @@
         <div class="d-sm-none col-12">
           <%# 모바일 사이즈만 보이는 영역 %>
           <% if comment.voice_uploade_file_reply.present? %>
-            오디오 영역
+            <ul class="graphic">
+              <li><a href="<%= comment.voice_uploade_file_reply %>"><%= comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...') %></a></li>
+            </ul>
+            <div style="margin-bottom: 15px;"></div>
           <% end %>
         </div>
       </div>
       <%= content_tag(:div, comment.body, style: "white-space: pre-wrap;") %>
       
       <div id="comment_<%= comment.id %>" style="display:none;">
-        <div class="reply-form" style="margin: 20px 0px 40px 0px;">
+        <div class="reply-form" style="">
           <%= form_for @new_comment do |f| %>
             <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
             <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>

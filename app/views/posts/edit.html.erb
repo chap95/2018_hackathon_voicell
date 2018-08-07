@@ -16,6 +16,8 @@
   </div>
 <% end %>
 
+<div style="margin-top: 100px;"></div>
+
 <div class="container">
   <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
     <%= render 'form' %>

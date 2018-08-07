@@ -1,11 +1,11 @@
 <!--로그인 화면-->
 <!--로그인 폼 css 는 application.scss 파일로 연결댐-->
-<body class="login">
-  <div align="center">
+<body class="devise_info">
+  <div class="container" align="center">
+    <h2 style=" margin-bottom: 30px;"><span style="border-bottom: 2px solid white;">로그인</span></h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div style="margin-top: 200px;"></div>
       <% if alert || notice %>
-        <div class="mx-auto col-8 col-sm-7 col-md-3 alert alert-primary" style="margin-bottom: 50px;">
+        <div class="mx-auto col-8 col-sm-7 col-md-4 alert alert-primary" style="margin-bottom: 30px;">
           <%= alert %>
           <%= notice %>
         </div>
@@ -13,16 +13,16 @@
       
       <div class="field wow jello">
         <div><%= f.label :email , style: "color: white" %></div>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-6 col-sm-4 col-md-3 white_underbar_form" %>
-      </div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
+      </div><br/>
     
-      <div class="field password wow jello" id="login_password">
+      <div class="field password wow jello">
         <div><%= f.label :password , style: "color: white" %></div>
-        <%= f.password_field :password, autocomplete: "off", class: "col-6 col-sm-4 col-md-3 white_underbar_form" %>
+        <%= f.password_field :password, autocomplete: "off", class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div>
     
       <% if devise_mapping.rememberable? -%>
-        <div class="field">
+        <div class="field" style="margin-top: 10px; margin-bottom: 30px; margin-left: 27%">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me , style: "color: white" %>
         </div>
@@ -32,9 +32,8 @@
         <%= f.submit "Log in", class: "btn btn-outline-light", style: "width: 150px; border-radius: 15px" %>
       </div>
     <% end %>
-    <div style="padding-bottom: 100px">
-      <%= render "devise/shared/links" %>
-    </div>
+    
+    <%= render "devise/shared/info" %>
   </div>
   <!--로그인 하는 화면-->
 </body>

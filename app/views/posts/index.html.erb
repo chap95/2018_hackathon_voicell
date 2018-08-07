@@ -11,22 +11,35 @@
   </div>
 <% end %>
 
-<div class="voice_posts">
-  <h1 style="text-align:center  ; padding-bottom:2px ; padding-top:60px ">CELL</h1>
-  <div><p style="text-align:center ; padding-bottom:20px ">목소리 게시판</p></div>
+<div style="margin-top: 100px;"></div>
+
+<div class="container">
+  <h1 style="text-align:center; padding-top:60px"><%= @bulletin.title %></h1>
+  <div style="text-align:center; padding-bottom:20px"><%= @bulletin.content %></div>
   
+  <!--<img src="<%#= asset_path 'cell.png' %>" style="height: 10px width: 40px">-->
   
-  <!--<img src="<%= asset_path 'cell.png' %>" style="height: 10px width: 40px">-->
-  
-  
-  
-  <div class="row">
-    <% @posts.each do |post| %>
-      <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: 2%; margin-top: 1%;" do %>
-        <%= render 'posts/index/index_normal', post: post %>
+  <% if @bulletin.board_mp3_upload_permit == true %>
+    <div class="row">
+      <% @posts.each do |post| %>
+        <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: auto; margin-right: auto; margin-top: 20px;" do %>
+          <div class="col-md-12 col-sm-6 col-md-4">
+          <%= render 'posts/index/index_voice', post: post %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <% @posts.each do |post| %>
+        <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: auto; margin-right: auto; margin-top: 20px;" do %>
+          <div class="col-md-12 col-sm-6 col-md-4">
+          <%= render 'posts/index/index_normal', post: post %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
   
   <br>
   <%= paginate @posts %>

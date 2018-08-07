@@ -9,8 +9,12 @@
             <span class="badge badge-pill badge-danger">Admin만 글 작성 허용</span>
         <% end %>
         
-        <% if bulletin.mp3_upload_permit == true %>
-            <span class="badge badge-pill badge-info">MP3 파일 업로드 허용</span>
+        <% if bulletin.board_mp3_upload_permit == true %>
+            <span class="badge badge-pill badge-info">게시글 MP3 파일 업로드 허용</span>
+        <% end %>
+        
+        <% if bulletin.reply_mp3_upload_permit == true %>
+            <span class="badge badge-pill badge-info">댓글 MP3 파일 업로드 허용</span>
         <% end %>
     </div>
 </div>

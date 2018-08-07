@@ -8,7 +8,7 @@ module DeviseHelper
       resource: resource.class.model_name.human.downcase)
  
     html = <<-HTML
-    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 200px; margin-bottom: 70px;">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 30px;">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <h6><b>#{sentence}</b></h6>
       #{messages}
