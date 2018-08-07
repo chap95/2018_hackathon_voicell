@@ -85,18 +85,76 @@
     max-height : 100%;
   }
   
+  // 로그인 창에서 로그인 인풋 영역이랑 비밀번호 영역 하얀색 배경으로 만드는 것
   .white_underbar_form {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
     border-left: 0px;
     border-right: 0px;
     border-top: 0px;
+    background-color: rgba(255,255,255,0.5); 
+    height: 40px; 
+    border-radius: 15px;
   }
   
   // 로그인 폼 css
   .login{
-    margin-top: 15%;
+  	color: white;
+    padding-bottom: 300px;
+    background: url('login_bg.jpg') no-repeat center center/cover scroll;
+    overflow-y: hidden !important;
   }
   
   .password{
+    margin-top: 10px;
+  }
+  
+  #login_password{
+    margin-bottom: 40px;
+  }
+  
+  #sign_up_password{
+    margin-bottom: 40px;
+  }
+  
+  .forgot_send_btn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .error_msg{
+    background-color: rgba(198,0,0,0.3);
+    width: 60%;
+    margin-left: 20%;
+    color: white;
+  }
+  
+  // 로그인 폼 css 끝
+  .bara{
+    background-color:DarkSeaGreen;  
+    border:1px solid black;  
+    transition: all 1s cubic-bezier(.25,.46,.45,.94);
+    height: 18px;
+    transform-origin: right center;
+    left: 0;
+    width: 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+    display: block;
+  }
+//   .bara:hover {  
+// width: 300px;  
+// }  
+
+// 보이스 게시판 가운데 정렬
+  .voice_posts{
+    position: absolute;
+    left: 20%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 18%;
+  }
+  
+  .write_posts_voice{
     margin-top: 10px;
   }

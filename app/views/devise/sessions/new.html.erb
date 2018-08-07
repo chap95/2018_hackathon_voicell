@@ -1,27 +1,40 @@
-<div class="login">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field" align="center">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-6 col-sm-4 col-md-3 white_underbar_form" %>
-    </div>
-  
-    <div class="field password" align="center">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off", class: "col-6 col-sm-4 col-md-3 white_underbar_form" %>
-    </div>
-  
-    <% if devise_mapping.rememberable? -%>
-      <div class="field" align="center">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end -%>
-  
-    <div class="actions" align="center">
-      <%= f.submit "Log in", class: "btn btn-outline-secondary", style: "width: 150px; border-radius: 15px" %>
-    </div>
-  <% end %>
+<!--로그인 화면-->
+<!--로그인 폼 css 는 application.scss 파일로 연결댐-->
+<body class="login">
   <div align="center">
-    <%= render "devise/shared/links" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div style="margin-top: 200px;"></div>
+      <% if alert || notice %>
+        <div class="mx-auto col-8 col-sm-7 col-md-3 alert alert-primary" style="margin-bottom: 50px;">
+          <%= alert %>
+          <%= notice %>
+        </div>
+      <% end %>
+      
+      <div class="field wow jello">
+        <div><%= f.label :email , style: "color: white" %></div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-6 col-sm-4 col-md-3 white_underbar_form" %>
+      </div>
+    
+      <div class="field password wow jello" id="login_password">
+        <div><%= f.label :password , style: "color: white" %></div>
+        <%= f.password_field :password, autocomplete: "off", class: "col-6 col-sm-4 col-md-3 white_underbar_form" %>
+      </div>
+    
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me , style: "color: white" %>
+        </div>
+      <% end -%>
+    
+      <div class="actions">
+        <%= f.submit "Log in", class: "btn btn-outline-light", style: "width: 150px; border-radius: 15px" %>
+      </div>
+    <% end %>
+    <div style="padding-bottom: 100px">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-</div>
+  <!--로그인 하는 화면-->
+</body>

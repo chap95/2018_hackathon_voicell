@@ -5,15 +5,22 @@
 
 <p>
     <strong>보이스(mp3):</strong>
-    <!-- Insert to your webpage where you want to display the audio player -->
-    <div id="amazingaudioplayer-1" style="display:block;position:relative;width:100%;max-width:300px;height:auto;margin:0px auto 0px;">
-        <ul class="amazingaudioplayer-audios" style="display:none;">
-            <li data-artist="" data-title="<%= @post.title %>" data-album="" data-info="" data-image="" data-duration="0">
-                <div class="amazingaudioplayer-source" data-src="<%= @post.voice_uploade_file %>" data-type="audio/mpeg" />
-            </li>
-        </ul>
-    </div>
-    <!-- End of body section HTML codes -->
+    <% if @post.voice_uploade_file.present? %>
+    <!-- 오디오 스킨 -->
+    <%# http://www.schillmania.com/projects/soundmanager2/doc/getstarted/#intro %>
+    <div id="sm2-visualization" class="sm2-inline-list" style="position: absolute;">
+        <div class="ui360 ui360-vis">
+            <a href="<%= @post.voice_uploade_file %>" class="exclude button-exclude inline-exclude" style="position:absolute;color:#333">123</a>
+        </div>
+    </div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    
+    <div id="sm2-visualization" class="sm2-inline-list" style="position: absolute;">
+        <div class="ui360 ui360-vis">
+            <a href="http://cfile6.uf.tistory.com/media/9977D7335A23EC161BC888" class="exclude button-exclude inline-exclude" style="position:absolute;color:#333">456</a>
+        </div>
+    </div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <!-- 오디오 스킨 -->
+    <% end %>
 </p>
 
 <p>

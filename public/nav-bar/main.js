@@ -34,10 +34,10 @@ jQuery(document).ready(function( $ ) {
       'id': ''
     });
     $('body').append($mobile_nav);
-    $('body').prepend('<button type="button" id="mobile-nav-toggle"><i style="color: #18d26e" class="fa fa-bars"></i></button>');
+    $('body').prepend('<button type="button" id="mobile-nav-toggle"><i style="color: #b798b6" class="fa fa-bars"></i></button>');
     $('body').append('<div id="mobile-body-overly"></div>');
-    $('#mobile-nav').find('.menu-has-children').prepend('<span><i style="color: #18d26e" class="fa fa-chevron-down"></i></span>');
-    $('.nav-menu').find('.menu-has-children').append('<span><i style="color: #8c8c8c; margin-left: -5px;" class="fa fa-chevron-down"></i></span>');
+    $('#mobile-nav').find('.menu-has-children').prepend('<span><i style="color: #b798b6" class="fa fa-chevron-down"></i></span>');
+    $('.nav-menu').find('.menu-has-children').append('<span><i style="color: #b798b6c; margin-left: -5px;" class="fa fa-chevron-down"></i></span>');
 
     $(document).on('click', '.menu-has-children span', function(e) {
       $(this).next().toggleClass('menu-item-active');

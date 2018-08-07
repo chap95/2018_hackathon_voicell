@@ -11,8 +11,14 @@
   </div>
 <% end %>
 
-<div class="container">
-  <h1><%= @bulletin.title %></h1>
+<div class="voice_posts">
+  <h1 style="text-align:center  ; padding-bottom:2px ; padding-top:60px ">CELL</h1>
+  <div><p style="text-align:center ; padding-bottom:20px ">목소리 게시판</p></div>
+  
+  
+  <!--<img src="<%= asset_path 'cell.png' %>" style="height: 10px width: 40px">-->
+  
+  
   
   <div class="row">
     <% @posts.each do |post| %>
@@ -24,10 +30,11 @@
   
   <br>
   <%= paginate @posts %>
-  
-  <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
-    <div align="right"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path), class: 'btn btn-primary' %></div>
-  <% elsif (@bulletin.opt_admin_only == false) %>
-    <div align="right"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path), class: 'btn btn-primary' %></div>
-  <% end %>
+  <div class="write_posts_voice">
+    <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
+      <div align="center"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "btn btn-outline-secondary" , style: "border-radius: 15px;" %></div>
+    <% elsif (@bulletin.opt_admin_only == false) %>
+      <div align="center"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "btn btn-outline-secondary" , style: "border-radius: 15px;" %></div>
+    <% end %>
+  </div>
 </div>

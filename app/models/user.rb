@@ -12,6 +12,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+  validate :password_complexity
+  
+  def password_complexity
+    # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+    return if password.blank? || password =~ /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/
+  
+    #TODO 존댓말로 바꿔야댐.
+    errors.add :password, '비밀번호는 최소 8자이상! *적어도 문자, 숫자, 특수문자 하나씩은 포함*'
+  end
   
   def assign_default_role
     add_role(:normal)

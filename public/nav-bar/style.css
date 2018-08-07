@@ -87,7 +87,7 @@ a:hover, a:active, a:focus {
 #header #logo h1 a, #header #logo h1 a:hover {
   color: #fff;
   padding-left: 10px;
-  border-left: 4px solid #18d26e;
+  /* border-left: 4px solid #18d26e; */
 }
 
 #header #logo img {
@@ -330,7 +330,7 @@ a:hover, a:active, a:focus {
 }
 
 .nav-menu li:hover > a, .nav-menu > .menu-active > a {
-  color: #18d26e;
+  color: #b798b6;
 }
 
 .nav-menu > li {

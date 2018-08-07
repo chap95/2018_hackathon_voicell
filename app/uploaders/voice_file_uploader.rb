@@ -16,6 +16,6 @@ class VoiceFileUploader < CarrierWave::Uploader::Base
     
     # 파일 업로드 허용 용량
     def size_range
-      1..2.megabytes
+      1..5.megabytes
     end
 end

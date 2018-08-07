@@ -1,13 +1,33 @@
 <% comments.each do |comment| %>  
   <div class="comments-show">
     <div class="comment">
-      <%= comment.user.email %> / <%= time_ago_in_words(comment.created_at) %>전 [ <%= comment.created_at.strftime('%Y-%m-%d %H:%M') %> ] /
-      <%= link_to "지우기", comment_path(comment), method: :delete, remote: false, data: { confirm: "정말로 지우시겠습니까?" }, style: "color: red; font-weight: bold" %>
-      <%= content_tag(:div, comment.body, style: "white-space: pre-wrap;") %>
-      
-      <div class="comment-nav" align="right">
-        <a onclick="showHide('comment_<%= comment.id %>')" onfocus="this.blur()" style="background-color: gray; color: white; padding: 5px; border-radius: 5px;">답댓글</a>
+      <div class="row">
+        <div class="col-8 col-sm-5 col-md-3 row" style="margin-left: 0px;">
+          <%= content_tag(:div, " #{comment.user.nickname.truncate(10, omission: '...')}", class: "d-none d-md-block") %>
+          <%= content_tag(:div, " #{comment.user.nickname.truncate(7, omission: '...')}", class: "d-md-none") %>
+          <%= content_tag(:div, " #{time_ago_in_words(comment.created_at)} 전", style: "margin-left: 20px;") %>
+        </div>
+        <div class="d-none d-sm-block col-sm-5 col-md-6">
+          <%# PC~태블릿 사이즈까지만 보이는 영역 %>
+          <% if comment.voice_uploade_file_reply.present? %>
+            오디오 영역
+          <% end %>
+        </div>
+        <div align="right" class="col-4 col-sm-2 col-md-3">
+          <% if can? :destroy, comment %>
+            <%= link_to "", comment_path(comment), class: "fas fa-times", method: :delete, remote: false, data: { confirm: "정말로 지우시겠습니까?" }, style: "color: red; font-weight: bold" %>
+            <span style="margin-left: 10px; margin-right: 10px;">|</span>
+          <% end %>
+          <%= link_to "", "#", class: "far fa-comments", onclick: "showHide('comment_#{comment.id}')", onfocus: "this.blur()", style: "text-underline: none" %>
+        </div>
+        <div class="d-sm-none col-12">
+          <%# 모바일 사이즈만 보이는 영역 %>
+          <% if comment.voice_uploade_file_reply.present? %>
+            오디오 영역
+          <% end %>
+        </div>
       </div>
+      <%= content_tag(:div, comment.body, style: "white-space: pre-wrap;") %>
       
       <div id="comment_<%= comment.id %>" style="display:none;">
         <div class="reply-form" style="margin: 20px 0px 40px 0px;">
@@ -20,14 +40,17 @@
               <%= f.text_area :body, class: 'form-control' %>
             </div>
             <div class="field form-group">
-              <%= submit_tag "답댓글 작성", class: "btn-sm btn btn-info", style: "float: right;" %>
+              <%= submit_tag "답댓글 작성", class: "btn-sm btn btn-info", style: "float: right;" %><br/>
             </div>
           <% end %>
         </div>
       </div>
     </div>
-    <div style="margin-left: 100px;">
+    
+    <div>
       <%= render partial: "comments/reply_end", locals: {comments: comment.children} %>
     </div>
+    
+    <hr/>
   </div>
 <% end %>

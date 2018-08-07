@@ -15,6 +15,8 @@ class Ability
       can [:page], User, id: user.id
       can [:index, :show, :new, :create], Post
       can [:edit, :update, :destroy], Post, user_id: user.id
+      can [:create], Comment
+      can [:edit, :update, :destroy], Comment, user_id: user.id
       
       #일반 회원 : 비허용 목록
       cannot [:index, :show, :new, :create, :edit, :update, :destroy], Bulletin, user_id: user.id
@@ -25,12 +27,14 @@ class Ability
       can [:index, :show], AllNotice
       can [:page], User, id: user.id
       can [:index, :show], Post
+      can [:edit, :update, :destroy], Comment, user_id: user.id
       
       #경고회원(Yellow) 회원 : 비허용 목록
       cannot [:new, :create], Post
       cannot [:edit, :update, :destroy], Post, user_id: user.id
       cannot [:index, :show, :new, :create, :edit, :update, :destroy], Bulletin, user_id: user.id
       cannot [:new, :create, :edit, :update, :destroy], AllNotice, user_id: user.id
+      cannot [:create], Comment
       
     elsif user.has_role? :block_red
       can [:page], User, id: user.id
@@ -41,12 +45,15 @@ class Ability
       cannot [:edit, :update, :destroy], Post, user_id: user.id
       cannot [:index, :show, :new, :create, :edit, :update, :destroy], Bulletin, user_id: user.id
       cannot [:new, :create, :edit, :update, :destroy], AllNotice, user_id: user.id
+      cannot [:create], Comment
+      cannot [:edit, :update, :destroy], Comment, user_id: user.id
       
     else
       can [:index, :show], AllNotice
       cannot [:index, :show, :new, :create], Bulletin
       cannot [:index, :show], Post
       cannot [:new, :create, :edit, :update, :destroy], AllNotice, user_id: user.id
+      cannot [:create, :edit, :update, :destroy], Comment, user_id: user.id
     end
   end
 end

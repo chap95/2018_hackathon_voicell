@@ -1,29 +1,37 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<!--회원 가입 하는 것-->
+<!--로그인 폼 css 는 application.scss 파일로 연결댐-->
+<body class="login">
+  <div align="center">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="mx-auto col-8 col-sm-10 col-md-5" style="margin-top: 200px;">
+        <%= devise_error_messages! %>
+      </div>
+      
+      <div class="field wow jello">
+        <div><%= f.label :email , style: "color: white" %></div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "col-6 col-sm-4 col-md-3 white_underbar_form" %>
+      </div><br />
+    
+      <div class="field password wow jello">
+        <div>
+          <%= f.label :password , style: "color: white" %>
+          <em style= "color: white">(<%= @minimum_password_length %>자리가 최소 입니다)</em>
+        </div>
+        <%= f.password_field :password, autocomplete: "off" , class: "col-6 col-sm-4 col-md-3 white_underbar_form" %>
+      </div><br/>
+    
+      <div class="field wow jello" id="sign_up_password">
+        <div><%= f.label :password_confirmation , style: "color: white" %></div>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "col-6 col-sm-4 col-md-3 white_underbar_form" %>
+      </div>
+    
+      <div class="actions" align="center" style="margin-top: 5px;">
+        <%= f.submit "Sign up" , class: "btn btn-outline-light", style: "width: 150px; border-radius: 15px" %>
+      </div>
+    <% end %>
+    
+    <div align="center">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</body>

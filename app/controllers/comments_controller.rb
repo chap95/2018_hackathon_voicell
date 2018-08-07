@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
   def create
     commentable = commentable_type.constantize.find(commentable_id)
     @comment = Comment.build_from(commentable, current_user.id, body)
-    @comment.nickname = current_user.email
+    @comment.nickname = current_user.nickname
+    @comment.voice_uploade_file_reply = params[:comment][:voice_uploade_file_reply]
     if commentable_type == "Post" #Post 모델에서만 Bulletin ID가 기록되게 함.
       @comment.bulletin = commentable.bulletin_id
     end

@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  mount_uploader :voice_uploade_file_reply, VoiceFileReplyUploader
+  mount_uploader :voice_uploade_file_reply, VoiceFileUploader
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
   
   #삭제기록 로그처리
