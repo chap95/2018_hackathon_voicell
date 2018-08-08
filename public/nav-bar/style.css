@@ -46,7 +46,7 @@ a:hover, a:active, a:focus {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: rgba(0, 0, 0, 0.47);
+  background: rgb(0, 0, 0);
   padding: 20px 0;
   height: 70px;
   position: fixed;
@@ -58,7 +58,7 @@ a:hover, a:active, a:focus {
 }
 
 #header.header-scrolled {
-  background: rgba(0, 0, 0, 0.52);
+  background: rgb(0, 0, 0);
   padding: 20px 0;
   height: 70px;
   transition: all 0.5s;
@@ -358,7 +358,7 @@ a:hover, a:active, a:focus {
 }
 
 .nav-menu ul li:hover > a {
-  color: #18d26e;
+  color: #9e909e;
 }
 
 .nav-menu ul ul {

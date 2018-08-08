@@ -159,3 +159,91 @@
     padding-left: 10px;
     border-left: 2px solid #bbbbbb;
   }
+  
+  .destroy_btn:hover{
+    background-color: black;
+  }
+  
+  // 빙글빙글 도는 것 css
+  
+  .vingle {
+  width: 200px;
+  height: 100px;
+  position: relative;
+}
+.vingle svg,
+.vingle div{
+  width: 200px;
+  height: 100px;
+  position: absolute;
+}
+.vingle svg {
+  fill: #fff;
+}
+  .vingle div{
+  width: 200px;
+  height: 200px;
+  border-radius: 20%;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  mix-blend-mode: multiply;
+  -webkit-animation: 2s cubic-bezier(0.66, -0.7, 0.27, 1.6) infinite;
+          animation: 2s cubic-bezier(0.66, -0.7, 0.27, 1.6) infinite;
+  }
+  .vingle div:nth-child(1) {
+    background-color: rgba(218,22,31,0.3);
+    -webkit-animation-name: rotate-1;
+            animation-name: rotate-1;
+  }
+  .vingle div:nth-child(2) {
+    background-color:rgba(61,68,206,0.5);
+    -webkit-animation-name: rotate-2;
+            animation-name: rotate-2;
+  }
+  .vingle div:nth-child(3) {
+  background-color: rgba(243,237,63,0.7);
+  -webkit-animation-name: rotate-3;
+          animation-name: rotate-3;
+}
+  @-webkit-keyframes rotate-1 {
+  to {
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  }
+  @keyframes rotate-1 {
+    to {
+      -webkit-transform: rotate(135deg);
+              transform: rotate(135deg);
+    }
+  }
+  @-webkit-keyframes rotate-2 {
+    to {
+      -webkit-transform: rotate(225deg);
+              transform: rotate(225deg);
+    }
+  }
+  @keyframes rotate-2 {
+    to {
+      -webkit-transform: rotate(225deg);
+              transform: rotate(225deg);
+    }
+  }
+  @-webkit-keyframes rotate-3 {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate-3 {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+  
+  .typo{
+    position: relative;
+    z-index: 4;
+    color: white;
+  }

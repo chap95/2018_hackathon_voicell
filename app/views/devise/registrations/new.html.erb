@@ -2,20 +2,20 @@
 <!--로그인 폼 css 는 application.scss 파일로 연결댐-->
 <body class="devise_info">
   <div class="container" align="center">
-    <h2 style="margin-bottom: 30px;"><span style="border-bottom: 2px solid white;">회원가입</span></h2>
+    <!--<h2 style="margin-bottom: 30px;"><span style="border-bottom: 2px solid white;"</span></h2>-->
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <div class="mx-auto col-8 col-sm-10 col-md-5">
+      <div class="mx-auto col-12 col-sm-12 col-md-7">
         <%= devise_error_messages! %>
       </div>
       
       <div class="field wow jello">
         <div><span style="color: white">이메일</span></div>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
       
       <div class="field wow jello">
         <div><%= f.label :"닉네임" %></div>
-        <%= f.text_field :nickname, autofocus: true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
+        <%= f.text_field :nickname, autofocus: true, :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
     
       <div class="field password wow jello">
@@ -23,19 +23,19 @@
           <span style="color: white">비밀번호</span>
           <em style= "color: white">(<%= @minimum_password_length %>자리가 최소 입니다)</em>
         </div>
-        <%= f.password_field :password, autocomplete: "off" , class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
+        <%= f.password_field :password, autocomplete: "off", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
     
       <div class="field wow jello" id="sign_up_password">
         <div><span style="color: white">비밀번호 확인</span></div>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div>
     
-      <div class="actions" align="center" style="margin-top: 5px;">
-        <%= f.submit "Sign up" , class: "btn btn-outline-light", style: "width: 150px; border-radius: 15px" %>
+      <div class="actions" align="center">
+        <%= f.submit "회원가입" , class: "btn btn-outline-dark", style: "width: 150px; border-radius: 15px; margin-top: 40px;" %>
       </div>
     <% end %>
     
-    <%= render "devise/shared/info" %>
+    <!--<%= render "devise/shared/info" %>-->
   </div>
 </body>

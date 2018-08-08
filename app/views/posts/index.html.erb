@@ -49,5 +49,5 @@
     <% elsif (@bulletin.opt_admin_only == false) %>
       <div align="center"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "btn btn-outline-secondary" , style: "border-radius: 15px;" %></div>
     <% end %>
-  </div>
+  </div> 
 </div>

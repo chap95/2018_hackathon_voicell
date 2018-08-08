@@ -7,6 +7,9 @@ class User < ApplicationRecord
   #유저의 기본 권한 설정
   after_create :assign_default_role
   
+  # 닉네임 중복 검사
+  validates_uniqueness_of :nickname
+  
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

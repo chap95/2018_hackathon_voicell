@@ -2,23 +2,23 @@
 <!--로그인 폼 css 는 application.scss 파일로 연결댐-->
 <body class="devise_info">
   <div class="container" align="center">
-    <h2 style=" margin-bottom: 30px;"><span style="border-bottom: 2px solid white;">로그인</span></h2>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <% if alert || notice %>
-        <div class="mx-auto col-8 col-sm-7 col-md-4 alert alert-primary" style="margin-bottom: 30px;">
-          <%= alert %>
-          <%= notice %>
-        </div>
-      <% end %>
-      
+    <!--<h2 style=" margin-bottom: 30px;"><span style="border-bottom: 2px solid white;">로그인</span></h2>-->
+    <!--<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
+    <!--  <% if alert || notice %>-->
+    <!--    <div class="mx-auto col-12 col-sm-9 col-md-4 alert alert-primary" style="margin-bottom: 30px;">-->
+    <!--      <%= alert %>-->
+    <!--      <%= notice %>-->
+    <!--    </div>-->
+    <!--  <% end %>-->
+      <!--이거 랜딩 안하는게 좋아서 주석 처리함-->
       <div class="field wow jello">
         <div><%= f.label :email , style: "color: white" %></div>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
     
       <div class="field password wow jello">
         <div><%= f.label :password , style: "color: white" %></div>
-        <%= f.password_field :password, autocomplete: "off", class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
+        <%= f.password_field :password, autocomplete: "off", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div>
     
       <% if devise_mapping.rememberable? -%>
@@ -29,11 +29,11 @@
       <% end -%>
     
       <div class="actions">
-        <%= f.submit "Log in", class: "btn btn-outline-light", style: "width: 150px; border-radius: 15px" %>
+        <%= f.submit "로그인", class: "btn btn-outline-light", style: "width: 150px; border-radius: 15px" %>
       </div>
     <% end %>
     
-    <%= render "devise/shared/info" %>
+    <!--<%= render "devise/shared/info" %>-->
   </div>
   <!--로그인 하는 화면-->
 </body>
