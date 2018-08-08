@@ -12,6 +12,11 @@
         <div><span style="color: white">이메일</span></div>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
+      
+      <div class="field wow jello">
+        <div><%= f.label :"닉네임" %></div>
+        <%= f.text_field :nickname, autofocus: true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
+      </div><br/>
     
       <div class="field password wow jello">
         <div>
