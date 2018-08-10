@@ -2,7 +2,7 @@ class ActsAsCommentableWithThreadingMigration < ActiveRecord::Migration[5.1]
   def self.up
     create_table :comments do |t|
       t.string :nickname
-      t.integer :bulletin # 게시판 카테고리 번호
+      t.integer :bulletin_id # 게시판 카테고리 번호
       t.string :voice_uploade_file_reply # 음원파일 업로드
       t.integer :commentable_id
       t.string :commentable_type

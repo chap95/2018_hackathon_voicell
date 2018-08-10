@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_many :all_notices
   has_many :comments
   
+  #투표자(추천))
+  acts_as_voter
+  
   #유저의 기본 권한 설정
   after_create :assign_default_role
   

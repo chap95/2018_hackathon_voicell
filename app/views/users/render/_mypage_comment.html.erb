@@ -1,0 +1,12 @@
+<div class="row" bgcolor="white" onMouseOver="this.style.backgroundColor='#ECECEC'" onMouseOut="this.style.backgroundColor='#FFFFFF'">
+    <% if post.get_upvotes.size - post.get_downvotes.size >= 0 %>
+        <%= content_tag(:div, "#{post.get_upvotes.size - post.get_downvotes.size}", class: "col-1 col-sm-2 col-md-1", style: "padding: 10px; color: green; font-weight: bold;", align: "center") %>
+    <% else %>
+        <%= content_tag(:div, "#{post.get_upvotes.size - post.get_downvotes.size}", class: "col-1 col-sm-2 col-md-1", style: "padding: 10px; color: red; font-weight: bold;", align: "center") %>
+    <% end %>
+    <%= link_to bulletin_post_path(post.bulletin, post.commentable), class: "col-6 col-sm-6 col-md-6", style: "color: black;" do %>
+        <%= content_tag(:div, post.body, class: "etc", style: "padding: 10px;", align: "left") %>
+    <% end %>
+    <%= content_tag(:div, "#{time_ago_in_words(post.created_at)} 전", class: "col-5 col-sm-4 col-md-3", align: "center", style: "padding: 10px; color: black;") %>
+    <%= content_tag(:div, "#{post.bulletin.title}", class: "d-none d-md-block col-md-2", align: "left", style: "padding: 10px; color: black;") %>
+</div>

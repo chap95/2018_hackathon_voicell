@@ -1,0 +1,11 @@
+<div class="row" bgcolor="white" onMouseOver="this.style.backgroundColor='#ECECEC'" onMouseOut="this.style.backgroundColor='#FFFFFF'">
+    <%= link_to bulletin_post_path(post.bulletin, post), class: "col-12 col-sm-5 col-md-5", style: "color: black;" do %>
+        <%= content_tag(:div, post.title, class: "etc", style: "padding: 10px;", align: "left") %>
+    <% end %>
+    <%= content_tag(:div, " #{post.comment_threads.count}", class: "d-none d-sm-block col-sm-3 col-md-2 far fa-comments", align: "right", style: "padding: 10px; color: black;") %>
+    <%= content_tag(:div, " #{post.comment_threads.count}", class: "d-sm-none col-3 far fa-comments", align: "left", style: "padding: 10px; color: black; margin-left: 20px;") %>
+    <%= content_tag(:div, "#{time_ago_in_words(post.created_at)} 전", class: "d-none d-sm-block col-sm-4 col-md-3", align: "center", style: "padding: 10px; color: black;") %>
+    <%= content_tag(:div, "#{time_ago_in_words(post.created_at)} 전", class: "d-sm-none col-8", align: "right", style: "padding: 10px; color: black;") %>
+    <%= content_tag(:div, "#{post.bulletin.title}", class: "d-none d-md-block col-md-2", align: "left", style: "padding: 10px; color: black;") %>
+    <%= content_tag(:div, "", class: "d-sm-none col-12", style: "border-bottom: 1px solid #808080;") %>
+</div>

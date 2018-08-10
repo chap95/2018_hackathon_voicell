@@ -31,7 +31,7 @@
         <div style="margin-bottom: 5px;">
           <span style="color: white">변경할 비밀번호</span>
           <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> 글자 이상, 비밀번호에 문자, 숫자, 특수문자 하나씩은 포함)</em>
+            <em>(<%# @minimum_password_length %>8자리 이상, 비밀번호에 문자, 숫자, 특수문자 하나씩은 포함)</em>
           <% end %>
         </div>
         <%= f.password_field :password, autocomplete: "off", class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>

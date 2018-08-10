@@ -98,3 +98,6 @@ gem 'fog', '~> 1.41.0'
 
 # 댓글(with 대댓글 가능하게)
 gem 'acts_as_commentable_with_threading'
+
+# 투표(추천수)
+gem 'acts_as_votable','~>0.11.1'

@@ -122,22 +122,7 @@
   }
   
   // 로그인 폼 css 끝
-  .bara{
-    background-color:DarkSeaGreen;  
-    border:1px solid black;  
-    transition: all 1s cubic-bezier(.25,.46,.45,.94);
-    height: 18px;
-    transform-origin: right center;
-    left: 0;
-    width: 100%;
-    content: '';
-    position: absolute;
-    top: 0;
-    display: block;
-  }
-//   .bara:hover {  
-// width: 300px;  
-// }  
+
 
   // 보이스 게시판 가운데 정렬
   .voice_posts{
@@ -170,6 +155,7 @@
   width: 200px;
   height: 100px;
   position: relative;
+  // margin-top: 0px;
 }
 .vingle svg,
 .vingle div{
@@ -191,20 +177,15 @@
           animation: 2s cubic-bezier(0.66, -0.7, 0.27, 1.6) infinite;
   }
   .vingle div:nth-child(1) {
-    background-color: rgba(218,22,31,0.3);
+    background-color: rgba(72,68,206,0.6);
     -webkit-animation-name: rotate-1;
             animation-name: rotate-1;
   }
   .vingle div:nth-child(2) {
-    background-color:rgba(61,68,206,0.5);
+    background-color:rgba(255,0,0,0.2);
     -webkit-animation-name: rotate-2;
             animation-name: rotate-2;
   }
-  .vingle div:nth-child(3) {
-  background-color: rgba(243,237,63,0.7);
-  -webkit-animation-name: rotate-3;
-          animation-name: rotate-3;
-}
   @-webkit-keyframes rotate-1 {
   to {
     -webkit-transform: rotate(135deg);
@@ -247,3 +228,53 @@
     z-index: 4;
     color: white;
   }
+  
+  .voice_bulletin{
+    background: linear-gradient(270deg,#ffd0d0, #d3d0ff);
+    background-size: 400% 400%;
+    
+    -webkit-animation: AnimationName 12s ease infinite;
+    -moz-animation: AnimationName 12s ease infinite;
+    animation: AnimationName 12s ease infinite;
+    
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes AnimationName { 
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+      }
+      
+  // .main_body{
+  //   background: linear-gradient(270deg,#ffffff, #fffac8);
+  //   background-size: 400% 400%;
+    
+  //   -webkit-animation: AnimationName 12s ease infinite;
+  //   -moz-animation: AnimationName 12s ease infinite;
+  //   animation: AnimationName 12s ease infinite;
+    
+  //   @-webkit-keyframes AnimationName {
+  //       0%{background-position:0% 50%}
+  //       50%{background-position:100% 50%}
+  //       100%{background-position:0% 50%}
+  //   }
+  //   @-moz-keyframes AnimationName {
+  //       0%{background-position:0% 50%}
+  //       50%{background-position:100% 50%}
+  //       100%{background-position:0% 50%}
+  //   }
+  //   @keyframes AnimationName { 
+  //       0%{background-position:0% 50%}
+  //       50%{background-position:100% 50%}
+  //       100%{background-position:0% 50%}
+  //   }
+  // }

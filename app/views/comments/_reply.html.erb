@@ -52,6 +52,9 @@
       </div>
     </div>
     
+    <%# TODO 추천버튼 디자인 %>
+    <%= link_to "추천 #{comment.get_upvotes.size}", like_comment_path(comment), method: :put %>
+    
     <div>
       <%= render partial: "comments/reply_end", locals: {comments: comment.children} %>
     </div>

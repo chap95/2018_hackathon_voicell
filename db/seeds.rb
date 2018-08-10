@@ -18,7 +18,6 @@ user.add_role :admin
 #테스트 계정 생성(어드민 권한 X)
 test3 = User.create( email: 'test4674@naver.com', password: 'a!123456', nickname: '테스트계정1',  admin: false )
 user = User.find(3)
-user.add_role :normal
 user.add_role :block_yellow
 user.add_role :block_red
 

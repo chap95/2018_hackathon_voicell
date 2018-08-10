@@ -1,22 +1,8 @@
 /*메인의 css 입니다*/
 .bg01 {
-    height: 900px;
-    background: url('bg_main001.jpg') no-repeat 50% 0;
-    /*box-shadow: inset 0 0 5px 2px ;*/
-    /*padding-left: 200px;*/
+    background: url('main_bg001') no-repeat ;
+    background-position: center center;
 }    
-/*bg01은 뒤에 파란색 막대기 부분*/
-.bg02 { 
-    height: 1000px; 
-    background: url('https://i.imgur.com/kyrqPis.png') no-repeat 50% 0; 
-    
-}    
-
-.bm01 { 
-    height: 1200px; 
-    /*background: url('https://i.imgur.com/tkUW7om.png') no-repeat 51% 0; */
-}
-/*bm01은 사람 돈 이랑 목소리 주고 받는 부분*/
 #font1{
     padding-top: 250px;
     text-align: center;
@@ -42,7 +28,8 @@
 #enter{
     color: black;
     /*background-color: blue;*/
-    margin-top: 350px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 25px;
     display: inline-block;
     border-radius: 20px;
@@ -52,7 +39,7 @@
 
 
 /*#header { height: 125px; border-bottom: 1px solid #E5E4D4; background: #FEFEF1; }*/
-.container { position: relative; width: 1000px; margin: 0 auto; }
+/*.container { position: relative; width: 1000px; margin: 0 auto; }*/ /* 부트스트랩의 container이랑 겹쳐서 문제 발생 */
 article, aside, footer, header, main, nav, section { display: block; }
 
 .logo01 {position: absolute; top: 29px; left: 0;}

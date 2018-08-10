@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     resources :posts
   end
   
-  resources :comments, only: [:create, :destroy]
+  resources :comments do
+    member do
+      put "like" => "comments#upvote"
+    end
+  end
   
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

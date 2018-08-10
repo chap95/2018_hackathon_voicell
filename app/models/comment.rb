@@ -1,6 +1,11 @@
 class Comment < ApplicationRecord
+  belongs_to :bulletin
+  
   mount_uploader :voice_uploade_file_reply, VoiceFileUploader
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
+  
+  #추천수
+  acts_as_votable
   
   #삭제기록 로그처리
   acts_as_paranoid

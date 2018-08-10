@@ -13,41 +13,43 @@
 
 <div style="margin-top: 100px;"></div>
 
-<div class="container">
-  <h1 style="text-align:center; padding-top:60px"><%= @bulletin.title %></h1>
-  <div style="text-align:center; padding-bottom:20px"><%= @bulletin.content %></div>
-  
-  <!--<img src="<%#= asset_path 'cell.png' %>" style="height: 10px width: 40px">-->
-  
-  <% if @bulletin.board_mp3_upload_permit == true %>
-    <div class="row">
-      <% @posts.each do |post| %>
-        <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: auto; margin-right: auto; margin-top: 20px;" do %>
-          <div class="col-md-12 col-sm-6 col-md-4">
-          <%= render 'posts/index/index_voice', post: post %>
-          </div>
+<body class="voice_bulletin">
+  <div class="container">
+    <h1 style="text-align:center; padding-top:60px"><%= @bulletin.title %></h1>
+    <div style="text-align:center; padding-bottom:20px"><%= @bulletin.content %></div>
+    
+    <!--<img src="<%#= asset_path 'cell.png' %>" style="height: 10px width: 40px">-->
+    
+    <% if @bulletin.board_mp3_upload_permit == true %>
+      <div class="row">
+        <% @posts.each do |post| %>
+          <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: auto; margin-right: auto; margin-top: 20px;" do %>
+            <div class="col-md-12 col-sm-6 col-md-4">
+            <%= render 'posts/index/index_voice', post: post %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="row">
-      <% @posts.each do |post| %>
-        <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: auto; margin-right: auto; margin-top: 20px;" do %>
-          <div class="col-md-12 col-sm-6 col-md-4">
-          <%= render 'posts/index/index_normal', post: post %>
-          </div>
+      </div>
+    <% else %>
+      <div class="row">
+        <% @posts.each do |post| %>
+          <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: auto; margin-right: auto; margin-top: 20px;" do %>
+            <div class="col-md-12 col-sm-6 col-md-4">
+            <%= render 'posts/index/index_normal', post: post %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-  <% end %>
-  
-  <br>
-  <%= paginate @posts %>
-  <div class="write_posts_voice">
-    <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
-      <div align="center"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "btn btn-outline-secondary" , style: "border-radius: 15px;" %></div>
-    <% elsif (@bulletin.opt_admin_only == false) %>
-      <div align="center"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "btn btn-outline-secondary" , style: "border-radius: 15px;" %></div>
+      </div>
     <% end %>
-  </div> 
-</div>
+    
+    <br>
+    <%= paginate @posts %>
+    <div class="write_posts_voice" >
+      <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
+        <div align="right" style="margin-right: 3%"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "btn btn-outline-secondary" , style: "border-radius: 15px;" %></div>
+      <% elsif (@bulletin.opt_admin_only == false) %>
+        <div align="right" style="margin-right: 3%""><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "btn btn-outline-secondary" , style: "border-radius: 15px;" %></div>
+      <% end %>
+    </div> 
+  </div>
+</body>
