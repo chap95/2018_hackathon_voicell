@@ -24,6 +24,9 @@ user.add_role :block_red
 #추가적으로 계정 생성 원하시는분은 윗 줄 따라 해당주석 아랫줄에 써주세요.
 
 #게시판
-voice = Bulletin.create( title: '보이스 게시판', content: '보이스 게시판', user_nickname: '어드민', opt_admin_only: 'false', board_mp3_upload_permit: 'true', reply_mp3_upload_permit: 'true', user_id: '1')
+voice = Bulletin.create( title: 'VOICELL', content: '보이스 게시판', user_nickname: '어드민', opt_admin_only: 'false', board_mp3_upload_permit: 'true', reply_mp3_upload_permit: 'true', user_id: '1')
+for num in 1..10
+    Post.create( title: "게시글#{num}", content: '나는 빡빡이다', user_nickname: '어드민', user_id: '1', bulletin_id: '1' )
+end
 comment = Bulletin.create( title: '댓글 보이스게시판', content: '댓글 보이스게시판', user_nickname: '어드민', opt_admin_only: 'false', board_mp3_upload_permit: 'false', reply_mp3_upload_permit: 'true', user_id: '1')
 free = Bulletin.create( title: '자유게시판', content: '자유게시판', user_nickname: '어드민', opt_admin_only: 'false', board_mp3_upload_permit: 'false', reply_mp3_upload_permit: 'false', user_id: '1')

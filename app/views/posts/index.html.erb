@@ -15,17 +15,22 @@
 
 <body class="voice_bulletin">
   <div class="container">
-    <h1 style="text-align:center; padding-top:60px"><%= @bulletin.title %></h1>
-    <div style="text-align:center; padding-bottom:20px"><%= @bulletin.content %></div>
+    <% if @bulletin.title == "VOICELL" %>
+      <h1 style="text-align:center; padding-top:60px" class="bulletin_title">VOICELL</h1>
+    <% else %>
+      <h1 style="text-align:center; padding-top:60px"><%= @bulletin.title %></h1>
+    <% end %>
+    <div class="hypen" id="fade-in"></div>
+ <!--<div style="text-align:center; padding-bottom:20px"><%#= @bulletin.content %></div>-->
     
     <!--<img src="<%#= asset_path 'cell.png' %>" style="height: 10px width: 40px">-->
     
     <% if @bulletin.board_mp3_upload_permit == true %>
       <div class="row">
         <% @posts.each do |post| %>
-          <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: auto; margin-right: auto; margin-top: 20px;" do %>
+          <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: 50px; margin-right: 30px; margin-top: 20px;" do %>
             <div class="col-md-12 col-sm-6 col-md-4">
-            <%= render 'posts/index/index_voice', post: post %>
+              <%= render 'posts/index/index_voice', post: post %>
             </div>
           <% end %>
         <% end %>
@@ -35,7 +40,7 @@
         <% @posts.each do |post| %>
           <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: auto; margin-right: auto; margin-top: 20px;" do %>
             <div class="col-md-12 col-sm-6 col-md-4">
-            <%= render 'posts/index/index_normal', post: post %>
+              <%= render 'posts/index/index_normal', post: post %>
             </div>
           <% end %>
         <% end %>
@@ -44,12 +49,26 @@
     
     <br>
     <%= paginate @posts %>
-    <div class="write_posts_voice" >
+    
       <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
-        <div align="right" style="margin-right: 3%"><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "btn btn-outline-secondary" , style: "border-radius: 15px;" %></div>
+        <%= link_to '글쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "voice_btn write_posts_voice" %>
       <% elsif (@bulletin.opt_admin_only == false) %>
-        <div align="right" style="margin-right: 3%""><%= link_to '글 쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "btn btn-outline-secondary" , style: "border-radius: 15px;" %></div>
+        <%= link_to '글쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "voice_btn write_posts_voice" %>
       <% end %>
-    </div> 
+      
   </div>
+  
+  <!-- 이 스크립트는 글자간격 넓어지게 하는 것과 밑에 줄 쳐지게 하는 제이쿼리 코드--> 
+  <!--지우지 마시오 제이쿼리 작동 안함-->
+  <script>
+    $('h1.bulletin_title').load('mouseenter', function(){
+  $(this).toggleClass('spaced');
+  });
+  </script>
+  
+  <script>
+    $('.hypen').load('click', function(){
+    $('#fade-in').toggleClass('show');
+  });
+  </script>
 </body>

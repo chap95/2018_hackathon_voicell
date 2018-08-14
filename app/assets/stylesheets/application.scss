@@ -132,11 +132,114 @@
     flex-direction: column;
     margin-right: 18%;
   }
-  
+  // 글쓰기 버튼 효과
   .write_posts_voice{
-    margin-top: 10px;
+    margin-top: 20px;
+    text-align: center;
+    width: 20%;
+    height: 40px;
+    vertical-align: middle;
+    position: relative;
+    display: block;
+    margin: 30px auto 0;
+    padding-top: 7px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
   }
-  
+
+.write_posts_voice:after, .write_posts_voice:visited:after {
+    content: "";
+    position: absolute;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    width: 150%;
+    z-index: -1;
+    -webkit-transition: all 0.75s ease 0s;
+    -moz-transition: all 0.75s ease 0s;
+    -o-transition: all 0.75s ease 0s;
+    transition: all 0.75s ease 0s;
+}
+
+.write_posts_voice:hover:after{
+    height: 450%;
+}
+
+.voice_btn {
+    border: 3px solid black;
+}
+.voice_btn:after {
+    background: black;
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+}
+
+// 메인에 입장하기 버튼효과
+
+
+  .gogo{
+    // z-index: 3;
+    margin-top: 20px;
+    width: 15%;
+    height: 40px;
+    position: relative;
+    display: block;
+    margin: 30px auto 0;
+    padding-top: 7px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+
+.gogo:after, .gogo:visited:after{
+    content: "";
+    position: absolute;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    width: 150%;
+    z-index: -1;
+    -webkit-transition: all 0.75s ease 0s;
+    -moz-transition: all 0.75s ease 0s;
+    -o-transition: all 0.75s ease 0s;
+    transition: all 0.75s ease 0s;
+}
+.gogo:hover:after{
+    height: 450%;
+}
+.gogo_btn:after{
+    background: black;
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+}
+.gogo_btn{
+  border: 3px solid black;
+}
+
+
   // 댓글 답변 CSS
   .comment_reply {
     margin-left: 10px;
@@ -278,3 +381,39 @@
   //       100%{background-position:0% 50%}
   //   }
   // }
+  
+  
+  
+  
+  
+  // 게시판 글자 간격 넓어지게 하는 것 
+  h1.bulletin_title {
+  letter-spacing: 0;
+  opacity: 0;
+  transition: all .75s ease-out;
+}
+
+h1.bulletin_title.spaced {
+  opacity: 1;
+  letter-spacing: 22px;
+}
+
+.hypen{
+  display:inline-block;  
+  background: black;
+  margin-bottom: 15px;
+}
+
+#fade-in {
+  height: 15px;
+  width: 1px;
+  opacity: 0;
+  transition: all .75s ease;
+}
+
+#fade-in.show {
+  opacity: 1;
+  justify-content: center;
+  height: 4px;
+  width: 100%;
+}
