@@ -16,12 +16,12 @@
       </div><br/>
     
       <div class="field">
-        <div><%= f.label :email %></div>
+        <div><span style="color: red;">* </span><%= f.label :email %></div>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
       
       <div class="field">
-        <div><%= f.label :"닉네임" %></div>
+        <div><span style="color: red;">* </span><%= f.label :"닉네임" %></div>
         <%= f.text_field :nickname, autofocus: true, :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
     
@@ -30,7 +30,7 @@
       <% end %>
     
       <div class="field">
-        <div style="margin-bottom: 5px;"><span style="color: white;">현재 비밀번호</span></div>
+        <div style="margin-bottom: 5px;"><span style="color: white;"><span style="color: red;">* </span>현재 비밀번호</span></div>
         <%= f.password_field :current_password, :required => true, autocomplete: "off", class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
     

@@ -207,15 +207,15 @@ a{
 /*섹션별 이미지
 * --------------------------------------- */
 #section00{
-    background-image: url(https://i.imgur.com/PhHaaaR.png);
+    background-image: url(/img/fp00.jpg);
     padding: 0 0 0 0;
 }
 #section1{
-    background-image: url(https://i.imgur.com/8W9x4dv.png);
+    background-image: url(/img/fp01.jpg);
     padding: 2% 0 0 0;
 }
 #section2{
-    background-image: url(https://i.imgur.com/oXVPVQG.png);
+    background-image: url(/img/fp02.jpg);
     padding: 2% 0 0 0;
 }
 

@@ -1,4 +1,4 @@
-<div class="row" bgcolor="white" onMouseOver="this.style.backgroundColor='#ECECEC'" onMouseOut="this.style.backgroundColor='#FFFFFF'">
+<div class="row" bgcolor="white" onMouseOver="this.style.backgroundColor='#9494ff'" onMouseOut="this.style.backgroundColor='rgba(0, 0, 0, 0)'">
     <% if post.get_upvotes.size - post.get_downvotes.size >= 0 %>
         <%= content_tag(:div, "#{post.get_upvotes.size - post.get_downvotes.size}", class: "col-1 col-sm-2 col-md-1", style: "padding: 10px; color: green; font-weight: bold;", align: "center") %>
     <% else %>
