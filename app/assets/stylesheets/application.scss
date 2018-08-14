@@ -99,8 +99,8 @@
   // 로그인/회원가입 등 devise 폼 css
   .devise_info{
   	color: white;
-    padding-bottom: 300px;
-    background: url('login_bg.jpg') no-repeat center center/cover scroll;
+    padding-bottom: 200px;
+    background: url('login_bg2.png') no-repeat center center/cover scroll;
     overflow-y: auto;
     margin-top: 200px;
   }
@@ -237,6 +237,7 @@
 }
 .gogo_btn{
   border: 3px solid black;
+  margin-bottom: 20px;
 }
 
 
@@ -253,7 +254,6 @@
   }
   
   // 빙글빙글 도는 것 css
-  
   .vingle {
   width: 200px;
   height: 100px;
@@ -417,7 +417,20 @@ h1.bulletin_title.spaced {
   height: 4px;
   width: 100%;
 }
-
+// 보이스 게시판 show 부분
 .voice_title{
+  font-size: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   font-weight: bold;
+  border-bottom: 2px solid black;
+}
+
+.voice_content{
+  margin-top: 20px;
+}
+
+// 공지사항 부분
+.all_notices_title{
+  color: black;
 }

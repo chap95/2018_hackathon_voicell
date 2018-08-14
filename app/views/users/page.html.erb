@@ -8,7 +8,7 @@
 
 <body class="w3-light-grey w3-content" style="max-width: 1920px">
   <!-- Sidebar/menu -->
-  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3; width:300px;" id="mySidebar"><br>
+  <nav class="w3-sidebar w3-collapse w3-black w3-animate-left" style="z-index:3; width:300px;" id="mySidebar"><br>
     <div class="w3-container">
       <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
         <i class="fa fa-remove"></i>
@@ -29,15 +29,15 @@
 
   <div id="fullpage">
 	<!-- 첫 번째 영역 : 마이 페이지 -->
-	<div class="section " id="section0">
-		<div class="intro" style="margin-left: 30px;" style="min-height: 600px;">
+	<div class="section " id="section00">
+		<div class="intro" style="margin-left: 450px;" style="min-height: 600px;">
 		  <div align="left" class="container">
 		    <div class="row">
 		      <h1><%= current_user.nickname %></h1>
 		      <h3 style="margin-left: 20px;"><%= current_user.email %></h3>
 		    </div>
   			<hr/>
-  			<h2>" <span style="color: #c3a2e0"><%= current_user.created_at.in_time_zone("Asia/Seoul").strftime('%Y년 %m월 %d일') %></span> 부터 함께 해왔어요! "</h2><br/>
+  			<h2>" <span style="color: white"><%= current_user.created_at.in_time_zone("Asia/Seoul").strftime('%Y년 %m월 %d일') %></span> 부터 함께 해왔어요! "</h2><br/>
   			보유 권한 : 
 				<% if @user.has_role? :admin %>
 					<b><%= link_to "관리자", rails_admin_path, style: "color: #0664b7;" %></b>
@@ -54,7 +54,7 @@
 				<br/>
 				마지막 접속시간 : <%= current_user.last_sign_in_at != nil ? current_user.last_sign_in_at.in_time_zone("Asia/Seoul").strftime('%Y년 %m월 %d일 %H시 %M분') : "<span style='color: red;'>시간조회 불가</span>".html_safe %><br/>
   			마지막 접속IP : <%= current_user.last_sign_in_ip %><br/>
-  			<%= link_to "정보 수정", edit_user_registration_path, class: "offset-md-10 badge badge-pill badge-light", style: "border: 1px solid black; padding: 15px; margin-top: 50px; font-size: 20px;" %>
+  			<%= link_to "정보 수정", edit_user_registration_path, class: "offset-md-10 btn btn-outline-light", style: "border: 1px solid white; padding: 15px; margin-top: 50px; font-size: 20px;" %>
 			</div>
 		</div>
 	</div>
@@ -62,8 +62,8 @@
 	<!-- 두 번째 영역 : 내가 쓴 게시글 -->
 	<div class="section" id="section1">
     <div class="slide" id="slide1">
-			<div class="intro" style="min-height: 600px;">
-				<h1>내가 쓴 게시글</h1>
+			<div class="intro" style="min-height: 600px; margin-left: 350px;">
+				<h1 style="color:white">내가 쓴 게시글</h1>
 				<div class="container">
 					<div class="row" style="margin-top: 30px;">
 						<div class="d-none d-sm-block col-sm-8 col-md-7 index_board_row" align="center">제목</div>
@@ -87,8 +87,8 @@
 	
 	<!-- 세 번째 영역 : 내가 쓴 댓글 -->
 	<div class="section" id="section2">
-		<div class="intro" style="min-height: 600px;">
-			<h1>내가 쓴 댓글</h1>
+		<div class="intro" style="min-height: 600px; margin-left: 350px;">
+			<h1 style="color:white">내가 쓴 댓글 </h1>
 				<div class="container">
 					<div class="row" style="margin-top: 30px;">
 						<div class="col-8 col-sm-8 col-md-7 index_board_row" align="center">댓글 제목</div>

@@ -2,10 +2,10 @@
   <div class="comments-show">
     <div class="comment">
       <div class="row">
-        <div class="col-8 col-sm-5 col-md-3 row" style="margin-left: 0px;">
+        <div class="col-8 col-sm-5 col-md-3 row reply_name" style="margin-left: 0px;">
           <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...')}", class: "d-none d-md-block") %>
           <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(7, omission: '...') : comment.nickname.truncate(7, omission: '...')}", class: "d-md-none") %>
-          <%= content_tag(:div, " #{time_ago_in_words(comment.created_at)} 전", style: "margin-left: 20px;") %>
+          <%= content_tag(:div, " #{time_ago_in_words(comment.created_at)} 전", style: "margin-left: 20px; color:gray gray") %>
         </div>
         <div class="d-none d-sm-block col-sm-5 col-md-6">
           <%# PC~태블릿 사이즈까지만 보이는 영역 %>
@@ -17,11 +17,14 @@
         </div>
         <div align="right" class="col-4 col-sm-2 col-md-3">
           <% if can? :destroy, comment %>
-            <%= link_to "", comment_path(comment), class: "fas fa-times", method: :delete, remote: false, data: { confirm: "정말로 지우시겠습니까?" }, style: "color: red; font-weight: bold" %>
+            <%= link_to "", comment_path(comment), class: "fas fa-times", method: :delete, remote: false, data: { confirm: "정말로 지우시겠습니까?" }, style: "color: red; font-weight: bold;" , title: "삭제" %>
             <span style="margin-left: 10px; margin-right: 10px;">|</span>
           <% end %>
           <%= link_to "", "#", class: "far fa-comments", onclick: "showHide('comment_#{comment.id}')", onfocus: "this.blur()", style: "text-underline: none" %>
         </div>
+        
+        </br>
+        </br>
         <div class="d-sm-none col-12">
           <%# 모바일 사이즈만 보이는 영역 %>
           <% if comment.voice_uploade_file_reply.present? %>
@@ -53,7 +56,7 @@
     </div>
     
     <%# TODO 추천버튼 디자인 %>
-    <%= link_to "추천 #{comment.get_upvotes.size}", like_comment_path(comment), method: :put %>
+    <%= link_to " | #{comment.get_upvotes.size}", like_comment_path(comment), method: :put , class: "fas fa-thumbs-up" %>
     
     <div>
       <%= render partial: "comments/reply_end", locals: {comments: comment.children} %>

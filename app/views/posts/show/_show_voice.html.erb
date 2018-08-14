@@ -1,10 +1,8 @@
-    <div align="center" class="voice_title">
-        <%= @post.title%>
-    </div>
-    <hr/>
+<div align="center" class="voice_title">
+    <%= @post.title%>
+</div>
 
-
-<p>
+<div class="voice_record">
     <% if @post.voice_uploade_file.present? %>
     <strong>보이스(mp3):</strong>
     <!-- 오디오 스킨 -->
@@ -14,9 +12,8 @@
     </div>
     <!-- 오디오 스킨 -->
     <% end %>
-</p>
+</div>
 
-<p>
-    <strong>Content:</strong>
+<div class="voice_content">
     <%= content_tag(:div, @post.content.html_safe, :class => "panel-body") %>
-</p>
+</div>

@@ -8,26 +8,28 @@
         <%= devise_error_messages! %>
       </div>
       
+      <h2 style="margin-bottom: 50px;"><span style="border-bottom: 2px solid white; color: white;">SIGN IN</span></h2>
+      
       <div class="field wow jello">
-        <div><span style="color: white">이메일</span></div>
+        <div><span style="color: white"><span style="color: red;">* </span>이메일</span></div>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
       
       <div class="field wow jello">
-        <div><%= f.label :"닉네임" %></div>
+        <div><span style="color: red;">* </span><%= f.label :"닉네임" %></div>
         <%= f.text_field :nickname, autofocus: true, :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
     
       <div class="field password wow jello">
         <div>
-          <span style="color: white">비밀번호</span>
+          <span style="color: white"><span style="color: red;">* </span>비밀번호</span>
           <em style= "color: white">(<%# @minimum_password_length %>8자리가 최소 입니다)</em>
         </div>
         <%= f.password_field :password, autocomplete: "off", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
     
       <div class="field wow jello">
-        <div><span style="color: white">비밀번호 확인</span></div>
+        <div><span style="color: white"><span style="color: red;">* </span>비밀번호 확인</span></div>
         <%= f.password_field :password_confirmation, autocomplete: "off", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
       
@@ -37,7 +39,7 @@
       </div>
     
       <div class="actions" align="center">
-        <%= f.submit "회원가입" , class: "btn btn-outline-dark", style: "width: 150px; border-radius: 15px; margin-top: 40px;" %>
+        <%= f.submit "회원가입" , class: "btn btn-outline-light", style: "width: 150px; border-radius: 15px; margin-top: 40px;" %>
       </div>
     <% end %>
     

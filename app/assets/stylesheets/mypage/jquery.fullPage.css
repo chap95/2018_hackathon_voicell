@@ -5,6 +5,8 @@
  *
  * Copyright (C) 2013 alvarotrigo.com - A project by Alvaro Trigo
  */
+ 
+ 
 html.fp-enabled,
 .fp-enabled body {
     margin: 0;
@@ -25,6 +27,7 @@ html.fp-enabled,
     touch-action: none;
 }
 .fp-section {
+    
     position: relative;
     -webkit-box-sizing: border-box; /* Safari<=5 Android<=3 */
     -moz-box-sizing: border-box; /* <=28 */

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :all_notices
   has_many :comments
   
+  #프로필 이미지 업로드 (3MB 용량 제한)
   mount_uploader :profile_picture, ProfileUploader
   
   #투표자(추천)

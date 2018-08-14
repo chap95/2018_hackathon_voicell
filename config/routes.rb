@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   get 'users/page/:id' => 'users#page'
   
+  get 'bulletin/:id/posts' => 'posts#index'
+  
   post '/tinymce_assets' => 'tinymce_assets#create'
   
   resources :posts

@@ -187,3 +187,46 @@ a{
 	z-index: 999;
  }
 
+
+
+
+/*여기부터인하가 걍해본거*/
+/*섹션별 백그라운드*/
+
+
+/* 왼쪽까지 cover
+* --------------------------------------- */
+#section00,
+#section1,
+#section2,
+#section3{
+    background-size: cover;
+}
+
+
+/*섹션별 이미지
+* --------------------------------------- */
+#section00{
+    background-image: url(https://i.imgur.com/PhHaaaR.png);
+    padding: 0 0 0 0;
+}
+#section1{
+    background-image: url(https://i.imgur.com/8W9x4dv.png);
+    padding: 2% 0 0 0;
+}
+#section2{
+    background-image: url(https://i.imgur.com/oXVPVQG.png);
+    padding: 2% 0 0 0;
+}
+
+
+/*슬라이드노필요
+* --------------------------------------- */
+/*#slide1{*/
+/*    background-image: url();*/
+/*    padding: 6% 0 0 0;*/
+/*}*/
+/*#slide2{*/
+/*    background-image: url();*/
+/*    padding: 6% 0 0 0;*/
+/*}*/

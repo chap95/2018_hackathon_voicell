@@ -2,9 +2,9 @@
     <div class="comments-show">
         <div class="comment comment_reply">
              <div class="row">
-                <div class="col-9 col-sm-9 col-md-7 row" style="margin-left: 0px;">
-                  <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...')}", class: "d-none d-md-block") %>
-                  <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(7, omission: '...') : comment.nickname.truncate(7, omission: '...')}", class: "d-md-none") %>
+                <div class="col-9 col-sm-9 col-md-7 row reply_name" style="margin-left: 0px;">
+                  <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...')}", class: "d-none d-md-block fas fa-angle-double-right") %>
+                  <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(7, omission: '...') : comment.nickname.truncate(7, omission: '...')}", class: "d-md-none fab fa-replyd") %>
                   <%= content_tag(:div, " #{time_ago_in_words(comment.created_at)} 전", style: "margin-left: 20px;") %>
                 </div>
                 <div align="right" class="col-3 col-sm-3 col-md-5">

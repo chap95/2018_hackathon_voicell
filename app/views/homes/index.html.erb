@@ -18,7 +18,7 @@
 						많은 Voicer 들에게 원하는 녹음물을 받으세요<br/>
 						<div style="color:gray !important">Listener들에게 당신의 목소리를 들려주고 보상을 받으세요</div>
 					</div>
-					<%= link_to '입장하기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "gogo_btn gogo" %>
+					<%= link_to '입장하기', bulletin_posts_path(:bulletin_id => 1) , class: "gogo_btn gogo" %>
 	            </div>
 			</div>
 		</div>
