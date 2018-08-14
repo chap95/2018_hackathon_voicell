@@ -13,12 +13,14 @@
 
 <div style="margin-top: 100px;"></div>
 
-<div class="container">
-    <% if @bulletin.board_mp3_upload_permit == true %>
-        <%= render 'posts/show/show_voice' %>
-    <% else %>
-        <%= render 'posts/show/show_normal' %>
-    <% end %>
+<div class="container voice_board">
+    <div style="min-height: 600px">
+        <% if @bulletin.board_mp3_upload_permit == true %>
+            <%= render 'posts/show/show_voice' %>
+        <% else %>
+            <%= render 'posts/show/show_normal' %>
+        <% end %>
+    </div>
     <div class="row">
         
         <div align="right" class="col-12 col-sm-12 col-md-12">

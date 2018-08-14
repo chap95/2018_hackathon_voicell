@@ -4,7 +4,9 @@ class User < ApplicationRecord
   has_many :all_notices
   has_many :comments
   
-  #투표자(추천))
+  mount_uploader :profile_picture, ProfileUploader
+  
+  #투표자(추천)
   acts_as_voter
   
   #유저의 기본 권한 설정

@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20180809132027) do
 
   create_table "users", force: :cascade do |t|
     t.string "nickname"
+    t.string "profile_picture"
     t.boolean "admin", default: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

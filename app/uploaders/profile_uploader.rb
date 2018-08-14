@@ -1,6 +1,5 @@
-class VoiceFileUploader < CarrierWave::Uploader::Base
-    
-    # 자료 저장방식 (AWS 연동은 'fog' 방식으로)
+class ProfileUploader < CarrierWave::Uploader::Base
+  # 자료 저장방식 (AWS 연동은 'fog' 방식으로)
     storage :fog
  
     # AWS S3 Bucket 저장 경로
@@ -11,11 +10,11 @@ class VoiceFileUploader < CarrierWave::Uploader::Base
  
     # 업로드 시 허용 확장자
     def extension_whitelist
-      %w(mp3 m4a)
+      %w(gif jpg png)
     end
     
     # 파일 업로드 허용 용량
     def size_range
-      1..5.megabytes
+      1..3.megabytes
     end
 end

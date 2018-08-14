@@ -1,6 +1,5 @@
 <body class="main_body">
-	<div style="margin-top: 70px;"></div>
-	
+	<div style="margin-top: 250px;"></div>
 	<!--<div id="fullpage">-->
 	    <!-- 첫 번째 페이지 시작 -->
 		<div class="section" id="section0">
@@ -15,12 +14,11 @@
 	                    	</svg>
 	                    </div>
 					</div>
-	                    <div class="typo01 col-10 col-sm-5 col-md-12" style="padding: 5px; font-size: 20px; margin-top: 300px;">
-							많은 Voicer 들에게 원하는 녹음물을 받으세요<br/>
-							<div style="color:gray !important">Listener들에게 당신의 목소리를 들려주고 보상을 받으세요</div>
-						</div>
-							<%= link_to '입장하기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "gogo_btn gogo" %>
-	     
+                    <div class="typo01 col-10 col-sm-5 col-md-12" style="padding: 5px; font-size: 20px; margin-top: 300px;">
+						많은 Voicer 들에게 원하는 녹음물을 받으세요<br/>
+						<div style="color:gray !important">Listener들에게 당신의 목소리를 들려주고 보상을 받으세요</div>
+					</div>
+					<%= link_to '입장하기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "gogo_btn gogo" %>
 	            </div>
 			</div>
 		</div>

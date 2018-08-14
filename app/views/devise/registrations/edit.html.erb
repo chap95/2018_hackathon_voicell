@@ -7,6 +7,13 @@
       <div class="mx-auto col-12 col-sm-12 col-md-7">
         <%= devise_error_messages! %>
       </div>
+      
+      <%= image_tag (current_user.profile_picture), class: "rounded-circle", align: "center", style: "margin-bottom: 50px;" %>
+      
+      <div class="field">
+        <div>프로필 사진(선택옵션, 3MB 이하)</div>
+        <%= f.file_field :profile_picture, accept: 'image/jpg,image/png,image/gif' %>
+      </div><br/>
     
       <div class="field">
         <div><%= f.label :email %></div>
