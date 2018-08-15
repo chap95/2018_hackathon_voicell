@@ -10,10 +10,22 @@ class CommentsController < ApplicationController
       @comment.bulletin_id = commentable.bulletin_id
     end
     
+    if (commentable_type != "AllNotice")
+      # Post 게시물 내에 댓글이 달릴 시 알림이 울림.
+      @new_notification = NewNotification.create! user: commentable.user,
+                                                        content: "#{current_user.nickname.truncate(15, omission: '...')} 님이 댓글을 달았습니다.",
+                                                        link: request.referrer
+    end
+    
     respond_to do |format|
       if @comment.save
         make_child_comment
         format.html  { redirect_to(request.referrer, :notice => '댓글이 작성되었습니다.') }
+        if @comment.parent != nil
+            @new_notification2 = NewNotification.create!  user: @comment.parent.user,
+                                                          content: "#{current_user.nickname.truncate(15, omission: '...')} 님이 답댓글을 달았습니다.",
+                                                          link: request.referrer
+        end
       else
         format.html  { redirect_to(request.referrer, :alert => '댓글 내용을 작성해주세요.') }
       end

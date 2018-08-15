@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'searches/index'
+
   resources :all_notices
   root 'homes#index'
   
@@ -23,6 +25,12 @@ Rails.application.routes.draw do
       put "like" => "comments#upvote"
     end
   end
+  
+  # 알림 : 전체 삭제
+  get '/new_notifications/read_all' => 'new_notifications#read_all'
+  # 알림
+  resources :new_notifications
+
   
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

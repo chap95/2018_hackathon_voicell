@@ -48,6 +48,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'sunspot_solr'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -55,9 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # PosgreSQL DB
 gem 'pg', :group => :production
-
-# rails_db (DB구조를 볼 수 있게.)
-gem 'rails_db'
 
 # jquery
 gem 'jquery-rails'
@@ -101,3 +99,9 @@ gem 'acts_as_commentable_with_threading'
 
 # 투표(추천수)
 gem 'acts_as_votable','~>0.11.1'
+
+# 검색
+gem 'sunspot_rails'
+
+# 알림 Gem
+gem 'unread'

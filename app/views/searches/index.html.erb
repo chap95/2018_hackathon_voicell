@@ -1,0 +1,9 @@
+<% if @search_result.empty? %>
+    <h2>검색결과가 없음</h2>
+<% else %>
+    <% @search_result.each do |post| %>
+        <%= link_to post_path(post) do %>
+            <%= content_tag(:div, post.title) %>
+        <% end %>
+    <% end %>
+<% end %>
