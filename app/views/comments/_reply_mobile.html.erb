@@ -1,0 +1,35 @@
+<div class="row d-md-none" style="margin-left: 0px;">
+    <div class="col-8 col-sm-5 row reply_name">
+        <% if comment.user.profile_picture.present? %>
+			<img src="<%= comment.user.profile_picture %>" class="rounded-circle" style="width: 40px; height: 40px;">
+		<% else %>
+			<img src="/img/profile_normal2.png" class="rounded-circle" style="width: 40px; height: 40px;">
+		<% end %>
+        <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(20, omission: '...') : comment.nickname.truncate(20, omission: '...')}", style: "line-height: 40px; margin-left: 20px;") %>
+    </div>
+    <div align="right" class="col-4" style="line-height: 40px">
+        <% if can? :destroy, comment %>
+            <%= link_to "", comment_path(comment), class: "fas fa-times", method: :delete, remote: false, data: { confirm: "정말로 지우시겠습니까?" }, style: "color: black; font-weight: bold;" , title: "삭제" %>
+            <span style="margin-left: 10px; margin-right: 10px;">|</span>
+        <% end %>
+        <%= link_to "", "#", class: "far fa-comments", onclick: "showHide('comment_#{comment.id}')", onfocus: "this.blur()", style: "text-underline: none" %>
+    </div>
+    
+    </br></br>
+    <div class="col-12" style="margin-left: -15px;">
+        <%# 모바일 사이즈만 보이는 영역 %>
+        <% if comment.voice_uploade_file_reply.present? %>
+            <ul class="graphic">
+                <li><a href="<%= comment.voice_uploade_file_reply %>"><%= comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...') %></a></li>
+            </ul>
+            <div style="margin-bottom: 15px;"></div>
+        <% end %>
+    </div>
+    <%= content_tag(:div, comment.body, class: "col-12", style: "white-space: pre-wrap; margin-left: -15px;") %>
+</div>
+
+<div class="row d-md-none" style="margin-left: 0px; margin-top: 10px;">
+    <%# TODO 추천버튼 디자인 %>
+    <div class="col-4"><%= link_to " | #{comment.get_upvotes.size}", like_comment_path(comment), method: :put , class: "fas fa-thumbs-up" %></div>
+    <div align="right" class="col-8"><%= content_tag(:small, " #{time_ago_in_words(comment.created_at)} 전", class: "", align: "right", style: "color: gray; margin-top: 10px;") %></div>
+</div>

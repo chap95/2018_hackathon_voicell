@@ -1,0 +1,29 @@
+<table border="0" width="100%" class="d-none d-md-block">
+    <tbody style="width: 100%">
+    <tr>
+        <td rowspan="3" align="center" width="5%">
+            <% if comment.user.profile_picture.present? %>
+				<img src="<%= comment.user.profile_picture %>" class="rounded-circle" style="width: 50px; height: 50px;">
+			<% else %>
+				<img src="/img/profile_normal2.png" class="rounded-circle" style="width: 50px; height: 50px;">
+			<% end %>
+        </td>
+        <td width="45%">
+            <div class="row" style="margin-left: 0px;">
+                <%= content_tag(:small, " #{comment.user != nil ? comment.user.nickname.truncate(20, omission: '...') : comment.nickname.truncate(20, omission: '...')}", class: "d-none d-md-block") %>
+                <%= content_tag(:small, " #{time_ago_in_words(comment.created_at)} 전", style: "color: gray; margin-left: 20px;") %>
+            </div>
+        </td>
+        <td width="5%" align="right">
+            <% if can? :destroy, comment %>
+                <%= link_to "", comment_path(comment), class: "fas fa-times", method: :delete, remote: false, data: { confirm: "정말로 지우시겠습니까?" }, style: "color: black; font-weight: bold;" , title: "삭제" %>
+            <% end %>
+        </td>
+    </tr>
+    <tr width="100%">
+        <td colspan="5" width="100%">
+            <%= content_tag(:div, comment.body, style: "white-space: pre-wrap") %>
+        </td>
+    </tr>
+    </tbody>
+</table>

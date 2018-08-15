@@ -1,0 +1,28 @@
+<div class="row d-md-none" style="margin-left: 0px;">
+    <div class="col-11 col-sm-5 row reply_name">
+        <% if comment.user.profile_picture.present? %>
+			<img src="<%= comment.user.profile_picture %>" class="rounded-circle" style="width: 40px; height: 40px;">
+		<% else %>
+			<img src="/img/profile_normal2.png" class="rounded-circle" style="width: 40px; height: 40px;">
+		<% end %>
+        <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(20, omission: '...') : comment.nickname.truncate(20, omission: '...')}", style: "line-height: 40px; margin-left: 20px;") %>
+    </div>
+    <div align="right" class="col-1" style="line-height: 40px">
+        <% if can? :destroy, comment %>
+            <%= link_to "", comment_path(comment), class: "fas fa-times", method: :delete, remote: false, data: { confirm: "정말로 지우시겠습니까?" }, style: "color: black; font-weight: bold;" , title: "삭제" %>
+        <% end %>
+    </div>
+    
+    </br></br>
+    <div class="col-12" style="margin-left: -15px;">
+        <%# 모바일 사이즈만 보이는 영역 %>
+        <% if comment.voice_uploade_file_reply.present? %>
+            <ul class="graphic">
+                <li><a href="<%= comment.voice_uploade_file_reply %>"><%= comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...') %></a></li>
+            </ul>
+            <div style="margin-bottom: 15px;"></div>
+        <% end %>
+    </div>
+    <%= content_tag(:div, comment.body, class: "col-12", style: "white-space: pre-wrap; margin-left: -15px;") %>
+    <%= content_tag(:small, " #{time_ago_in_words(comment.created_at)} 전", class: "col-12", align: "right", style: "color: gray; margin-top: 10px;") %>
+</div>

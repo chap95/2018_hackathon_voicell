@@ -1,0 +1,44 @@
+<table border="0" width="100%" class="d-none d-md-block">
+    <tbody style="width: 100%">
+    <tr>
+        <td rowspan="3" align="center" width="5%">
+            <% if comment.user.profile_picture.present? %>
+				<img src="<%= comment.user.profile_picture %>" class="rounded-circle" style="width: 50px; height: 50px;">
+			<% else %>
+				<img src="/img/profile_normal2.png" class="rounded-circle" style="width: 50px; height: 50px;">
+			<% end %>
+        </td>
+        <td width="15%">
+            <div class="row" style="margin-left: 0px;">
+                <%= content_tag(:small, " #{comment.user != nil ? comment.user.nickname.truncate(20, omission: '...') : comment.nickname.truncate(20, omission: '...')}", class: "d-none d-md-block") %>
+                <%= content_tag(:small, " #{time_ago_in_words(comment.created_at)} 전", style: "color: gray; margin-left: 20px;") %>
+            </div>
+        </td>
+        <td width="30%">
+        <% if comment.voice_uploade_file_reply.present? %>
+            <ul class="graphic">
+                <li><a href="<%= comment.voice_uploade_file_reply %>"><%= comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...') %></a></li>
+            </ul>
+        <% end %>
+        </td>
+        <td width="5%" align="right">
+            <% if can? :destroy, comment %>
+                <%= link_to "", comment_path(comment), class: "fas fa-times", method: :delete, remote: false, data: { confirm: "정말로 지우시겠습니까?" }, style: "color: black; font-weight: bold;" , title: "삭제" %>
+                <span style="margin-left: 10px; margin-right: 10px;">|</span>
+            <% end %>
+            <%= link_to "", "javascript:void(0);", class: "far fa-comments", onclick: "showHide('comment_#{comment.id}')", onfocus: "this.blur()", style: "text-underline: none" %>
+        </td>
+    </tr>
+    <tr width="100%">
+        <td colspan="5" width="100%">
+            <%= content_tag(:div, comment.body, style: "white-space: pre-wrap") %>
+        </td>
+    </tr>
+    <tr width="100%">
+        <td colspan="4" width="100%">
+            <%# TODO 추천버튼 디자인(PC) %>
+            <%= link_to " | #{comment.get_upvotes.size}", like_comment_path(comment), method: :put , class: "fas fa-thumbs-up" %>
+        </td>
+    </tr>
+    </tbody>
+</table>

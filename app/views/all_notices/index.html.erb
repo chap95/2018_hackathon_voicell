@@ -31,21 +31,21 @@
   <% if @all_notices.empty? %>
     <h2 class="text-center" style="margin-top: 30px;">공지를 등록해 주세요</h2>
   <% else %>
-    <%# 모든 게시판 공지 %>
+    <%# 모든 게시판 공지 상단노출 %>
     <% @all_notices.each do |post| %>
       <% if post.global_notice == true %>
         <%= render 'all_notices/index/index_global', post: post %>
       <% end %>
     <% end %>
     
-    <%# 공지사항 상위 %>
+    <%# 공지사항 게시판 내 상단노출 %>
     <% @all_notices.each do |post| %>
       <% if post.local_notice == true %>
         <%= render 'all_notices/index/index_local', post: post %>
       <% end %>
     <% end %>
     
-    <%# 일반 게시물 %>
+    <%# 일반 공지사항 게시물 %>
     <% @all_notices.each do |post| %>
       <%= render 'all_notices/index/index_normal', post: post %>
     <% end %>

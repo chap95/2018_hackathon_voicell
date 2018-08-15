@@ -44,3 +44,17 @@
     <div align="right" style="margin-top: 20px;"><%= link_to '새 카테고리 생성', new_bulletin_path, class: 'btn btn-primary' %></div>
   <% end %>
 </div>
+
+<!--제이쿼리-->
+<script>
+    $('h1.bulletins_path').load('mouseenter', function(){
+  $(this).toggleClass('spaced');
+  });
+  </script>
+  
+  <script>
+    $('.hypen').load('click', function(){
+    $('#fade-in').toggleClass('show');
+  });
+  </script>
+</body>

@@ -212,7 +212,7 @@
     transition: all 1s ease;
   }
 
-.gogo:after, .gogo:visited:after{
+  .gogo:after, .gogo:visited:after{
     content: "";
     position: absolute;
     height: 0%;
@@ -224,26 +224,26 @@
     -moz-transition: all 0.75s ease 0s;
     -o-transition: all 0.75s ease 0s;
     transition: all 0.75s ease 0s;
-}
-.gogo:hover:after{
-    height: 450%;
-}
-.gogo_btn:after{
-    background: black;
-    -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
-    -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
-    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
-    transform: translateX(-50%) translateY(-50%) rotate(-25deg);
-}
-.gogo_btn{
-  border: 3px solid black;
-  margin-bottom: 20px;
-}
+  }
+  .gogo:hover:after{
+      height: 450%;
+  }
+  .gogo_btn:after{
+      background: black;
+      -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+      -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+      -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+      transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  }
+  .gogo_btn{
+    border: 3px solid black;
+    margin-bottom: 20px;
+  }
 
 
   // 댓글 답변 CSS
   .comment_reply {
-    margin-left: 10px;
+    margin-left: 15%;
     margin-top: 10px;
     padding-left: 10px;
     border-left: 2px solid #bbbbbb;

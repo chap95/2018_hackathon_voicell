@@ -8,7 +8,7 @@
         <%= devise_error_messages! %>
       </div>
       
-      <%= image_tag (current_user.profile_picture), class: "rounded-circle", align: "center", style: "margin-bottom: 50px;" %>
+      <%= image_tag (current_user.profile_picture), class: "rounded-circle", align: "center", style: "margin-bottom: 50px; width: 150px; height: 150px;" %>
       
       <div class="field">
         <div>프로필 사진(선택옵션, 3MB 이하)</div>
@@ -36,7 +36,7 @@
     
       <div class="field">
         <div style="margin-bottom: 5px;">
-          <span style="color: white">변경할 비밀번호</span>
+          <span style="color: white">변경할 비밀번호</span><br/>
           <% if @minimum_password_length %>
             <em>(<%# @minimum_password_length %>8자리 이상, 비밀번호에 문자, 숫자, 특수문자 하나씩은 포함)</em>
           <% end %>

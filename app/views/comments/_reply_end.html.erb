@@ -1,19 +1,9 @@
-<% comments.each do |comment| %>  
+<% comments.each do |comment| %>
     <div class="comments-show">
+        <hr class="offset-2 offset-md-2"/>
         <div class="comment comment_reply">
-             <div class="row">
-                <div class="col-9 col-sm-9 col-md-7 row reply_name" style="margin-left: 0px;">
-                  <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(10, omission: '...') : comment.nickname.truncate(10, omission: '...')}", class: "d-none d-md-block fas fa-angle-double-right") %>
-                  <%= content_tag(:div, " #{comment.user != nil ? comment.user.nickname.truncate(7, omission: '...') : comment.nickname.truncate(7, omission: '...')}", class: "d-md-none fab fa-replyd") %>
-                  <%= content_tag(:div, " #{time_ago_in_words(comment.created_at)} 전", style: "margin-left: 20px;") %>
-                </div>
-                <div align="right" class="col-3 col-sm-3 col-md-5">
-                  <% if can? :destroy, comment %>
-                    <%= link_to "", comment_path(comment), class: "fas fa-times", method: :delete, remote: false, data: { confirm: "정말로 지우시겠습니까?" }, style: "color: red; font-weight: bold" %>
-                  <% end %>
-                </div>
-            </div>
-            <%= content_tag(:div, comment.body, style: "white-space: pre-wrap;") %>
+            <%= render 'comments/reply_end_pc', comment: comment %>
+            <%= render 'comments/reply_end_mobile', comment: comment %>
         </div>
     </div>
 <% end %>

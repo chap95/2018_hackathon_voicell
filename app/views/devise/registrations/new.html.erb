@@ -22,8 +22,8 @@
     
       <div class="field password wow jello">
         <div>
-          <span style="color: white"><span style="color: red;">* </span>비밀번호</span>
-          <em style= "color: white">(<%# @minimum_password_length %>8자리가 최소 입니다)</em>
+          <span style="color: white"><span style="color: red;">* </span>비밀번호</span><br/>
+          <em style= "color: white">(8자리 이상, 비밀번호에 문자, 숫자, 특수문자 하나씩은 포함)</em>
         </div>
         <%= f.password_field :password, autocomplete: "off", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
