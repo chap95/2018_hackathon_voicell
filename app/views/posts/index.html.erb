@@ -14,6 +14,12 @@
 <div style="margin-top: 100px;"></div>
 
 <body class="voice_bulletin">
+  <div align="center">
+     <%= form_tag searches_index_path, :method => :get do %>
+      <%= text_field_tag :search, params[:search] , class: "search_box" %>
+      <%= submit_tag "검색", :name => nil , class: "btn btn-info" %>
+    <% end %>
+  </div>
   <div class="container">
     <% if @bulletin.title == "VOICELL" %>
       <h1 style="text-align:center; padding-top:60px" class="bulletin_title">VOICELL</h1>
@@ -58,10 +64,7 @@
       
   </div>
   
-  <%= form_tag searches_index_path, :method => :get do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "검색", :name => nil %>
-  <% end %>
+ 
 
   
   <!-- 이 스크립트는 글자간격 넓어지게 하는 것과 밑에 줄 쳐지게 하는 제이쿼리 코드--> 

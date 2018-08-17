@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     end
     
     if (commentable_type != "AllNotice")
-      # Post 게시물 내에 댓글이 달릴 시 알림이 울림.
+      # TODO : Post 게시물 내에 댓글이 달릴 시 알림이 울림.
       @new_notification = NewNotification.create! user: commentable.user,
                                                         content: "#{current_user.nickname.truncate(15, omission: '...')} 님이 댓글을 달았습니다.",
                                                         link: request.referrer
@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
       if @comment.save
         make_child_comment
         format.html  { redirect_to(request.referrer, :notice => '댓글이 작성되었습니다.') }
+        # [TODO] 댓글에 대댓글이 달릴 시 알림메세지 발생
         if @comment.parent != nil
             @new_notification2 = NewNotification.create!  user: @comment.parent.user,
                                                           content: "#{current_user.nickname.truncate(15, omission: '...')} 님이 답댓글을 달았습니다.",
