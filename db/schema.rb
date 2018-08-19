@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180815143609) do
     t.string "alt"
     t.string "hint"
     t.string "file"
+    t.integer "bulletin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

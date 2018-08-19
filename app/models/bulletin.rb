@@ -1,5 +1,6 @@
 class Bulletin < ApplicationRecord
     has_many :posts, dependent: :destroy
+    has_many :images, dependent: :destroy
     belongs_to :user
     
     # cancancan 적용

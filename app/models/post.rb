@@ -19,4 +19,12 @@ class Post < ApplicationRecord
     
     # 파일 업로드 유효성검사
     validates_size_of :voice_uploade_file, maximum: 5.megabytes, message: "파일 업로드 시, 용량은 5MB 미만이어야 합니다."
+    
+    #이미지 자동 삭제처리
+    before_destroy :destroy_assets
+
+    def destroy_assets
+        self.voice_uploade_file.remove! if self.voice_uploade_file
+        self.save!
+    end
 end

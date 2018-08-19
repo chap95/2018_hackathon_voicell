@@ -16,8 +16,10 @@ Rails.application.routes.draw do
   post '/tinymce_assets' => 'tinymce_assets#create'
   
   resources :posts
+  
   resources :bulletins do
     resources :posts
+    post "/posts/:post_id/restore", to: "posts#restore"
   end
   
   resources :comments do

@@ -1,18 +1,25 @@
 class PostsController < ApplicationController
   # 로그인 된 사용자만 접근 가능
-  before_action :authenticate_user!
-  # Rolify + Cancancan
-  load_and_authorize_resource
+  before_action :authenticate_user!, only: [:index, :new, :show, :edit]
+  #skip_before_action :authenticate_user!, only: [:index]
   
-  before_action :set_bulletin
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_bulletin
+  
+  # 권한설정
+  load_and_authorize_resource
 
   def index
     @posts = Post.where(bulletin_id: @bulletin).order("created_at DESC").page(params[:page]).per(9)
+    @posts_deleted = Post.with_deleted.where(bulletin_id: @bulletin).order("created_at DESC").page(params[:page]).per(9)
   end
 
   def show
-    @post         = Post.find(params[:id])
+    if current_user.has_role? :admin
+      @post = Post.with_deleted.find(params[:id])
+    else
+      @post = Post.find(params[:id])
+    end
     @new_comment  = Comment.build_from(@post, current_user.id, "")
   end
 
@@ -50,11 +57,25 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to (@bulletin.present? ? bulletin_posts_url : posts_url), alert: '게시글이 삭제되었습니다.' }
-      format.json { head :no_content }
+    if @post.deleted? == true
+      @post.really_destroy!
+      
+      redirect_to bulletin_posts_path(@post.bulletin.id)
+    else
+      @post.destroy
+      
+      respond_to do |format|
+        format.html { redirect_to bulletin_posts_path(@post.bulletin.id), notice: '게시글이 성공적으로 제거되었습니다.' }
+        format.json { head :no_content }
+      end
     end
+  end
+  
+  def restore
+    @post = Post.with_deleted.find(params[:post_id])
+    @post.restore
+    
+    redirect_to bulletin_posts_path(@post.bulletin.id), notice: '게시글이 성공적으로 복구되었습니다.'
   end
 
   private
@@ -66,7 +87,11 @@ class PostsController < ApplicationController
     if @bulletin.present?
       @post = @bulletin.posts.find(params[:id])
     else
-      @post = Post.find(params[:id])
+      if current_user.has_role? :admin
+        @post = Post.with_deleted.find(params[:id])
+      else
+        @post = Post.find(params[:id])
+      end
     end
   end
 

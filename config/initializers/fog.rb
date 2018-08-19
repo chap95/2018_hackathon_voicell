@@ -10,4 +10,6 @@ CarrierWave.configure do |config|
   config.fog_directory  = 'voicell'               # required
   config.fog_public     = true                                              # optional, defaults to true
   config.fog_attributes = { } # optional, defaults to {}
+  
+  config.remove_previously_stored_files_after_update = true
 end
