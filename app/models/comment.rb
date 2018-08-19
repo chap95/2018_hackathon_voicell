@@ -9,6 +9,14 @@ class Comment < ApplicationRecord
   
   #삭제기록 로그처리
   acts_as_paranoid
+  
+  #이미지 자동 삭제처리
+  before_destroy :destroy_assets
+
+  def destroy_assets
+    self.voice_uploade_file_reply.remove! if self.voice_uploade_file_reply
+    self.save!
+  end
 
   validates :body, :presence => true
   validates :user, :presence => true
