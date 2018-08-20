@@ -1,35 +1,35 @@
-<%# 경고메세지 출력 (아이디, 비밀번호 잘못 칠 시 등등...) %>
-<% if alert %>
-  <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #FF4B5C; color: white; border-radius: 0; margin-bottom: 0; border: 0">
-    <%= alert %>
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-<% elsif notice %>
-  <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #43AC6A; color: white; border-radius: 0; margin-bottom: 0; border: 0">
-    <%= notice %>
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-<% end %>
-
-<div style="margin-top: 100px;"></div>
-
 <body class="voice_bulletin">
-  <div align="center">
-    <%= form_tag searches_index_path, :method => :get do %>
-      <%= text_field_tag :search, params[:search] , class: "search_box" %>
-      <%= submit_tag "검색", :name => nil , class: "btn btn-info" %>
-    <% end %>
-  </div>
+  <%# 경고메세지 출력 (아이디, 비밀번호 잘못 칠 시 등등...) %>
+  <% if alert %>
+    <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #FF4B5C; color: white; border-radius: 0; margin-bottom: 0; border: 0">
+      <%= alert %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% elsif notice %>
+    <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #43AC6A; color: white; border-radius: 0; margin-bottom: 0; border: 0">
+      <%= notice %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div style="margin-top: 100px;"></div>
   <div class="container">
-    <% if @bulletin.title == "VOICELL" %>
+    <% if @bulletin.id == 1 %>
       <h1 style="text-align:center; padding-top:60px" class="bulletin_title">VOICELL</h1>
     <% else %>
       <h1 style="text-align:center; padding-top:60px"><%= @bulletin.title %></h1>
     <% end %>
-    <div class="hypen" id="fade-in"></div>
+    <!--<div class="hypen" id="fade-in"></div>-->
  <!--<div style="text-align:center; padding-bottom:20px"><%#= @bulletin.content %></div>-->
-    
     <!--<img src="<%#= asset_path 'cell.png' %>" style="height: 10px width: 40px">-->
+    
+    <%# 모바일에서만 보이는 검색창 %>
+    <div align="center" class="d-md-none col-12 col-sm-12">
+      <%= form_tag searches_index_path, :method => :get do %>
+        <%= text_field_tag :search, params[:search] , class: "search_box", placeholder: "제목 혹은 내용" %>
+        <%= submit_tag "검색", :name => nil , class: "btn btn-info", style: "border-radius: 0px !important; margin-left: -5px; margin-top: -3px; height: 40px;" %>
+      <% end %>
+    </div>
     
     <% if @bulletin.board_mp3_upload_permit == true %>
       <div class="row">
@@ -81,21 +81,29 @@
         
       </div>
     <% end %>
-    
-    <br>
-    <%= paginate @posts %>
-    
-      <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
-        <%= link_to '글쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "voice_btn write_posts_voice" %>
-      <% elsif (@bulletin.opt_admin_only == false) %>
-        <%= link_to '글쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "voice_btn write_posts_voice" %>
-      <% end %>
+    <div class="only_border"></div>
+      <div class="col-md-12 row posts_footer" style="line-height: 20px; margin-bottom: 50px; margin-left: 20px;">
+        <div class="d-none d-md-block col-md-4" style="margin-top: 30px;">
+          <%= form_tag searches_index_path, :method => :get do %>
+            <%= text_field_tag :search, params[:search] , class: "search_box", placeholder: "제목 혹은 내용" %>
+            <%= submit_tag "검색", :name => nil , class: "btn btn-info", style: "border-radius: 0px !important; margin-left: -5px; margin-top: -3px; height: 40px;" %>
+          <% end %>
+        </div>
       
-  </div>
-  
- 
+        <div align="center" class="col-md-4" style="margin-top: 40px;">
+          <%= paginate @posts %>
+        </div>
+        
+        <div align="right" class="col-md-4" style="margin-top: 30px; margin-left: -20px;">
+          <% if (@bulletin.opt_admin_only == true) && (current_user.has_role? :admin) %>
+            <%= link_to '글쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "voice_btn write_posts_voice" %>
+          <% elsif (@bulletin.opt_admin_only == false) %>
+            <%= link_to '글쓰기', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path) , class: "voice_btn write_posts_voice" %>
+          <% end %>
+        </div>
+      </div>  
+    </div>
 
-  
   <!-- 이 스크립트는 글자간격 넓어지게 하는 것과 밑에 줄 쳐지게 하는 제이쿼리 코드--> 
   <!--지우지 마시오 제이쿼리 작동 안함-->
   <script>

@@ -22,12 +22,11 @@
   }
   
   .index_board_row {
-    background-color: white;
-    border-bottom: 1px solid gray;
-    border-top: 1px solid gray;
-    color: black;
+    background-color: rgba(0,0,0,0.3);
+    color: white;
     padding: 10px;
   }
+  
 
   /* 글자 ellipsis (글자수 초과 시 '...' 처리) */
   .etc {
@@ -135,14 +134,12 @@
   }
   // 글쓰기 버튼 효과
   .write_posts_voice{
-    margin-top: 20px;
     text-align: center;
-    width: 20%;
+    width: 50%;
     height: 40px;
     vertical-align: middle;
     position: relative;
     display: block;
-    margin: 30px auto 0;
     padding-top: 7px;
     color: black;
     font-size: 14px;
@@ -179,6 +176,11 @@
 .voice_btn {
     border: 3px solid black;
 }
+
+.voice_btn:hover {
+  color: white;
+}
+
 .voice_btn:after {
     background: black;
     -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
@@ -242,6 +244,61 @@
   }
 
 
+// 공지사항 글쓰기 버튼
+ .all_notices_btn{
+    // z-index: 3;
+    margin-top: 20px;
+    width: 15%;
+    height: 40px;
+    position: relative;
+    display: block;
+    margin: 30px auto 0;
+    padding-top: 7px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+
+  .all_notices_btn:after, .all_notices_btn:visited:after{
+    content: "";
+    position: absolute;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    width: 150%;
+    z-index: -1;
+    -webkit-transition: all 0.75s ease 0s;
+    -moz-transition: all 0.75s ease 0s;
+    -o-transition: all 0.75s ease 0s;
+    transition: all 0.75s ease 0s;
+  }
+  .all_notices_btn:hover:after{
+      height: 450%;
+  }
+  .all_notices_btn:after{
+      background: rgba(255,255,255,0.3);
+      -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+      -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+      -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+      transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  }
+  .all_notices_btn{
+    border: 3px solid white;
+    margin-bottom: 20px;
+  }
+
+  .all_notices_btn:hover{
+    color: black;
+  }
   // 댓글 답변 CSS
   .comment_reply {
     margin-left: 15%;
@@ -383,20 +440,18 @@
   //   }
   // }
   
-  
-  
-  
-  
   // 게시판 글자 간격 넓어지게 하는 것 
   h1.bulletin_title {
   letter-spacing: 0;
   opacity: 0;
   transition: all .75s ease-out;
+  font-size: 40px;
 }
 
 h1.bulletin_title.spaced {
   opacity: 1;
   letter-spacing: 22px;
+  font-size: 40px;
 }
 
 .hypen{
@@ -415,7 +470,7 @@ h1.bulletin_title.spaced {
 #fade-in.show {
   opacity: 1;
   justify-content: center;
-  height: 4px;
+  height: 1px;
   width: 100%;
 }
 // 보이스 게시판 show 부분
@@ -433,18 +488,57 @@ h1.bulletin_title.spaced {
 
 // 공지사항 부분
 .all_notices_title{
-  color: black;
+  color: white;
+  font-family: "NanumBarunGothic" ;
+  
 }
 
 // 검색 창 데코
 .search_box{
-    border-bottom: 2px solid white;
-    border-left: 0px;
-    border-right: 0px;
-    border-top: 0px;
-    background-color: rgba(255,255,255,0.5); 
+    
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 1px solid black;
+    border-top: 2px solid black;
+    background-color: rgba(0,0,0,0); 
     height: 40px; 
-    border-radius: 15px;
-    width: 500px;
+    border-radius: 0;
+    width: 200px;
     padding-left: 13px;
+}
+
+// .search_btn{
+  
+// }
+
+// 검색결과 제목
+.search_result_title{
+  background-color: #efefef;
+  padding: 30px;
+}
+
+
+// 공지사항배경
+.notice_bg {
+  background: url('notice_bg.jpg') no-repeat center center/cover scroll;
+}
+
+.notice_row {
+  background-color: white;
+  margin-top: 1px;
+}
+
+// footer
+// .posts_footer{
+//   border-top: 1px solid black;
+//   margin-top: 30px;
+// }
+
+.index_container{
+  border-bottom: 1px solid black;
+}
+
+.only_border{
+  border-bottom: 1px solid black;
+  margin-top: 30px;
 }

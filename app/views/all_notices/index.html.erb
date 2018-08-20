@@ -1,61 +1,63 @@
-<div class="board d-none d-md-block all_notices_title">
-  <div class="container" align="center">
-    공지사항
+<body class="notice_bg">
+  <div class="board d-none d-md-block all_notices_title">
+    <div class="container" align="center">
+      <span style="border-bottom: 2px solid white; color: white;">공 지 사 항</span>
+    </div>
   </div>
-</div>
-<div class="board_mobile d-md-none all_notices_title">
-   공지사항
-</div>
-
-<%# 경고메세지 출력 (아이디, 비밀번호 잘못 칠 시 등등...) %>
-<% if alert %>
-  <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #FF4B5C; color: white; border-radius: 0; margin-bottom: 0; border: 0">
-    <%= alert %>
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-<% elsif notice %>
-  <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #43AC6A; color: white; border-radius: 0; margin-bottom: 0; border: 0">
-    <%= notice %>
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-<% end %>
-
-<div class="container" style="margin-top: 30px;">
-  <div class="row" style="margin-top: 30px;">
-    <div class="col-5 col-sm-5 col-md-7 index_board_row" align="center">제목</div>
-    <div class="col-5 col-sm-5 col-md-2 index_board_row" align="center">작성날짜</div>
-    <div class="d-none d-md-block col-md-2 index_board_row" align="center">닉네임</div>
-    <div class="d-none d-md-block col-md-1 index_board_row" align="center">조회수</div>
+  <div class="board_mobile d-md-none all_notices_title">
+     공지사항
   </div>
   
-  <% if @all_notices.empty? %>
-    <h2 class="text-center" style="margin-top: 30px;">공지를 등록해 주세요</h2>
-  <% else %>
-    <%# 모든 게시판 공지 상단노출 %>
-    <% @all_notices.each do |post| %>
-      <% if post.global_notice == true %>
-        <%= render 'all_notices/index/index_global', post: post %>
+  <%# 경고메세지 출력 (아이디, 비밀번호 잘못 칠 시 등등...) %>
+  <% if alert %>
+    <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #FF4B5C; color: white; border-radius: 0; margin-bottom: 0; border: 0">
+      <%= alert %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% elsif notice %>
+    <div class="alert alert-danger tlert-dismissible fade show text-center" style="padding: 10px; background-color: #43AC6A; color: white; border-radius: 0; margin-bottom: 0; border: 0">
+      <%= notice %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+  
+  <div class="container" style="margin-top: 30px;">
+    <div class="row" style="margin-top: 30px; index_title_board">
+      <div class="col-6 col-sm-5 col-md-7 index_board_row" align="center">제목</div>
+      <div class="col-6 col-sm-5 col-md-2 index_board_row" align="center">작성날짜</div>
+      <div class="d-none d-md-block col-md-2 index_board_row" align="center">닉네임</div>
+      <div class="d-none d-md-block col-md-1 index_board_row" align="center">조회수</div>
+    </div>
+    
+    <% if @all_notices.empty? %>
+      <h2 class="text-center" style="margin-top: 30px;">공지를 등록해 주세요</h2>
+    <% else %>
+      <%# 모든 게시판 공지 상단노출 %>
+      <% @all_notices.each do |post| %>
+        <% if post.global_notice == true %>
+          <%= render 'all_notices/index/index_global', post: post %>
+        <% end %>
+      <% end %>
+      
+      <%# 공지사항 게시판 내 상단노출 %>
+      <% @all_notices.each do |post| %>
+        <% if post.local_notice == true %>
+          <%= render 'all_notices/index/index_local', post: post %>
+        <% end %>
+      <% end %>
+      
+      <%# 일반 공지사항 게시물 %>
+      <% @all_notices.each do |post| %>
+        <%= render 'all_notices/index/index_normal', post: post %>
       <% end %>
     <% end %>
     
-    <%# 공지사항 게시판 내 상단노출 %>
-    <% @all_notices.each do |post| %>
-      <% if post.local_notice == true %>
-        <%= render 'all_notices/index/index_local', post: post %>
-      <% end %>
-    <% end %>
+    <div style="margin-top: 50px;">
+      <%= paginate @all_notices %>
+    </div>
     
-    <%# 일반 공지사항 게시물 %>
-    <% @all_notices.each do |post| %>
-      <%= render 'all_notices/index/index_normal', post: post %>
+    <% if can? :new, @all_notices %>
+      <div align="right" style="margin-top: 30px;"><%= link_to '글 쓰기', new_all_notice_path, class: "all_notices_btn" %></div>
     <% end %>
-  <% end %>
-  
-  <div style="margin-top: 50px;">
-    <%= paginate @all_notices %>
   </div>
-  
-  <% if can? :new, @all_notices %>
-    <div align="right" style="margin-top: 30px;"><%= link_to '글 쓰기', new_all_notice_path, class: 'btn btn-primary' %></div>
-  <% end %>
-</div>
+</body>
