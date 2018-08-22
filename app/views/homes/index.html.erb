@@ -4,7 +4,7 @@
 	    <!-- 첫 번째 페이지 시작 -->
 		<div class="section" id="section0">
 			<div class="intro">
-	            <div class="bg01" id="bg01">
+	            <div align="center" class="bg01" id="bg01">
 	                <div align="center">
 	                	<div class="vingle">
 	                		<div class="vingle01"></div>
@@ -18,7 +18,8 @@
 						많은 Voicer 들에게 원하는 녹음물을 받으세요<br/>
 						<div style="color:gray !important">Listener들에게 당신의 목소리를 들려주고 보상을 받으세요</div>
 					</div>
-					<%= link_to '입장하기', bulletin_posts_path(:bulletin_id => 1) , class: "gogo_btn gogo" %>
+					<%= link_to '입장하기', bulletin_posts_path(:bulletin_id => 1), class: "d-none d-md-block gogo_btn gogo", style: "width: 10%" %>
+					<%= link_to '입장하기', bulletin_posts_path(:bulletin_id => 1), class: "d-md-none gogo_btn gogo", style: "width: 40%" %>
 	            </div>
 			</div>
 		</div>

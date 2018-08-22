@@ -1,6 +1,6 @@
 /*메인의 css 입니다*/
 .bg01 {
-    background: url('main_bg001') no-repeat ;
+    background: url('/img/main_bg001') no-repeat ;
     background-position: center center;
 }    
 #font1{

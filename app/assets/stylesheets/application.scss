@@ -100,7 +100,7 @@
   .devise_info{
   	color: white;
     padding-bottom: 200px;
-    background: url('login_bg2.png') no-repeat center center/cover scroll;
+    background: url('/img/login_bg2.png') no-repeat center center/cover scroll;
     overflow-y: auto;
     margin-top: 200px;
   }
@@ -195,7 +195,6 @@
   .gogo{
     // z-index: 3;
     margin-top: 20px;
-    width: 15%;
     height: 40px;
     position: relative;
     display: block;
@@ -475,11 +474,13 @@ h1.bulletin_title.spaced {
 }
 // 보이스 게시판 show 부분
 .voice_title{
+  
   font-size: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
   font-weight: bold;
   border-bottom: 2px solid black;
+  display: block;
 }
 
 .voice_content{
@@ -515,6 +516,7 @@ h1.bulletin_title.spaced {
 .search_result_title{
   background-color: #efefef;
   padding: 30px;
+  margin-top: 10px;
 }
 
 
@@ -541,4 +543,49 @@ h1.bulletin_title.spaced {
 .only_border{
   border-bottom: 1px solid black;
   margin-top: 30px;
+}
+
+/* fadeInUp(Faid-in-up) 애니메이션 효과 */
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+/* Faid-in 애니메이션 효과 종료 */
+
+.voice_show{
+  background-color: white;
 }

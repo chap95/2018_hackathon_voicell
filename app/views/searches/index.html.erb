@@ -1,23 +1,30 @@
 <!-- Typed.js 문자 리스트 -->
 <div class="container" style="margin-top: 100px; margin-bottom: 20px; padding: 30px;">
-    <% @search_result.first(1).each do |x| %>
-        <div id="search_result">
-            <p><%= x.title %></p>
-        </div>
-        <h2><span id="typed" style="color: gray;"></span> 검색결과</h2>
-    <% end %>
+    <div id="search_result">
+        <p>
+            <%= link_to params[:search], request.referrer %>
+        </p>
+    </div>
+    <h2><span id="typed" style="color: gray;"></span> 검색결과</h2>
 </div>
 <hr/>
 <div class="container" style="margin-top: 50px;">
     <% if @search_result.empty? %>
         <h2>검색결과가 없음</h2>
     <% else %>
-    <div class="search_result_title">
+    <div>
         <% @search_result.each do |post| %>
-            <%= link_to bulletin_post_path(post.bulletin, post) do %>
-                <h2><%= content_tag(:div, post.title, class: "etc", style: "border-bottom: 1px solid black; padding: 10px;") %></h2>
-                <%= content_tag(:div, truncate( raw( sanitize(post.content, :tags => %w(table tr td), :attributes => %w(id class style) ) ), :length => 70, :omission => "..."), class: "etc") %>
-            <% end %>
+            <div class="search_result_title animated animatedFadeInUp fadeInUp">
+                <%= link_to bulletin_post_path(post.bulletin, post) do %>
+                    <h2><%= content_tag(:div, post.title, class: "etc", style: "border-bottom: 1px solid black; padding: 10px;") %></h2>
+                    <%= content_tag(:div, truncate( raw( sanitize(post.content, :tags => %w(table tr td), :attributes => %w(id class style) ) ), :length => 70, :omission => "..."), class: "etc") %>
+                    <div align="right" style="margin-top: 20px;">
+                        <%= content_tag(:small, " #{post.user != nil ? post.user.nickname : post.user_nickname }", class: "fas fa-user") %>
+                        <%= content_tag(:small, " | #{post.bulletin.title}") %>
+                        <%= content_tag(:small, " | #{post.created_at.strftime('%Y-%m-%d %H:%M')}") %>
+                    </div>
+                <% end %>
+            </div>
         <% end %>
     <% end %>
     <div>

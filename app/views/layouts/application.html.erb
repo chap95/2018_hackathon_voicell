@@ -136,7 +136,7 @@
               </ul>
             </li>
             
-            <li class="d-none d-md-block menu-has-children"><span style="color: white;"><a><i class="far fa-id-card"></i> <%= current_user.nickname.truncate(10, omission: '...') %></a></span>
+            <li class="d-none d-md-block menu-has-children"><span style="color: white;"><a><%= content_tag(:span, " #{current_user.nickname.truncate(10, omission: '...')}", class: "fas fa-id-card") %></a></span>
               <ul>
                 <li><%= link_to "마이 페이지", "/users/page/#{current_user.id}" %></li>
                 <li><%= link_to "개인정보 수정", edit_user_registration_path(current_user.id) %></li>

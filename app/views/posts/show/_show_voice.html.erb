@@ -1,6 +1,7 @@
-<div align="center" class="voice_title">
-    <%= @post.title%>
-</div>
+    <h3 class="voice_title">
+        <%= @post.title %> | <%= content_tag(:span, @post.created_at.strftime('%Y-%m-%d %H:%M'), style: "font-size:15px; font-weight:normal; text-align:right !important") %>
+    </h3>
+
 
 <div class="voice_record">
     <% if @post.voice_uploade_file.present? %>
