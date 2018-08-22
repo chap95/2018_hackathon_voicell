@@ -2,8 +2,8 @@
     <%= @post.title %>
 </h3>
 <div class="row">
-    <div class="col-md-7" style='padding-top:10px; font-size:13px !important'><i class="fas fa-user"></i> <%= @post.user != nil ? current_user.nickname : @post.user_nickname %></div>
-    <%= content_tag(:small, " #{@post.created_at.strftime('%Y-%m-%d %H:%M')}", class: "far fa-clock col-md-5", align: "right", style: "padding-top:15px") %>
+    <div class="col-6 col-sm-4 col-md-7 etc" style='padding-top:10px; font-size:13px !important'><i class="fas fa-user"></i> <%= @post.user != nil ? current_user.nickname : @post.user_nickname %></div>
+    <%= content_tag(:small, " #{@post.created_at.strftime('%Y-%m-%d %H:%M')}", class: "far fa-clock col-6 col-sm-8 col-md-5", align: "right", style: "padding-top:15px") %>
 </div>
 <hr/>
 <% if (@post.left_time.strftime('%Y-%m-%d') == Time.zone.now.strftime('%Y-%m-%d')) || (@post.left_time < Time.now) %>
@@ -12,7 +12,7 @@
     <div style="background-color: #b8c5ff; margin-top: -20px; height: 100%; padding: 10px;">
 <% end %>
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-12 col-sm-7 col-md-7">
             <i class="fas fa-stopwatch"></i>
             마감기간 : <%= @post.left_time.strftime('%Y-%m-%d') %> 까지
             <% if @post.left_time.strftime('%Y-%m-%d') == Time.zone.now.strftime('%Y-%m-%d') %>
@@ -25,8 +25,15 @@
                 <%= content_tag(:span, "(#{time_ago_in_words(@post.left_time)} 남음)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "") %>
             <% end %>
         </div>
-        <div align="right" class="col-md-5" style="margin-left: -20px;">
-            <i class="fas fa-dollar-sign"></i> 가격 : <%= @post.price %>원
+        <div align="right" class="d-none d-md-block col-md-5" style="margin-left: -20px;">
+            <% if (@post.left_time.strftime('%Y-%m-%d') >= Time.zone.now.strftime('%Y-%m-%d')) %>
+                <i class="fas fa-dollar-sign"></i> 가격 : <%= @post.price %>원
+            <% end %>
+        </div>
+        <div align="left" class="d-md-none col-12 col-sm-5">
+            <% if (@post.left_time.strftime('%Y-%m-%d') >= Time.zone.now.strftime('%Y-%m-%d')) %>
+                <i class="fas fa-dollar-sign"></i> 가격 : <%= @post.price %>원
+            <% end %>
         </div>
     </div>
 </div>

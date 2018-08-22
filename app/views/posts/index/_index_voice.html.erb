@@ -9,15 +9,17 @@
         <h5 class="card-title"><%= content_tag(:div, post.title, class: "post_title etc", style: post.deleted? ? "color: red;" : "") %></h5>
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6" style="margin-top: -3px;">
-                <small>
-                    <% if post.price.to_i/ 10000 >= 1 && post.price.to_i/10000 < 10  %>
-                        약 <%= post.price/10000 %>만원 대
-                    <% elsif post.price.to_i/ 100000 >= 1 && post.price.to_i/100000 < 10 %>
-                        약 <%= post.price/100000 %>0만원 대
-                    <% elsif post.price.to_i/ 1000000 >= 1 %>
-                        약 <%= post.price/1000000 %>00만원 이상
-                    <% end %>
-                </small>
+                <% if (post.left_time.strftime('%Y-%m-%d') >= Time.zone.now.strftime('%Y-%m-%d')) %>
+                    <small>
+                        <% if post.price.to_i/ 10000 >= 1 && post.price.to_i/10000 < 10  %>
+                            약 <%= post.price/10000 %>만원 대
+                        <% elsif post.price.to_i/ 100000 >= 1 && post.price.to_i/100000 < 10 %>
+                            약 <%= post.price/100000 %>0만원 대
+                        <% elsif post.price.to_i/ 1000000 >= 1 %>
+                            약 <%= post.price/1000000 %>00만원 이상
+                        <% end %>
+                    </small>
+                <% end %>
             </div>
             <div class="col-12 col-sm-12 col-md-6">
                 <% if post.left_time.strftime('%Y-%m-%d') == Time.zone.now.strftime('%Y-%m-%d') %>
