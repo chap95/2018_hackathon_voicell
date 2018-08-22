@@ -11,17 +11,24 @@
 <% else %>
     <div style="background-color: #b8c5ff; margin-top: -20px; height: 100%; padding: 10px;">
 <% end %>
-    <i class="fas fa-stopwatch"></i>
-    마감기간 : <%= @post.left_time.strftime('%Y-%m-%d') %> 까지
-    <% if @post.left_time.strftime('%Y-%m-%d') == Time.zone.now.strftime('%Y-%m-%d') %>
-        <%= content_tag(:span, "(오늘까지)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "color: red;") %>
-    <% elsif @post.left_time < Time.now %>
-        <%= content_tag(:span, "(기간마감)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "color: red;") %>
-    <% elsif @post.left_time - Time.now <= 48.hours %>
-        <%= content_tag(:span, "(1일 남음)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "") %>
-    <% else %>
-        <%= content_tag(:span, "(#{time_ago_in_words(@post.left_time)} 남음)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "") %>
-    <% end %>
+    <div class="row">
+        <div class="col-md-7">
+            <i class="fas fa-stopwatch"></i>
+            마감기간 : <%= @post.left_time.strftime('%Y-%m-%d') %> 까지
+            <% if @post.left_time.strftime('%Y-%m-%d') == Time.zone.now.strftime('%Y-%m-%d') %>
+                <%= content_tag(:span, "(오늘까지)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "color: red;") %>
+            <% elsif @post.left_time < Time.now %>
+                <%= content_tag(:span, "(기간마감)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "color: red;") %>
+            <% elsif @post.left_time - Time.now <= 48.hours %>
+                <%= content_tag(:span, "(1일 남음)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "") %>
+            <% else %>
+                <%= content_tag(:span, "(#{time_ago_in_words(@post.left_time)} 남음)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "") %>
+            <% end %>
+        </div>
+        <div align="right" class="col-md-5" style="margin-left: -20px;">
+            <i class="fas fa-dollar-sign"></i> 가격 : <%= @post.price %>원
+        </div>
+    </div>
 </div>
 
 <% if @post.voice_uploade_file.present? %>

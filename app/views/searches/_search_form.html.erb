@@ -1,0 +1,12 @@
+<table style="border-collapse: collapse;">
+    <tr>
+        <%= form_tag searches_index_path, :method => :get do %>
+            <td style="border: 2px solid black">
+                <%= text_field_tag :search, params[:search] , class: "search_box", placeholder: "제목 혹은 내용" %>
+            </td>
+            <td style="border: 2px solid black; background-color: black;">
+                <%= submit_tag "검색", :name => nil , class: "btn btn-info", style: "width: 70px; border-radius: 0px !important;" %>
+            </td>
+        <% end %>
+    </tr>
+</table>

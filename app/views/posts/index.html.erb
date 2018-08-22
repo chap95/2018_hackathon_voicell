@@ -26,42 +26,37 @@
     
     <%# 모바일에서만 보이는 검색창 %>
     <div align="center" class="d-md-none col-12 col-sm-12">
-      <%= form_tag searches_index_path, :method => :get do %>
-        <%= text_field_tag :search, params[:search] , class: "search_box", placeholder: "제목 혹은 내용" %>
-        <%= submit_tag "검색", :name => nil , class: "btn btn-info", style: "border-radius: 0px !important; margin-left: -5px; margin-top: -3px; height: 40px;" %>
-      <% end %>
+      <%= render 'searches/search_form' %>
     </div>
     
     <% if @bulletin.board_mp3_upload_permit == true %>
-      <div class="row justify-content-center" style="margin-left: 0px;">
-        
+      <div class="row" style="padding-left: 10%; padding-right: 10%">
         <% if current_user.has_role? :admin %>
-          <%# 운영자인 경우 삭제된 게시글 열람 가능 %>
+          <%# 보이셀 게시판 : 운영자인 경우 삭제된 게시글 열람 가능 %>
           <% @posts_deleted.each do |post| %>
-            <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: 0px; margin-right: 30px; margin-top: 20px;" do %>
+            <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-top: 20px;" do %>
               <div class="col-md-12 col-sm-6 col-md-4">
                 <%= render 'posts/index/index_voice', post: post %>
               </div>
             <% end %>
           <% end %>
         <% else %>  
-          <%# 일반유저 게시판 열람 %>
+          <%# 보이셀 게시판 : 일반유저 게시판 열람 %>
           <% @posts.each do |post| %>
-            <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: 0px; margin-right: 30px; margin-top: 20px;" do %>
+            <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-top: 20px;" do %>
               <div class="col-md-12 col-sm-6 col-md-4">
                 <%= render 'posts/index/index_voice', post: post %>
               </div>
             <% end %>
           <% end %>
         <% end %>
-        
       </div>
     <% else %>
     
       <div class="row">
         
         <% if current_user.has_role? :admin %>
-          <%# 운영자인 경우 삭제된 게시글 열람 가능 %>
+          <%# 일반 게시판 : 운영자인 경우 삭제된 게시글 열람 가능 %>
           <% @posts_deleted.each do |post| %>
             <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: 50px; margin-right: 30px; margin-top: 20px;" do %>
               <div class="col-md-12 col-sm-6 col-md-4">
@@ -70,7 +65,7 @@
             <% end %>
           <% end %>
         <% else %>  
-          <%# 일반유저 게시판 열람 %>
+          <%# 일반 게시판 : 일반유저 게시판 열람 %>
           <% @posts.each do |post| %>
             <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: 50px; margin-right: 30px; margin-top: 20px;" do %>
               <div class="col-md-12 col-sm-6 col-md-4">
@@ -85,10 +80,7 @@
     <div class="only_border"></div>
       <div class="col-md-12 row posts_footer" style="line-height: 20px; margin-bottom: 50px; margin-left: 20px;">
         <div class="d-none d-md-block col-md-4" style="margin-top: 30px;">
-          <%= form_tag searches_index_path, :method => :get do %>
-            <%= text_field_tag :search, params[:search] , class: "search_box", placeholder: "제목 혹은 내용" %>
-            <%= submit_tag "검색", :name => nil , class: "btn btn-info", style: "border-radius: 0px !important; margin-left: -5px; margin-top: -3px; height: 40px;" %>
-          <% end %>
+          <%= render 'searches/search_form' %>
         </div>
       
         <div align="center" class="col-md-4" style="margin-top: 40px;">

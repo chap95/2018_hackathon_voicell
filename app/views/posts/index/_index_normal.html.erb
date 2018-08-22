@@ -7,7 +7,6 @@
     <div class="card-body">
         <h5 class="card-title"><%= content_tag(:div, post.title, class: "post_title etc", style: post.deleted? ? "color: red;" : "") %></h5>
         <div align="right">
-            <%= content_tag(:small, " #{time_ago_in_words(post.left_time)}", class: "fas fa-stopwatch post_title etc", style: post.deleted? ? "color: red;" : "") %>
             <%= content_tag(:small, " #{post.comment_threads.count}", class: "fas fa-comment-dots post_title etc", style: post.deleted? ? "color: red;" : "") %>
         </div>
     </div>

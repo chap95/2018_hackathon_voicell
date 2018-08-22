@@ -99,16 +99,28 @@
         <nav id="nav-menu-container">
           <ul class="nav-menu" style="margin-right: 100px;">
             <% if user_signed_in? %>
-              <li class="d-md-none menu-has-children"><span style="color: white;"><a><%= content_tag(:span, " #{current_user.nickname.truncate(10, omission: '...')}", class: "fas fa-id-card") %></a></span>
-              <ul>
-                <li><%= link_to "마이 페이지", "/users/page/#{current_user.id}" %></li>
-                <li><%= link_to "개인정보 수정", edit_user_registration_path(current_user.id) %></li>
-                <li><%= link_to "로그아웃", destroy_user_session_path, method: "DELETE" %></li>
-                <% if current_user.admin? %>
-                  <li><%= link_to "관리자 메뉴", rails_admin_path %></li>
+              <li class="d-md-none menu-has-children"><span style="color: white;"><a href="javascript:void(0);"><%= content_tag(:span, " #{current_user.nickname.truncate(10, omission: '...')}", class: "fas fa-id-card") %></a></span>
+                <ul>
+                  <li><%= link_to "마이 페이지", "/users/page/#{current_user.id}" %></li>
+                  <li><%= link_to "개인정보 수정", edit_user_registration_path(current_user.id) %></li>
+                  <li><%= link_to "로그아웃", destroy_user_session_path, method: "DELETE" %></li>
+                  <% if current_user.admin? %>
+                    <li><%= link_to "관리자 메뉴", rails_admin_path %></li>
+                  <% end %>
+                </ul>
+              </li>
+              
+              <li class="d-md-none menu-has-children">
+                <% if current_user.new_notifications.unread_by(current_user).count > 0 %>
+                  <a style="color: yellow;" href="javascript:void(0);"> <%= content_tag(:span, " #{current_user.new_notifications.unread_by(current_user).count}", class: "fas fa-bell") %></a></span>
+                <% else %>
+                  <a style="color: white;" href="javascript:void(0);"> <%= content_tag(:span, " 0", class: "fas fa-bell") %></a></span>
                 <% end %>
-              </ul>
-            </li>
+                <ul>
+                  <li><%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %></li>
+                  <li><%= link_to '<b>모든 알림 지우기</b>'.html_safe, new_notifications_read_all_path %></li>
+                </ul>
+              </li>
             <% else %>
               <li class="d-md-none"><%= link_to "로그인", new_user_session_path, style: "color: #b798b6" %></li>
               <li class="d-md-none"><%= link_to "회원가입", new_user_registration_path, style: "color: #b798b6" %></li>
@@ -116,7 +128,7 @@
             <% end %>
             <li><a href="/all_notices">공지사항</a></li>
             <li><%= link_to "카테고리 설정", bulletins_path %></a></li>
-            <li class="menu-has-children"><span style="color: white;"><a>게시판</a></span>
+            <li class="menu-has-children"><span style="color: white;"><a href="javascript:void(0);">게시판</a></span>
               <ul>
                 <% Bulletin.all.each do |x| %>
                   <li><%= link_to x.title, bulletin_posts_path(x) %></li>
@@ -126,9 +138,9 @@
             <% if user_signed_in? %>
             <li class="d-none d-md-block menu-has-children">
               <% if current_user.new_notifications.unread_by(current_user).count > 0 %>
-                <span style="color: yellow;"><a><i class="fas fa-bell"></i> <%= current_user.new_notifications.unread_by(current_user).count %></a></span>
+                <span style="color: yellow;"><a href="javascript:void(0);"><i class="fas fa-bell"></i> <%= current_user.new_notifications.unread_by(current_user).count %></a></span>
               <% else %>
-                <span style="color: white;"><a><i class="fas fa-bell"></i> 0</a></span>
+                <span style="color: white;"><a href="javascript:void(0);"><i class="fas fa-bell"></i> 0</a></span>
               <% end %>
               <ul>
                 <li><%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %></li>
@@ -136,7 +148,7 @@
               </ul>
             </li>
             
-            <li class="d-none d-md-block menu-has-children"><span style="color: white;"><a><%= content_tag(:span, " #{current_user.nickname.truncate(10, omission: '...')}", class: "fas fa-id-card") %></a></span>
+            <li class="d-none d-md-block menu-has-children"><span style="color: white;"><a href="javascript:void(0);"><%= content_tag(:span, " #{current_user.nickname.truncate(10, omission: '...')}", class: "fas fa-id-card") %></a></span>
               <ul>
                 <li><%= link_to "마이 페이지", "/users/page/#{current_user.id}" %></li>
                 <li><%= link_to "개인정보 수정", edit_user_registration_path(current_user.id) %></li>
@@ -159,7 +171,6 @@
     <%= yield %>
     
     <!-- WOW 효과 -->
-    <link rel="stylesheet" type="text/css" href="/css/wow.css" />
     <script>
       new WOW().init();
     </script>

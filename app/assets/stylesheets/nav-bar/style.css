@@ -437,6 +437,7 @@ a:hover, a:active, a:focus {
 
 #mobile-nav ul li li {
   padding-left: 30px;
+  width: 140%;
 }
 
 #mobile-nav ul .menu-has-children i {

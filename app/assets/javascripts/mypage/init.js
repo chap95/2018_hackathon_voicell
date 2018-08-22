@@ -1,3 +1,4 @@
+/*
 $(document).ready(function() {
 	$('#fullpage').fullpage({
 		anchors: ['myinfo', 'board', 'reply'],
@@ -5,3 +6,4 @@ $(document).ready(function() {
 		responsiveHeight: 600
 	});
 });
+*/
