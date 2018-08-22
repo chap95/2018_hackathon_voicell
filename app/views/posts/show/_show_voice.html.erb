@@ -1,6 +1,9 @@
     <h3 class="voice_title">
         <%= @post.title %> | <%= content_tag(:span, @post.created_at.strftime('%Y-%m-%d %H:%M'), style: "font-size:15px; font-weight:normal; text-align:right !important") %>
     </h3>
+     <%= @post.user != nil ? current_user.nickname : @post.user_nickname %>
+     </hr>
+     </hr>
 
 
 <div class="voice_record">
