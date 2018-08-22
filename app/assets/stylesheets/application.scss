@@ -242,6 +242,9 @@
     margin-bottom: 20px;
   }
 
+  .gogo:hover{
+    color: white;
+  }
 
 // 공지사항 글쓰기 버튼
  .all_notices_btn{
@@ -586,6 +589,13 @@ h1.bulletin_title.spaced {
 }
 /* Faid-in 애니메이션 효과 종료 */
 
-.voice_show{
-  background-color: white;
+// 카드 이미지 커버 부분
+.card-img-cover{
+  position: absolute;
+  transition: all 1s;
+}
+
+.card-img-cover:hover{
+  opacity: 0;
+  transition: all 1s;
 }

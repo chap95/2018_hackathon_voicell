@@ -100,6 +100,6 @@ class PostsController < ApplicationController
     params[:post][:user_id] = current_user.id
     params[:post][:user_nickname] = current_user.nickname
     # DB에 새 Attribute를 추가하더라도, 아랫 줄에 허용을 안해주면 내용 update가 안됨.
-    params.require(:post).permit(:title, :content, :user_id, :user_nickname, :voice_uploade_file, :price, :left_time)
+    params.require(:post).permit(:title, :content, :user_id, :user_nickname, :voice_uploade_file, :price, :left_time, :thumnail_image)
   end
 end

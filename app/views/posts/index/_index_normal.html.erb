@@ -1,6 +1,14 @@
 <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="<%= asset_path 'vc_thumb01.png' %>" style="width: 100%; height: 169px;">
+    <% if post.thumnail_image.present? %>
+        <img class="card-img-top" src="<%= post.thumnail_image %>" style="width: 100%; height: 159px;">
+    <% else %>
+        <img class="card-img-top" src="/img/vc_thumb01.png" style="width: 100%; height: 159px;">
+    <% end %>
     <div class="card-body">
-    <h5 class="card-title"><%= content_tag(:div, post.title, class: "post_title", style: post.deleted? ? "color: red;" : "") %></h5>
+        <h5 class="card-title"><%= content_tag(:div, post.title, class: "post_title etc", style: post.deleted? ? "color: red;" : "") %></h5>
+        <div align="right">
+            <%= content_tag(:small, " #{time_ago_in_words(post.left_time)}", class: "fas fa-stopwatch post_title etc", style: post.deleted? ? "color: red;" : "") %>
+            <%= content_tag(:small, " #{post.comment_threads.count}", class: "fas fa-comment-dots post_title etc", style: post.deleted? ? "color: red;" : "") %>
+        </div>
     </div>
 </div>

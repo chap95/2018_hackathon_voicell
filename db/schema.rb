@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20180815143609) do
     t.string "title"
     t.text "content"
     t.string "user_nickname"
+    t.string "thumnail_image"
     t.string "voice_uploade_file"
     t.integer "price"
     t.datetime "left_time"

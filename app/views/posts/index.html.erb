@@ -15,7 +15,8 @@
   <div style="margin-top: 100px;"></div>
   <div class="container">
     <% if @bulletin.id == 1 %>
-      <h1 style="text-align:center; padding-top:60px" class="bulletin_title">VOICELL</h1>
+      <h1 style="text-align:center; padding-top:60px ; padding-bottom:30px;" class="bulletin_title">VOICELL</h1>
+      
     <% else %>
       <h1 style="text-align:center; padding-top:60px"><%= @bulletin.title %></h1>
     <% end %>
@@ -32,12 +33,12 @@
     </div>
     
     <% if @bulletin.board_mp3_upload_permit == true %>
-      <div class="row">
+      <div class="row justify-content-center" style="margin-left: 0px;">
         
         <% if current_user.has_role? :admin %>
           <%# 운영자인 경우 삭제된 게시글 열람 가능 %>
           <% @posts_deleted.each do |post| %>
-            <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: 50px; margin-right: 30px; margin-top: 20px;" do %>
+            <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: 0px; margin-right: 30px; margin-top: 20px;" do %>
               <div class="col-md-12 col-sm-6 col-md-4">
                 <%= render 'posts/index/index_voice', post: post %>
               </div>
@@ -46,7 +47,7 @@
         <% else %>  
           <%# 일반유저 게시판 열람 %>
           <% @posts.each do |post| %>
-            <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: 50px; margin-right: 30px; margin-top: 20px;" do %>
+            <%= link_to (@bulletin.present? ? [post.bulletin, post] : post), style: "margin-left: 0px; margin-right: 30px; margin-top: 20px;" do %>
               <div class="col-md-12 col-sm-6 col-md-4">
                 <%= render 'posts/index/index_voice', post: post %>
               </div>

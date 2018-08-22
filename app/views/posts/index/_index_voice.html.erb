@@ -1,9 +1,23 @@
 <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="<%= asset_path 'vc_thumb01.png' %>" style="width: 100%; height: 169px;">
+    <% if post.thumnail_image.present? %>
+        <img class="card-img-top" src="<%= post.thumnail_image %>" style="width: 100%; height: 159px;">
+        <img class="card-img-cover" src="/img/vc_thumb02.png" style="width: 100%; height:159px;">
+    <% else %>
+        <img class="card-img-top" src="/img/vc_thumb01.png" style="width: 100%; height: 159px;">
+    <% end %>
     <div class="card-body">
-    <h5 class="card-title"><%= content_tag(:div, post.title, class: "post_title etc", style: post.deleted? ? "color: red;" : "") %></h5>
-    <p style="font-size:10px !important; text-align:right !important; margin-top:-10px !important">댓글 <%= post.comment_threads.count %></p>
+        <h5 class="card-title"><%= content_tag(:div, post.title, class: "post_title etc", style: post.deleted? ? "color: red;" : "") %></h5>
+        <div align="right">
+            <% if post.left_time.strftime('%Y-%m-%d') == Time.zone.now.strftime('%Y-%m-%d') %>
+                <%= content_tag(:small, " 오늘까지", class: "fas fa-stopwatch post_title etc", style: post.deleted? ? "color: red;" : "color: red;") %>
+            <% elsif post.left_time < Time.now %>
+                <%= content_tag(:small, " 기간마감", class: "fas fa-stopwatch post_title etc", style: post.deleted? ? "color: red;" : "color: red;") %>
+            <% elsif post.left_time - Time.now <= 48.hours %>
+                <%= content_tag(:small, " 1일 남음", class: "fas fa-stopwatch post_title etc", style: post.deleted? ? "color: red;" : "") %>
+            <% else %>
+                <%= content_tag(:small, " #{time_ago_in_words(post.left_time)} 남음", class: "fas fa-stopwatch post_title etc", style: post.deleted? ? "color: red;" : "") %>
+            <% end %>
+            <%= content_tag(:small, " #{post.comment_threads.count}", class: "fas fa-comment-dots post_title etc", style: post.deleted? ? "color: red; margin-left: 10px;" : "margin-left: 10px;") %>
+        </div>
     </div>
 </div>
-
-

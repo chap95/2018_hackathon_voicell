@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
     mount_uploader :voice_uploade_file, VoiceFileUploader
+    mount_uploader :thumnail_image, ImageUploader
     
     belongs_to :bulletin
     belongs_to :user

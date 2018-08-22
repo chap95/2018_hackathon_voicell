@@ -8,7 +8,11 @@
         <%= devise_error_messages! %>
       </div>
       
-      <%= image_tag (current_user.profile_picture), class: "rounded-circle", align: "center", style: "margin-bottom: 50px; width: 150px; height: 150px;" %>
+      <% if current_user.profile_picture.present? %>
+				<%= image_tag (current_user.profile_picture), class: "rounded-circle", align: "center", style: "margin-bottom: 50px; width: 150px; height: 150px;" %>
+			<% else %>
+			  <%= image_tag ("/img/profile_normal2.png"), class: "rounded-circle", align: "center", style: "margin-bottom: 50px; width: 150px; height: 150px;" %>
+			<% end %>
       
       <div class="field">
         <div>프로필 사진(선택옵션, 3MB 이하)</div>

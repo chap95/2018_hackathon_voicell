@@ -10,7 +10,7 @@
             <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
             <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
             <%= f.hidden_field :comment_id, value: comment.id %>
-            <div class="field form-group">
+            <div class="field form-group"  style="margin-top: 20px;">
               <%= f.hidden_field :nickname, value: current_user.email, required: "true" %>
               <%= f.text_area :body, class: 'form-control' %>
             </div>

@@ -1,22 +1,32 @@
-    <h3 class="voice_title">
-        <%= @post.title %> | <%= content_tag(:span, @post.created_at.strftime('%Y-%m-%d %H:%M'), style: "font-size:15px; font-weight:normal; text-align:right !important") %>
-    </h3>
-     <%= @post.user != nil ? current_user.nickname : @post.user_nickname %>
-     </hr>
-     </hr>
-
-
-<div class="voice_record">
-    <% if @post.voice_uploade_file.present? %>
-    <strong>보이스(mp3):</strong>
-    <!-- 오디오 스킨 -->
-    <%# http://www.schillmania.com/projects/soundmanager2/doc/getstarted/#intro %>
-    <div> <!-- float is just for this demo layout, you don't need it. -->
-        <div class="ui360"><a href="<%= @post.voice_uploade_file %>"></a></div>
-    </div>
-    <!-- 오디오 스킨 -->
+<h3 class="voice_title">
+    <%= @post.title %>
+</h3>
+<div class="row">
+    <div class="col-md-7" style='padding-top:10px; font-size:13px !important'><i class="fas fa-user"></i> <%= @post.user != nil ? current_user.nickname : @post.user_nickname %></div>
+    <%= content_tag(:small, " #{@post.created_at.strftime('%Y-%m-%d %H:%M')}", class: "far fa-clock col-md-5", align: "right", style: "padding-top:15px") %>
+</div>
+<hr/>
+<% if (@post.left_time.strftime('%Y-%m-%d') == Time.zone.now.strftime('%Y-%m-%d')) || (@post.left_time < Time.now) %>
+    <div style="background-color: #ffb2b2; margin-top: -20px; height: 100%; padding: 10px;">
+<% else %>
+    <div style="background-color: #b8c5ff; margin-top: -20px; height: 100%; padding: 10px;">
+<% end %>
+    <i class="fas fa-stopwatch"></i>
+    마감기간 : <%= @post.left_time.strftime('%Y-%m-%d') %> 까지
+    <% if @post.left_time.strftime('%Y-%m-%d') == Time.zone.now.strftime('%Y-%m-%d') %>
+        <%= content_tag(:span, "(오늘까지)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "color: red;") %>
+    <% elsif @post.left_time < Time.now %>
+        <%= content_tag(:span, "(기간마감)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "color: red;") %>
+    <% elsif @post.left_time - Time.now <= 48.hours %>
+        <%= content_tag(:span, "(1일 남음)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "") %>
+    <% else %>
+        <%= content_tag(:span, "(#{time_ago_in_words(@post.left_time)} 남음)", class: "post_title etc", style: @post.deleted? ? "color: red;" : "") %>
     <% end %>
 </div>
+
+<% if @post.voice_uploade_file.present? %>
+    <%= render 'posts/post_music_play', post: @post %>
+<% end %>
 
 <div class="voice_content">
     <%= content_tag(:div, @post.content.html_safe, :class => "panel-body") %>

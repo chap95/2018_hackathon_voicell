@@ -1,10 +1,26 @@
 <%= form_with(model: @bulletin.present? ? [@post.bulletin, @post] : @post, local: true) do |f| %>
   <div class="field" style="margin-top: 30px;">
     <div class="row">
-    <div class="col-3 col-sm-2 col-md-1"><%= f.label :"제목" %></div>
-    <div class="col-9 col-sm-10 col-md-11"><%= f.text_field :title, class: "input_noborder", autocomplete: "off" %></div>
+      <div align="right" class="col-4 col-sm-2 col-md-2"><span style="color: red;">*</span> <%= f.label :"제목" %></div>
+      <div class="col-8 col-sm-10 col-md-10"><%= f.text_field :title, class: "input_noborder", autocomplete: "off" %></div>
     </div>
   </div>
+  
+  <div class="field">
+    <div class="row">
+      <div align="right" class="col-4 col-sm-2 col-md-2"><%= f.label :"썸네일" %></div>
+      <div class="col-8 col-sm-10 col-md-10"><%= f.file_field :thumnail_image %></div>
+    </div>
+  </div>
+  
+  <% if @bulletin.board_mp3_upload_permit == true %>
+  <div class="field">
+    <div class="row">
+      <div align="right" class="col-4 col-sm-2 col-md-2"><span style="color: red;">*</span> <%= f.label :"마감기한" %></div>
+      <div class="col-8 col-sm-10 col-md-10"><%= f.date_select :left_time, :start_year => Time.now.year, :value => Time.now.strftime("%Y-%m-%d") %></div>
+    </div>
+  </div>
+  <% end %>
 
   <div class="field" style="margin-top: 10px;">
     <%= tinymce :language => "en" %>
@@ -16,7 +32,7 @@
     <div class="field" style="margin-top: 20px; background-color: #e4f2ff; padding: 10px;">
       <div class="row">
         <div class="col-4 col-sm-2 col-md-2"><b>파일 업로드</b></div>
-        <div class="col-8 col-sm-10 col-md-10"><%= f.file_field :voice_uploade_file, accept: 'audio/mp3,audio/m4a' %></div>
+        <div class="col-8 col-sm-10 col-md-10"><%= f.file_field :voice_uploade_file %></div>
         <small class="col-12 col-sm-12 col-md-12">
           <hr/>
           <span style="color: gray; font-weight: bold"><i class="fas fa-headset"></i> 유의사항</span><br/>
