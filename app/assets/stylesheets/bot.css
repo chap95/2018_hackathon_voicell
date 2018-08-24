@@ -2,6 +2,8 @@
 .bg01 {
     background: url('/img/main_bg001.png') no-repeat ;
     background-position: center center;
+    padding-bottom: 70px;
+    margin-top: -10px;
 }    
 #font1{
     padding-top: 250px;
