@@ -3,7 +3,7 @@ class ConversationsController < ApplicationController
         redirect_to action: "create", user_id: user_id
     end
     def create
-        @conversation = Conversation.get(current_user.id, params[:user_id])
+        @conversation = Conversation.get(current_user.nickname, params[:user_id])
         add_to_conversations unless conversated?
         respond_to do |format|
             format.js

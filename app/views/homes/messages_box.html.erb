@@ -5,7 +5,7 @@
         <h3>쪽지함</h3>
         <ul id="conversations-list">
             <% @conversations.each do |conversation| %>
-              <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+              <%= render 'conversations/conversation', conversation: conversation, user: current_user.nickname %>
           <% end %>
         </ul>
       </div>
