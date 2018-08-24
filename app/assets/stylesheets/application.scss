@@ -653,7 +653,7 @@ h1.bulletin_title.spaced {
 
 // 메세지 내용 부분
 .msg_con_content{
-  background-color: rgba(50,0,120,0.2);
+  background-color: rgba(132,148,234,1);
   list-style-type: none;
 }
 
@@ -693,4 +693,8 @@ h1.bulletin_title.spaced {
 .msg_btn_area{
   vertical-align: middle;
   display: flex;
+}
+
+.msg_body{
+  background-image: url("/assets/gradient_violet02.jpeg");
 }

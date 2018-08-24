@@ -40,7 +40,9 @@
           <hr style="border: 1px solid white;" class="d-md-none"/>
         <% end %>
         <li><a href="/all_notices">공지사항</a></li>
-        <li><%= link_to "카테고리 설정", bulletins_path %></a></li>
+        <% if user_signed_in? && current_user.admin? %>
+          <li><%= link_to "카테고리 설정", bulletins_path %></a></li>
+        <% end %>
         <li class="menu-has-children"><span style="color: white;"><a href="javascript:void(0);">게시판</a></span>
           <ul>
             <% Bulletin.all.each do |x| %>

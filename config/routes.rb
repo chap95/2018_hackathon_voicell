@@ -36,8 +36,6 @@ Rails.application.routes.draw do
   get '/new_notifications/read_all' => 'new_notifications#read_all'
   # 알림
   resources :new_notifications
-
-  get 'conversations.:user_id' => 'conversations#create'
   
   devise_for :users
   
@@ -47,6 +45,8 @@ Rails.application.routes.draw do
     end
     resources :messages, only: [:create]
   end
+  
+  get '/conversations.:user_id' => 'conversations#create'
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # 이 줄 아래로는 내용 쓰지 마시오 (devise랑 코드 혼선 발생 우려) 

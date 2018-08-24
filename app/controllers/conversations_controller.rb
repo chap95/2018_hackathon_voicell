@@ -1,4 +1,7 @@
 class ConversationsController < ApplicationController
+    def ssuk
+        redirect_to action: "create", user_id: user_id
+    end
     def create
         @conversation = Conversation.get(current_user.id, params[:user_id])
         add_to_conversations unless conversated?
