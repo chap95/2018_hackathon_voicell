@@ -11,8 +11,10 @@
       <h2 style="margin-bottom: 50px;"><span style="border-bottom: 2px solid white; color: white;">SIGN IN</span></h2>
       
       <div class="field wow jello">
-        <div><span style="color: white"><span style="color: red;">* </span>이메일</span></div>
-        <em style= "color: white">(naver.com, gmail.com만 허용)</em>
+        <div>
+          <span style="color: white"><span style="color: red;">* </span>이메일</span><br/>
+          <em style= "color: white">(naver.com, gmail.com만 허용)</em>
+        </div>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true, class: "col-10 col-sm-7 col-md-5 white_underbar_form" %>
       </div><br/>
       

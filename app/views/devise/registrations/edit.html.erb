@@ -59,7 +59,8 @@
     <% end %>
       
       <hr class="col-5 col-sm-4 col-md-2"/>
-      
-      <%= button_to "회원 탈퇴".html_safe, registration_path(resource_name), data: { confirm: "회원탈퇴 시 모든 정보를 잃게 됩니다. 정말 탈퇴하시겠습니까?" }, method: :delete , class: "btn btn-danger destroy_btn" %>
+      <% if not current_user.email = "guest@naver.com" %>
+        <%= button_to "회원 탈퇴".html_safe, registration_path(resource_name), data: { confirm: "회원탈퇴 시 모든 정보를 잃게 됩니다. 정말 탈퇴하시겠습니까?" }, method: :delete , class: "btn btn-danger destroy_btn" %>
+      <% end %>
   </div>
 </body>

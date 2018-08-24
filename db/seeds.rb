@@ -21,6 +21,9 @@ user = User.find(3)
 user.add_role :block_yellow
 user.add_role :block_red
 
+User.create( email: 'guest@naver.com', password: 'a!123456', nickname: 'For Guest', admin: true )
+user = User.find(4)
+
 #추가적으로 계정 생성 원하시는분은 윗 줄 따라 해당주석 아랫줄에 써주세요.
 
 #게시판
