@@ -10,7 +10,7 @@
         </td>
         <td width="10%">
             <div class="row" style="margin-left: 0px;">
-                <%= content_tag(:small, " #{comment.user != nil ? comment.user.nickname.truncate(20, omission: '...') : comment.nickname.truncate(20, omission: '...')}", class: "d-none d-md-block") %>
+                <%= link_to " #{comment.user != nil ? comment.user.nickname.truncate(20, omission: '...') : comment.nickname.truncate(20, omission: '...')}", homes_messages_box_path(comment.user), method: :post, class: "d-none d-md-block" %>
                 <%= content_tag(:small, " #{time_ago_in_words(comment.created_at)} 전", style: "color: gray; margin-left: 20px;") %>
             </div>
         </td>
@@ -38,5 +38,6 @@
             <%= link_to " | #{comment.get_upvotes.size}", like_comment_path(comment), method: :put , class: "fas fa-thumbs-up" %>
         </td>
     </tr>
+    
     </tbody>
 </table>

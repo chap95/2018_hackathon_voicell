@@ -8,6 +8,23 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
+    <% if Rails.env.production? %>    
+      <%= javascript_include_tag 'mypage/init', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'mypage/jquery.fullPage', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'smooth-scroll/smooth-scroll', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'typed/demos', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'typed/typed', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'typed/typed.min', 'data-turbolinks-track': 'reload' %>
+      
+      <%= stylesheet_link_tag 'bootstrap_4.1/bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag 'fixed_menu/fixed_menu', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag 'mypage/examples', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag 'mypage/jquery.fullPage', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag 'mypage/page', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag 'nav-bar/nav-bar', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag 'wow/wow', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %>
+    
     <!-- 파비콘(.ico 확장자) -->
     <link rel="shortcut icon" href="<%= asset_path 'vc_pavlogo.ico' %>">
     
@@ -90,13 +107,11 @@
     <img id="loading-image" src="<%= asset_path 'loading.gif' , style: "opacity: 1" %>" alt="Loading..." align="center"/>
     
     <!-- nav-bar -->
-
-      <% if current_page?(root_path) %>
-        <%= render body: nil %>
-      <% else %>
-        <%= render partial: "navbar/navbar" %>
-      <% end %>
-
+    <% if current_page?(root_path) %>
+      <%= render body: nil %>
+    <% else %>
+      <%= render partial: "navbar/navbar" %>
+    <% end %>
     <!-- nav-bar -->
   
     <%= yield %>

@@ -6,6 +6,7 @@
 @font-face { font-family: 'SDMiSaeng'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SDMiSaeng.woff') format('woff'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'BMJUA'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'NanumSquareRound'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
 
 
 .typo{
@@ -30,4 +31,14 @@
     font-family: 'NanumSquareRound';
     font-weight: bold;
     font-size: 15px;
+}
+
+.message-received-date{
+    font-family: 'NanumBarunGothic';
+    font-size: 10px;
+}
+
+.message-sent-date{
+    font-family: 'NanumBarunGothic';
+    font-size: 10px;
 }

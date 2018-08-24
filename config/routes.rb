@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   
   get 'homes/index'
   
+  get 'homes/messages_box' => 'homes#messages_box'
+  
+  post 'homes/messages_box.:user' => 'homes#messages_box'
+
   get 'users/page/:id' => 'users#page'
   
   get 'bulletin/:id/posts' => 'posts#index'
@@ -33,8 +37,17 @@ Rails.application.routes.draw do
   # 알림
   resources :new_notifications
 
+  get 'conversations.:user_id' => 'conversations#create'
   
   devise_for :users
+  
+  resources :conversations, only: [:create] do
+    member do
+      post :close
+    end
+    resources :messages, only: [:create]
+  end
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # 이 줄 아래로는 내용 쓰지 마시오 (devise랑 코드 혼선 발생 우려) 
 end

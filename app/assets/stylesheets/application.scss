@@ -607,3 +607,90 @@ h1.bulletin_title.spaced {
   opacity: 0;
   transition: all 1s;
 }
+
+
+//  메세지 css
+.messages-list {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px  solid gray;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+ 
+.message-sent {
+    position: relative;
+    border-color: #BCE8F1;
+    margin: 5px 20px;
+    padding: 10px;
+    margin-left:auto;
+    margin-right: 30px;
+    float: right;
+    border: 1px black solid;
+    border-radius: 10px;
+    background-color: white;
+}
+ 
+.message-sent-date {
+    margin-right: 15px;
+    float: right;
+}
+ 
+.message-received {
+    background-color: black;
+    color: white;
+    border: 1px solid gray;
+    margin: 5px 20px;
+    padding: 10px;
+    float: left;
+    border-radius: 10px;
+}
+ 
+.message-received-date {
+    float: left;
+}
+
+// 메세지 내용 부분
+.msg_con_content{
+  background-color: rgba(50,0,120,0.2);
+  list-style-type: none;
+}
+
+.msg_btn_send{
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  transition: all 1s;
+  width: 5em;
+  height: 50px;
+  display: inline;
+  position: absolute;
+  left: 84%;
+}
+
+.msg_btn_send:hover{
+  background-color: black;
+  color: white;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.all_msg_area{
+  border-bottom: 1px solid black;
+  margin-bottom: 15px;
+  vertical-align: middle;
+}
+
+.msg_send_area{
+  display: inline-block;
+  width: 85%;
+  height: 50px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.msg_btn_area{
+  vertical-align: middle;
+  display: flex;
+}

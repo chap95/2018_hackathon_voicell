@@ -1,9 +1,0 @@
-.image {
-    position:relative;
-}
-
-.image .text {
-    position:absolute;
-    top: 150px; /* in conjunction with left property, decides the text position */
-    left: 80px;
-}

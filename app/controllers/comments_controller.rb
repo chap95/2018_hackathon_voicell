@@ -75,6 +75,7 @@ class CommentsController < ApplicationController
  
   def body
     comment_params[:body]
+    session[:conversations] ||= []
   end
   
   def voice_uploade_file_reply

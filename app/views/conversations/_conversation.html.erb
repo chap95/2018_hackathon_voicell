@@ -1,0 +1,24 @@
+<li class="all_msg_area">
+  <div class="panel panel-default" data-conversation-id="<%= conversation.id %>">
+    <div class="panel-heading">
+      <%= link_to conversation.opposed_user(user).email, '', class: 'toggle-window' %>
+      <%= link_to "x", close_conversation_path(conversation), class: "btn btn-default btn-xs pull-right", remote: true, method: :post %>
+    </div>
+ 
+    <div class="panel-body" style="display: none;">
+      <div class="messages-list">
+        <ul class="msg_con_content">
+          <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
+        </ul>
+      </div>
+        <%= form_for [conversation, conversation.messages.new], remote: true do |f| %>
+          <%= f.hidden_field :user_id, value: user.id %>
+          <div class="msg_btn_area">
+            <%= f.text_area :body, class: "msg_send_area" %>
+            <%= f.submit "전송", class:"msg_btn_send" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</li>
+
