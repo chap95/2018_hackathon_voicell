@@ -11,7 +11,7 @@ User.create( email: 'kbs4674@naver.com', password: 'a!123456', nickname: '어드
 user = User.find(1)
 user.add_role :admin
 
-User.create( email: 'gg@gg.gg', password: 'a!123456', nickname: '공용 계정(root)', admin: true )
+User.create( email: 'gg@gmail.com', password: 'a!123456', nickname: '공용 계정(root)', admin: true )
 user = User.find(2)
 user.add_role :admin
 
