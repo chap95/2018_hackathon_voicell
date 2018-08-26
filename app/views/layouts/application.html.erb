@@ -8,7 +8,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <% if Rails.env.production? %>
+      <!-- jquery -->
+      <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <% end %>
     
     <!-- 파비콘(.ico 확장자) -->
     <link rel="shortcut icon" href="<%= asset_path 'vc_pavlogo.ico' %>">
