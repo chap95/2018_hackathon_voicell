@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   # 알림
   resources :new_notifications
   
-  devise_for :users
+  devise_for :users, ActiveAdmin::Devise.config
   
   resources :conversations, only: [:create] do
     member do
