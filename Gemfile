@@ -105,6 +105,3 @@ gem 'sunspot_rails'
 
 # 알림 Gem
 gem 'unread'
-
-# Devise : 로그아웃 안되는 문제 해결 (production)
-gem 'rails_12factor', group: :production
