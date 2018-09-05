@@ -37,8 +37,6 @@ Rails.application.routes.draw do
   # 알림
   resources :new_notifications
   
-  match 'users/sign_out' => "devise/sessions#destroy"
-  
   devise_for :users
   
   resources :conversations, only: [:create] do
